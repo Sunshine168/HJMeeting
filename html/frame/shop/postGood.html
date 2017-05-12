@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+<title>发布商品</title>
+<link rel="stylesheet" type="text/css" href="../../../css/aui.css" />
+</head>
+<style>
+body{
+    background-color: #fff;
+}
+.post-good-form .aui-list-item-input{
+    text-align: right;
+}
+.upload-pic{
+    display: block;
+    width: 80px;
+    height: 80px;
+    background-size: 80px;
+    background-image: url("../../../image/upload1.png")
+}
+.upload-pic:hover {
+   cursor: pointer
+}
+.pic-upload{
+    border-bottom: 1px solid #f2f2f2;
+    padding: 20px 0.75rem;
+}
+.pic-upload h3{
+ margin-bottom: 5px;
+}
+.aui-btn-block.aui-btn-sm.post-btn{
+    position: absolute;
+    bottom: 0;
+    height: 2.2rem;
+    font-size: 18px;
+    line-height: 2.2rem;
+}
+</style>
+<body>
+<div class="aui-content">
+	<div class="aui-content-padded">
+     <ul class="aui-list aui-form-list post-good-form">
+        <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    Text
+                </div>
+                <div class="aui-list-item-input">
+                    <input type="text" placeholder="Name">
+                </div>
+            </div>
+        </li>
+         <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-input">
+                    <textarea placeholder="商品详情"></textarea>
+                </div>
+            </div>
+        </li>
+          <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                    活动优惠
+                </div>
+                <div class="aui-list-item-input">
+                    <input type="checkbox" class="aui-switch" checked>
+                </div>
+            </div>
+        </li>
+          <li class="aui-list-item">
+            <div class="aui-list-item-inner">
+                <div class="aui-list-item-label">
+                   七天退换
+                </div>
+                <div class="aui-list-item-input">
+                    <input type="checkbox" class="aui-switch" checked>
+                </div>
+            </div>
+        </li>
+    </ul>
+    <div class="pic-upload">
+        <h3>图片上传</h3>
+        <div class="aui-row">
+            <div class="aui-col-xs-4">
+                <i class="upload-pic"></i>
+            </div>
+            <div class="aui-col-xs-4">
+                <i class="upload-pic"></i>
+            </div>
+            <div class="aui-col-xs-4">
+                <i class="upload-pic"></i>
+            </div>
+        </div>
+    </div>
+    </div>
+<div class="aui-btn aui-btn-info aui-btn-block aui-btn-sm post-btn">发布商品</div>
+</div>	
+
+ <script type="text/javascript" src="../../../script/api.js"></script>
+<script>
+	
+</script>	
+</body>
