@@ -1,24 +1,185 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>title</title>
-    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
     <style>
-    	body{
-    		
-    	}
+    html,
+    body {
+        height: 100%;
+        background-color: #f2f2f2
+    }
+    
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: "微软雅黑"
+    }
+    
+    .upload,
+    .delete {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+    }
+    
+    .upload {
+        background: url('../../image/upload.png') no-repeat;
+        background-size: 100% 100%;
+    }
+    
+    .delete {
+        background: url('../../image/delete_w.png') no-repeat;
+        background-size: 100% 100%;
+    }
+    
+    .aui-btn {
+        margin-right: 5px;
+    }
+    
+    .logo {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        margin: 0 5px;
+    }
+    
+    .lAll {
+        background: url('../../image/allfile.png') no-repeat;
+        background-size: 100% 100%;
+    }
+    
+    .lDivide {
+        background: url('../../image/fenlei.png') no-repeat;
+        background-size: 100% 100%;
+    }
+    
+    .searchContainer {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        height: 44px;
+        background-color: #fff;
+        -webkit-box-shadow: 0 2px 2px #ededec;
+        box-shadow: 0 4px 2px #ededec;
+    }
+    
+    .item {
+        flex-grow: 1;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .title {
+        font-size: 14px;
+        color: #666666;
+    }
+    
+    .tip {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    
+    .is {
+        display: inline-block;
+        width: 13px;
+        height: 13px;
+        margin-left: 5px;
+    }
+    
+    .up {
+        background: url('../../image/up.png') no-repeat;
+        background-size: 100% 100%
+    }
+    
+    .down {
+        background: url('../../image/down.png') no-repeat;
+        background-size: 100% 100%
+    }
+    
+ 
     </style>
 </head>
+
 <body>
-	
+    <header class="aui-bar aui-bar-nav">
+        <a class="aui-pull-left aui-btn">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+        <div class="aui-title">我的文件</div>
+        <a class="aui-pull-right aui-btn">
+            <span class="delete"></span>
+        </a>
+        <a class="aui-pull-right aui-btn">
+            <span class="upload"></span>
+        </a>
+    </header>
+    <div class="aui-searchbar">
+        <div class="aui-searchbar-input aui-border-radius" tapmode onclick="doSearch()">
+            <i class="aui-iconfont aui-icon-search"></i>
+            <input type="search" placeholder="查找文件" id="search-input">
+        </div>
+        <div class="aui-btn aui-btn-info">查找</div>
+    </div>
+    <div class="searchContainer">
+        <div class="item">
+            <div class="logo lAll"></div>
+            <div class="tip">
+                <span class="title">所有文件</span>
+                <span class="is"></span>
+            </div>
+        </div>
+        <div class="item">
+            <div class="logo lDivide"></div>
+            <div class="tip">
+                <span class="title">分类查看</span>
+                <span class="is down"></span>
+            </div>
+        </div>
+    </div>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
 <script type="text/javascript">
-	apiready = function(){
-		
-	};
+apiready = function() {
+    api.openFrame({
+        name: 'MyCenter_userFileFrame.html',
+        url: './MyCenter_userFileFrame.html',
+        rect: {
+            x: 0,
+            y: 129,
+            w: 'auto',
+            h: 'auto'
+        },
+        pageParam: {
+
+        },
+        bounces: true,
+        bgColor: 'rgba(0,0,0,0)',
+        vScrollBarEnabled: true,
+        hScrollBarEnabled: true
+    });
+};
 </script>
+
 </html>

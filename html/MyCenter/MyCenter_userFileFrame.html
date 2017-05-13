@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+    <style>
+    html,
+    body {
+        height: 100%;
+        background-color: #f2f2f2;
+    }
+    
+    div {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        
+        overflow: hidden;
+    }
+    
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: "微软雅黑";
+    }
+    
+    .container {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        -o-flex-direction: column;
+        flex-direction: column;
+    }
+    
+    .is {
+        display: inline-block;
+        width: 13px;
+        height: 13px;
+    }
+    
+    .up {
+        background: url('../../image/up.png') no-repeat;
+        background-size: 100% 100%
+    }
+    
+    .down {
+        background: url('../../image/down.png') no-repeat;
+        background-size: 100% 100%
+    }
+    
+    .label {
+        margin: 3px 0;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -moz-flex-direction: row;
+        -ms-flex-direction: row;
+        -o-flex-direction: row;
+        flex-direction: row;
+        height: 30px;
+    }
+    
+    .lName,
+    .lDate,
+    .lSize,
+    .lType {
+        position: relative;
+        height: 100%;
+        background-color: #fff;
+        font-size: 12px;
+        color: #666666;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -moz-flex-direction: row;
+        -ms-flex-direction: row;
+        -o-flex-direction: row;
+        flex-direction: row;
+        align-items: center;
+        padding: 5px 0;
+        justify-content: center;
+    }
+    
+    .lName::after,
+    .lDate::after,
+    .lSize::after {
+        content: '|';
+        color: #f2f2f2;
+        position: absolute;
+        right: 0;
+    }
+    
+    .lName {
+        width: 200px
+    }
+    
+    .lDate {
+        flex-grow: 0.4
+    }
+    
+    .lSize {
+        flex-grow: 0.3
+    }
+    
+    .lType {
+        flex-grow: 0.3
+    }
+     .logo{
+       margin: 0 2px;
+        display: inline-block;
+        width: 13px;
+        height: 13px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="label">
+            <div class="lName">
+                <div>名称</div>
+                <span class="is up"></span>
+            </div>
+            <div class="lDate">
+                <div>上传日期</div>
+                <span class="is"></span>
+            </div>
+            <div class="lSize">
+                <div>大小</div>
+                <span class="is"></span>
+            </div>
+            <div class="lType">
+                <div>类型</div>
+            </div>
+        </div>
+
+
+        <div class="label">
+            <div class="lName">
+                <img src="../../image/pdf.png" alt="" class="logo">
+                <div>C语言程序设计</div>
+            </div>
+            <div class="lDate">
+                <div>2017-12-23</div>
+            </div>
+            <div class="lSize">
+                <div>565MB</div>
+            </div>
+            <div class="lType">
+                <div>.pdf</div>
+            </div>
+        </div>
+
+         <div class="label">
+            <div class="lName">
+                <img src="../../image/pdf.png" alt="" class="logo">
+                <div>C语言dsdsdsdsdcxcxcxxcccxsd程序设计</div>
+            </div>
+            <div class="lDate">
+                <div>2017-12-23</div>
+            </div>
+            <div class="lSize">
+                <div>565MB</div>
+            </div>
+            <div class="lType">
+                <div>.pdf</div>
+            </div>
+        </div>
+
+         <div class="label">
+            <div class="lName">
+                <img src="../../image/pdf.png" alt="" class="logo">
+                <div>C语言程序设计</div>
+            </div>
+            <div class="lDate">
+                <div>2017-12-23</div>
+            </div>
+            <div class="lSize">
+                <div>565MB</div>
+            </div>
+            <div class="lType">
+                <div>.pdf</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+apiready = function() {
+
+};
+</script>
+
+</html>
