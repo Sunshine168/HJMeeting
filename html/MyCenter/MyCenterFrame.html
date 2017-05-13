@@ -8,198 +8,205 @@
     <title>title</title>
     <link rel="stylesheet" type="text/css" href="../../css/api.css" />
     <style>
-    html,
-    body {
-        height: 100%;
-        background-color: transparent;
-        font-family: "微软雅黑"
-    }
-    
-    .container {
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        background-color: transparent;
-        height: 100%;
-        width: 100%;
-    }
-    
-    .user {
-        border-radius: 5px;
-        height: 180px;
-        width: 100%;
-        /* background-color: #3366FF; */
-        position: relative;
-    }
-    
-    .userImgContainer {
-        height: 92px;
-        width: 92px;
-        display: block;
-        background-color: #fff;
-        border: solid 1px #787878;
-        position: absolute;
-        border-radius: 45px;
-        left: 50%;
-        margin-left: -46px;
-        z-index: 1
-    }
-    
-    .fix {
-        width: 100%;
-        height: 160px;
-        background-color: #3366FF;
-        position: absolute;
-        left: 0;
-        top: 20px;
-        border-radius: 5px;
-        box-shadow: 0 5px 5px #aaa
-    }
-    
-    .userMsg {
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        text-align: center;
-    }
-    
-    .userName {
-    }
-    
-    .userName>p,img {
-        display: inline-block;
-        vertical-align: middle;
-        font-size: 14px;
-        color: #fff;
-    }
-    
-    .userName>img {
-        height: 18px;
-        width: 18px;
-    }
-    
-    .userSay>p,
-    span {
-        display: inline-block;
-        vertical-align: middle;
-    }
-    
-    .userSay>span {
-        background: url('../../image/saySth.png') no-repeat;
-        background-size: 100% 100%;
-        width: 23px;
-        height: 23px;
-    }
-    
-    .userSay {
-        color: #D7D7D7;
-        font-size: 12px;
-        margin-bottom: 10px;
-    }
-    
-    .userImg {
-        position: absolute;
-        top: 1px;
-        left: 1px;
-        height: 90px;
-        width: 90px;
-        border-radius: 45px;
-    }
-    
-    .list {
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flex;
-        display: -o-flex;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        margin-top: 5px;
-        background-color: #fff
-    }
-    
-    .listItem {
-        height: 44px;
-        width: 100%;
-        display: -webkit-inline-flex;
-        display: -moz-inline-flex;
-        display: -ms-inline-flex;
-        display: -o-inline-flex;
-        display: inline-flex;
-        -webkit-flex-direction: row;
-        -moz-flex-direction: row;
-        -ms-flex-direction: row;
-        -o-flex-direction: row;
-        flex-direction: row;
-        align-items: center;
-        border-radius: 5px;
-    }
-    .listItem:active{
-        background-color: #00cee5;
-    }
-    .lLogo,
-    .tip {
-        height: 22px;
-        width: 22px;
-        margin-right: 10px;
-        margin-left: 15px;
-    }
-    
-    .listItem>p {
-        flex-grow: 1;
-        margin-left: 5px;
-        color: #333333;
-        font-size: 14px;
-    }
-    
-    .lLogo1 {
-        background: url('../../image/userSelf.png') no-repeat;
-        background-size: 100% 100%
-    }
-    
-    .lLogo2 {
-        background: url('../../image/userVIP.png') no-repeat;
-        background-size: 100% 100%
-    }
-    
-    .lLogo3 {
-        background: url('../../image/userCommit.png') no-repeat;
-        background-size: 100% 100%
-    }
-    
-    .lLogo4 {
-        background: url('../../image/userFile.png') no-repeat;
-        background-size: 100% 100%
-    }
-    
-    .lLogo5 {
-        background: url('../../image/userMsg.png') no-repeat;
-        background-size: 100% 100%
-    }
-    
-    .lLogo6 {
-        background: url('../../image/userStar.png') no-repeat;
-        background-size: 100% 100%
-    }
-    
-    .lLogo7 {
-        background: url('../../image/userArticle.png') no-repeat;
-        background-size: 100% 100%
-    }
-    
-    .tip {
-        background: url('../../image/go.png') no-repeat;
-        background-size: 100% 100%;
-    }
-    
-    .br {
-        width: 90%;
-        height: 1px;
-        background-color: #f2f2f2;
-    }
+        html,
+        body {
+            height: 100%;
+            background-color: transparent;
+            font-family: "微软雅黑"
+        }
+        
+        .container {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            background-color: transparent;
+            height: 100%;
+            width: 100%;
+        }
+        
+        .user {
+            border-radius: 5px;
+            height: 180px;
+            width: 100%;
+            /* background-color: #3366FF; */
+            position: relative;
+        }
+        
+        .userImgContainer {
+            height: 92px;
+            width: 92px;
+            display: block;
+            background-color: #fff;
+            border: solid 1px #787878;
+            position: absolute;
+            border-radius: 45px;
+            left: 50%;
+            margin-left: -46px;
+            z-index: 1
+        }
+        
+        .fix {
+            width: 100%;
+            height: 160px;
+            background-color: #3366FF;
+            position: absolute;
+            left: 0;
+            top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 5px #aaa
+        }
+        
+        .userMsg {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            text-align: center;
+        }
+        
+        .userName {}
+        
+        .userName>p,
+        img {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 14px;
+            color: #fff;
+        }
+        
+        .userName>img {
+            height: 18px;
+            width: 18px;
+        }
+        
+        .userSay>p,
+        span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        
+        .userSay>span {
+            background: url('../../image/saySth.png') no-repeat;
+            background-size: 100% 100%;
+            width: 23px;
+            height: 23px;
+        }
+        
+        .userSay {
+            color: #D7D7D7;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .userImg {
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            height: 90px;
+            width: 90px;
+            border-radius: 45px;
+        }
+        
+        .list {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            margin-top: 5px;
+            background-color: #fff
+        }
+        
+        .listItem {
+            height: 44px;
+            width: 100%;
+            display: -webkit-inline-flex;
+            display: -moz-inline-flex;
+            display: -ms-inline-flex;
+            display: -o-inline-flex;
+            display: inline-flex;
+            -webkit-flex-direction: row;
+            -moz-flex-direction: row;
+            -ms-flex-direction: row;
+            -o-flex-direction: row;
+            flex-direction: row;
+            align-items: center;
+            border-radius: 5px;
+        }
+        
+        .listItem:active {
+            background-color: #00cee5;
+        }
+        
+        .lLogo,
+        .tip {
+            height: 22px;
+            width: 22px;
+            margin-right: 10px;
+            margin-left: 15px;
+        }
+        
+        .listItem>p {
+            flex-grow: 1;
+            margin-left: 5px;
+            color: #333333;
+            font-size: 14px;
+        }
+        
+        .lLogo1 {
+            background: url('../../image/userSelf.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .lLogo2 {
+            background: url('../../image/userVIP.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .lLogo3 {
+            background: url('../../image/userCommit.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .lLogo4 {
+            background: url('../../image/userFile.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .lLogo5 {
+            background: url('../../image/userMsg.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .lLogo6 {
+            background: url('../../image/userStar.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .lLogo7 {
+            background: url('../../image/userArticle.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .lLogo8 {
+            background: url('../../image/shopLogoa.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .tip {
+            background: url('../../image/go.png') no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        .br {
+            width: 90%;
+            height: 1px;
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 
@@ -223,45 +230,51 @@
             </div>
         </div>
         <div class="list" id="menu">
-            <div class="listItem" value="MyCenter_userInfo.html">
+            <div class="listItem" value="./MyCenter_userInfo.html">
                 <span class="lLogo lLogo1"></span>
                 <p>个人信息</p>
                 <span class="tip"></span>
             </div>
             <span class="br"></span>
-            <div class="listItem" value="MyCenter_userVIP.html">
+            <div class="listItem" value="./MyCenter_userVIP.html">
                 <span class="lLogo lLogo2"></span>
                 <p>VIP服务</p>
                 <span class="tip"></span>
             </div>
             <span class="br"></span>
-            <div class="listItem" value="MyCenter_userMetting.html">
+            <div class="listItem" value="./MyCenter_userMetting.html">
                 <span class="lLogo lLogo3"></span>
                 <p>我的会议</p>
                 <span class="tip"></span>
             </div>
             <span class="br"></span>
-            <div class="listItem" value="MyCenter_userFile.html">
+            <div class="listItem" value="./MyCenter_userFile.html">
                 <span class="lLogo lLogo4"></span>
                 <p>我的文件夹</p>
                 <span class="tip"></span>
             </div>
             <span class="br"></span>
-            <div class="listItem" value="Mycenter_userMsg.html">
+            <div class="listItem" value="./Mycenter_userMsg.html">
                 <span class="lLogo lLogo5"></span>
                 <p>我的消息</p>
                 <span class="tip"></span>
             </div>
             <span class="br"></span>
-            <div class="listItem" value="MyCenter_userStar.html">
+            <div class="listItem" value="./MyCenter_userStar.html">
                 <span class="lLogo lLogo6"></span>
                 <p>我的收藏</p>
                 <span class="tip"></span>
             </div>
             <span class="br"></span>
-            <div class="listItem" value="MyCenter_userArticle.html">
+            <div class="listItem" value="./MyCenter_userArticle.html">
                 <span class="lLogo lLogo7"></span>
                 <p>我的帖子</p>
+                <span class="tip"></span>
+            </div>
+            <span class="br"></span>
+            <div class="listItem" value="../win/shopIndex.html">
+                <span class="lLogo lLogo8"></span>
+                <p>我的商店</p>
                 <span class="tip"></span>
             </div>
         </div>
@@ -269,40 +282,41 @@
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
 <script type="text/javascript">
-var menu=document.getElementById('menu');
-apiready = function() {
-    (function() {
-        menu.addEventListener("click",foo);
-        function foo(e){
-            e=e||window.event;
-            var t;
-            if(e.target){
-                if(e.target.className=='listItem'){
-                     goToWindow(e.target.getAttribute('value'));
-                }
-                else{
-                    t=e.target.parentNode;
-                    do{
-                        if(t.className=='listItem'){
-                            goToWindow(t.getAttribute('value'));
-                            break;
-                        }
-                        t=t.parentNode;
-                    }while(1);
+    var menu = document.getElementById('menu');
+    apiready = function() {
+        (function() {
+            menu.addEventListener("click", foo);
+
+            function foo(e) {
+                e = e || window.event;
+                var t;
+                if (e.target) {
+                    if (e.target.className == 'listItem') {
+                        goToWindow(e.target.getAttribute('value'));
+                    } else {
+                        t = e.target.parentNode;
+                        do {
+                            if (t.className == 'listItem') {
+                                goToWindow(t.getAttribute('value'));
+                                break;
+                            }
+                            t = t.parentNode;
+                        } while (1);
+                    }
                 }
             }
+        })();
+
+        function goToWindow(where) {
+            api.openWin({
+                name: where,
+                url: where,
+                pageParam: {
+
+                }
+            });
         }
-    })();
-    function goToWindow(where){
-        api.openWin({
-            name: where,
-            url: './'+where,
-            pageParam: {
-                 
-            }
-        });
-    }
-};
+    };
 </script>
 
 </html>
