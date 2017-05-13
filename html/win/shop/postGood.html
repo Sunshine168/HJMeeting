@@ -39,11 +39,16 @@
     }
     
     .aui-btn-block.aui-btn-sm.post-btn {
-        position: absolute;
+        position: fixed;
         bottom: 0;
         height: 2.2rem;
         font-size: 18px;
         line-height: 2.2rem;
+        border-radius: 0;
+    }
+    
+    .aui-list-item-inner.good-detail textarea {
+        height: 6rem;
     }
 </style>
 
@@ -52,10 +57,7 @@
         <a class="aui-pull-left aui-btn" tapmode onclick="back()">
             <span class="aui-iconfont aui-icon-left"></span>
         </a>
-        <div class="aui-title" id="windows_title">商店首页</div>
-        <a class="aui-pull-right aui-btn" tapmode onclick="popMenu()">
-            <i class="aui-iconfont aui-icon-gear"></i>
-        </a>
+        <div class="aui-title" id="windows_title">发布商品</div>
     </header>
     <div class="aui-content">
         <div class="aui-content-padded">
@@ -67,13 +69,6 @@
                         </div>
                         <div class="aui-list-item-input">
                             <input type="text" placeholder="Name">
-                        </div>
-                    </div>
-                </li>
-                <li class="aui-list-item">
-                    <div class="aui-list-item-inner">
-                        <div class="aui-list-item-input">
-                            <textarea placeholder="商品详情"></textarea>
                         </div>
                     </div>
                 </li>
@@ -94,6 +89,13 @@
                         </div>
                         <div class="aui-list-item-input">
                             <input type="checkbox" class="aui-switch" checked>
+                        </div>
+                    </div>
+                </li>
+                <li class="aui-list-item">
+                    <div class="aui-list-item-inner good-detail">
+                        <div class="aui-list-item-input">
+                            <textarea placeholder="商品详情"></textarea>
                         </div>
                     </div>
                 </li>
@@ -118,5 +120,25 @@
 
     <script type="text/javascript" src="../../../script/api.js"></script>
     <script>
+        var nowFrame = null;
+        //绑定返回
+        function back() {
+            //根据全局标记判定是否有frame打开有则关闭frame,无则退出当前窗口
+            if (nowFrame) {
+                api.closeFrame({
+                    name: nowFrame
+                });
+                //消除标记
+                nowFrame = null;
+                //重新设置标题
+                $api.byId('windows_title').innerHTML = "我的商店";
+            } else {
+                api.historyBack({}, function(ret, err) {
+                    if (!ret.status) {
+                        api.closeWin();
+                    }
+                })
+            }
+        }
     </script>
 </body>
