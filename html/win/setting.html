@@ -1,129 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-<title>系统设置</title>
-<link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>系统设置</title>
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
 </head>
 <style>
-    .setting-user{
-      margin-top: 30px;
-      margin-bottom: 60px;
+    .setting-user {
+        margin-top: 30px;
+        margin-bottom: 60px;
     }
-	.setting-operation{
-
-	}
+    
+    .setting-operation {}
     /*
     改变aui的属性
     */
-    .aui-list-item-inner.aui-list-item-arrow{
+    
+    .aui-list-item-inner.aui-list-item-arrow {
         text-align: right;
     }
-    .btn-exit{
-        position:fixed;
+    
+    .btn-exit {
+        position: fixed;
         bottom: 0;
+        border-radius: 0;
     }
 </style>
+
 <body>
-<header class="aui-bar aui-bar-nav">
-    <a class="aui-pull-left aui-btn">
-        <span class="aui-iconfont aui-icon-left"></span>
-    </a>
-    <div class="aui-title">系统设置</div>
-</header>
-<div class="aui-content">
-    <div class="setting-user">
-    	<ul class = "aui-list aui-list-in">
-		  <li class="aui-list-item aui-list-item-middle">
-            <div class="aui-list-item-label-icon">
-                <i class="aui-iconfont aui-icon-home"></i>
-            </div>
-          <div class="aui-list-item-inner  aui-list-item-arrow">
-                <div class="aui-list-item-title">测试用户</div>
-                <div class="aui-list-item-right">修改个人资料</div>
-            </div>
-        </li>
-    </ul>
+    <header class="aui-bar aui-bar-nav">
+        <a class="aui-pull-left aui-btn" tapmode onclick="back()">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+        <div class="aui-title" id="windows_title">系统设置</div>
+    </header>
+    <div class="aui-content">
+        <div class="setting-user">
+            <ul class="aui-list aui-list-in">
+                <li class="aui-list-item aui-list-item-middle">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-home"></i>
+                    </div>
+                    <div class="aui-list-item-inner  aui-list-item-arrow">
+                        <div class="aui-list-item-title">测试用户</div>
+                        <div class="aui-list-item-right">修改个人资料</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="setting-operation">
+            <ul class="aui-list aui-list-in">
+                <li class="aui-list-item aui-list-item-middle" tapmode onclick="toCheckUpdate()">
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-title">检查更新</div>
+                    </div>
+                </li>
+                <li class="aui-list-item aui-list-item-middle" tapmode onclick="toSystemSetting()">
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-title">系统设置</div>
+                    </div>
+                </li>
+                <li class="aui-list-item aui-list-item-middle">
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-title">分享app</div>
+                    </div>
+                </li>
+                <li class="aui-list-item aui-list-item-middle" tapmode onclick="toFeedback()">
+                    <div class="aui-list-item-inner aui-list-item-arrow">
+                        <div class="aui-list-item-title">用户反馈</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="aui-btn aui-btn-danger aui-btn-block aui-btn-sm btn-exit">退出当前用户</div>
     </div>
-    <div class="setting-operation">
-    	<ul class = "aui-list aui-list-in">
-		  <li class="aui-list-item aui-list-item-middle" tapmode onclick="toCheckUpdate()">
-            <div class="aui-list-item-inner aui-list-item-arrow">
-                <div class="aui-list-item-title">检查更新</div>
-            </div>
-        </li>
-        <li class="aui-list-item aui-list-item-middle" tapmode onclick="toSystemSetting()">
-            <div class="aui-list-item-inner aui-list-item-arrow">
-                <div class="aui-list-item-title">系统设置</div>
-            </div>
-        </li>
-        <li class="aui-list-item aui-list-item-middle">
-            <div class="aui-list-item-inner aui-list-item-arrow">
-                <div class="aui-list-item-title">分享app</div>
-            </div>
-        </li>
-        <li class="aui-list-item aui-list-item-middle" tapmode onclick="toFeedback()">
-            <div class="aui-list-item-inner aui-list-item-arrow">
-                <div class="aui-list-item-title">用户反馈</div>
-            </div>
-        </li>
-	</ul>
-    </div>
- <div class="aui-btn aui-btn-danger aui-btn-block aui-btn-sm btn-exit" >退出当前用户</div>
-</div>	
-<script type="text/javascript" src="../../script/api.js"></script>
-<script type="text/javascript">
-    apiready = function(){
-    
-         var settringFrames = ["checkUpdate","systemSetting","userFeedback"];
-
-
-    };
-    function funInitGroup(Frames){
-      for (var i = 0;i<Frames.length;i++) {
-                frames.push( { 
-                    name: "settingGroup", 
-                    url: './frame/setting'+i+'.html', 
-                    bounces:true
-                } )
+    <script type="text/javascript" src="../../script/api.js"></script>
+    <script type="text/javascript">
+        var nowFrame = null;
+        apiready = function() {
+            //处理物理返回键
+            api.addEventListener({
+                name: 'keyback'
+            }, function(ret, err) {
+                back();
+            });
         }
-          var frameGroup = [];
-           api.openFrameGroup({
-            name: 'group',
-            scrollEnabled: true,
-            rect: {
-                x: 0, 
-                y: $api.dom('header').offsetHeight, 
-                w: api.winWidth, 
-                h: api.winHeight
-            },
-            index: 0,
-            frames: frames
-        }, function (ret, err) {
-              
-                 
-        });
-    }
-    function toCheckUpdate(){
-           api.setFrameGroupIndex({
-            name: 'group',
-            index: 0
-        });
-    }
-    function toSystemSetting(){
-           api.setFrameGroupIndex({
-            name: 'group',
-            index: 1
-        });
-    }
-    function toFeedback(){
-          api.setFrameGroupIndex({
-            name: 'group',
-            index: 2
-        });
-    }
-</script>
+
+        // function funInitGroup(Frames) {
+        //     var frames = [];
+        //     for (var i = 0; i < Frames.length; i++) {
+        //         frames.push({
+        //             name: 'settingFrames' + i,
+        //             url: '../frame/setting/' + Frames[i] + '.html',
+        //             bounces: true
+        //         })
+        //     }
+        //     api.openFrameGroup({
+        //         name: 'group',
+        //         scrollEnabled: true,
+        //         rect: {
+        //             x: 0,
+        //             y: $api.dom('header').offsetHeight,
+        //             w: api.winWidth,
+        //             h: api.winHeight
+        //         },
+        //         index: 0,
+        //         frames: frames
+        //     }, function(ret, err) {
+        //         if (ret) {
+        //             var header = $api.dom('header');
+        //             alert(JSON.stringify(ret));
+        //             if (ret.index == 1) {
+
+        //             }
+        //         }
+
+        //     });
+        // }
+
+        function toCheckUpdate() {
+            //标记当前窗口有frame打开
+            nowFrame = "checkUpdate";
+            $api.byId('windows_title').innerHTML = "检查更新"
+            api.openFrame({
+                name: 'checkUpdate',
+                url: '../frame/setting/checkUpdate.html',
+                rect: {
+                    x: 0,
+                    y: $api.dom('header').offsetHeight,
+                    w: 'auto',
+                    h: 'auto'
+                },
+                pageParam: {
+                    name: 'test'
+                }
+            });
+        }
+
+        function toSystemSetting() {
+            nowFrame = "systemSetting";
+            $api.byId('windows_title').innerHTML = "系统设置"
+            api.openFrame({
+                name: 'systemSetting',
+                url: '../frame/setting/systemSetting.html',
+                rect: {
+                    x: 0,
+                    y: $api.dom('header').offsetHeight,
+                    w: 'auto',
+                    h: 'auto'
+                },
+                pageParam: {
+                    name: 'test'
+                }
+            });
+        }
+
+        function toFeedback() {
+            nowFrame = "feedback";
+            $api.byId('windows_title').innerHTML = "用户反馈"
+            api.openFrame({
+                name: 'feedback',
+                url: '../frame/setting/userFeedback.html',
+                rect: {
+                    x: 0,
+                    y: $api.dom('header').offsetHeight,
+                    w: 'auto',
+                    h: 'auto'
+                },
+                pageParam: {
+                    name: 'test'
+                }
+            });
+        }
+
+        function back() {
+            //根据全局标记判定是否有frame打开有则关闭frame,无则退出当前窗口
+            if (nowFrame) {
+                api.closeFrame({
+                    name: nowFrame
+                });
+                //消除标记
+                nowFrame = null;
+                //重新设置标题
+                $api.byId('windows_title').innerHTML = "设置";
+            } else {
+
+            }
+        }
+    </script>
 </body>
+
 </html>
