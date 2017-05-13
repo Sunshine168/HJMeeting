@@ -1,24 +1,65 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>title</title>
-    <link rel="stylesheet" type="text/css" href="../../css/api.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
     <style>
-    	body{
-    		
-    	}
+    html,
+    body {
+        height: 100%;
+        background-color: #f2f2f2
+    }
+    
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: "微软雅黑"
+    }
+    .aui-bar-btn-item{
+        font-size: 14px;
+    }
     </style>
 </head>
+
 <body>
-	
+    <header class="aui-bar aui-bar-nav" >
+        <a class="aui-pull-left">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+        <div class="aui-title">
+            <div class="aui-bar aui-bar-btn aui-bar-btn-round">
+                <div class="aui-bar-btn-item aui-active">用户消息</div>
+                <div class="aui-bar-btn-item">系统通知</div>
+            </div>
+        </div>
+    </header>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
 <script type="text/javascript">
-	apiready = function(){
-		
-	};
+apiready = function() {
+    api.openFrame({
+        name: 'Mycenter_userMsgFrame.html',
+        url: './Mycenter_userMsgFrame.html',
+        rect: {
+            x: 0,
+            y: 44,
+            w: 'auto',
+            h: 'auto'
+        },
+        pageParam: {
+            name: 'test'
+        },
+        bounces: true,
+        bgColor: 'rgba(0,0,0,0)',
+        vScrollBarEnabled: true,
+        hScrollBarEnabled: true
+    });
+};
 </script>
+
 </html>
