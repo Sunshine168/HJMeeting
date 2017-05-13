@@ -1,100 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
-<meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
-<title>通知与消息</title>
-<link rel="stylesheet" type="text/css" href="../../../css/aui.css" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>通知与消息</title>
+    <link rel="stylesheet" type="text/css" href="../../../css/aui.css" />
 </head>
 <style>
-/* .aui-tab{
-    color
- }*/
+
 </style>
+
 <body>
-<div class="aui-content">
-	<div class="aui-tab" id="tab">
-    <div class="aui-tab-item aui-active" tapmode onclick="switchToMsg(this)">通知</div>
-    <div class="aui-tab-item" tapmode onclick="switchToInform(this)"><div></div>消息</div>
-</div>
-
-<div id="inform-list">
-    <ul class="aui-list aui-list-in">
-         <li class="aui-list-item aui-list-item-middle">
-            <div class="aui-list-item-label-icon">
-                <i class="aui-iconfont aui-icon-home"></i>
-            </div>
-          <div class="aui-list-item-inner">
-                <div class="aui-list-item-title">系统将在今天晚上进行维护</div>
-                <div class="aui-list-item-right">05月12日16:08:16</div>
-            </div>
-        </li>  
-         <li class="aui-list-item aui-list-item-middle">
-            <div class="aui-list-item-label-icon">
-                <i class="aui-iconfont aui-icon-home"></i>
-            </div>
-          <div class="aui-list-item-inner">
-                <div class="aui-list-item-title">系统将在今天晚上进行维护</div>
-                <div class="aui-list-item-right">05月12日16:08:16</div>
-            </div>
-        </li>        
-</ul> 
-</div>
-<div id="message-list">
-   <ul class="aui-list aui-list-in">
-         <li class="aui-list-item aui-list-item-middle">
-            <div class="aui-list-item-label-icon">
-                <i class="aui-iconfont aui-icon-home"></i>
-            </div>
-          <div class="aui-list-item-inner">
-                <div class="aui-list-item-title">系统将在今天晚上进行维护</div>
-                <div class="aui-list-item-right">05月12日16:08:16</div>
-            </div>
-        </li>  
-         <li class="aui-list-item aui-list-item-middle">
-            <div class="aui-list-item-label-icon">
-                <i class="aui-iconfont aui-icon-home"></i>
-            </div>
-          <div class="aui-list-item-inner">
-                <div class="aui-list-item-title">系统将在今天晚上进行维护</div>
-                <div class="aui-list-item-right">05月12日16:08:16</div>
-            </div>
-        </li>        
-</ul> 
-</div>
-</div>	
- <script type="text/javascript" src="../../../script/api.js"></script>
- <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
-<script>
-apiready = function(){
-    $("#message-list").hide();
-   $("#inform-list").show();
-}
-
-	function switchToMsg(element){
-        var elements = $(".aui-tab-item");
-           $.each(elements,function(index,value){
-                if(value==element){
-                    $(element).addClass('aui-active');
-                }else{
-                    $(value).removeClass('aui-active');
-                }
-           })
-          $("#inform-list").hide();
-          $("#message-list").show();
-    }
-        function switchToInform(element){
-            var elements = $(".aui-tab-item");
-           $.each(elements,function(index,value){
-                if(value==element){
-                    $(element).addClass('aui-active');
-                }else{
-                    $(value).removeClass('aui-active');
-                }
-           })
-          $("#inform-list").show();
-          $("#message-list").hide();
-    }
-</script>	
+    <div class="aui-content">
+        <div id="inform-list">
+            <ul class="aui-list aui-list-in">
+                <li class="aui-list-item aui-list-item-middle">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-home"></i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-title">系统将在今天晚上进行维护</div>
+                        <div class="aui-list-item-right">05月12日16:08:16</div>
+                    </div>
+                </li>
+                <li class="aui-list-item aui-list-item-middle">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-home"></i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-title">系统将在今天晚上进行维护</div>
+                        <div class="aui-list-item-right">05月12日16:08:16</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="message-list">
+            <ul class="aui-list aui-list-in">
+                <li class="aui-list-item aui-list-item-middle">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-home"></i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-title">系统将在今天晚上进行维护</div>
+                        <div class="aui-list-item-right">05月12日16:08:16</div>
+                    </div>
+                </li>
+                <li class="aui-list-item aui-list-item-middle">
+                    <div class="aui-list-item-label-icon">
+                        <i class="aui-iconfont aui-icon-home"></i>
+                    </div>
+                    <div class="aui-list-item-inner">
+                        <div class="aui-list-item-title">系统将在今天晚上进行维护</div>
+                        <div class="aui-list-item-right">05月12日16:08:16</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript" src="../../../script/api.js"></script>
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+    <script>
+    </script>
 </body>
