@@ -26,6 +26,7 @@
 /A6949965890679/aui-20170109-v2.1/html/demo_wechat_circle_win.html
 /A6949965890679/aui-20170109-v2.1/html/pull_refresh_win.html
 /A6949965890679/image/q (49).png
+/A6949971301863/script/jquery.js
 /A6949965890679/aui-20170109-v2.1/html/searchbar_frm.html
 /A6949965890679/image/向上.png
 /A6949965890679/aui-20170109-v2.1/html/tips_win.html
@@ -46,6 +47,7 @@
 /A6949971301863/script/aui-range.js
 /A6949971301863/image/q (7).png
 /A6949971301863/image/q (63).png
+/A6949971301863/html/frame/personal/inform.html
 /A6949971301863/image/q (35).png
 /A6949971301863/script/aui-scroll.js
 /A6949965890679/aui-20170109-v2.1/html/demo_order_win.html
@@ -62,9 +64,11 @@
 /A6949965890679/icon/icon150x150.png
 /A6949971301863/image/q (2).png
 /A6949965890679/image/收起.png
+/A6949971301863/html/win/personal/myPost.html
 /A6949971301863/image/note.png
 /A6949965890679/aui-20170109-v2.1/script/aui-collapse.js
 /A6949971301863/image/q (69).png
+/A6949971301863/image/addhim.png
 /A6949965890679/aui-20170109-v2.1/image/share/qzone.png
 /A6949965890679/aui-20170109-v2.1/html/grid_win.html
 /A6949965890679/image/消息通知.png
@@ -97,6 +101,7 @@
 /A6949965890679/image/q (44).png
 /A6949965890679/image/q (47).png
 /A6949965890679/aui-20170109-v2.1/html/text_win.html
+/A6949971301863/image/gouser.png
 /A6949965890679/image/消息-红点-反白.png
 /A6949965890679/html/MyCenter_userFile.html
 /A6949965890679/html/MyCenter_userVIP.html
@@ -130,8 +135,10 @@
 /A6949965890679/image/personal (2).png
 /A6949971301863/html/frame/shop/myGoodsList.html
 /A6949965890679/image/q (20).png
+/A6949971301863/image/shopLogo.png
 /A6949965890679/image/demo.png
 /A6949965890679/aui-20170109-v2.1/script/aui-range.js
+/A6949971301863/image/pdf.png
 /A6949971301863/html/frame/personal/myCollections.html
 /A6949965890679/aui-20170109-v2.1/html/demo_zhihu_win.html
 /A6949971301863/image/q (8).png
@@ -156,6 +163,7 @@
 /A6949965890679/image/q (27).png
 /A6949965890679/aui-20170109-v2.1/html/sharebox_win.html
 /A6949965890679/image/go.png
+/A6949971301863/html/frame/personal/myCollection.html
 /A6949971301863/html/frame/personal/message.html
 /A6949971301863/html/MyCenter/MyCenter_userArticle.html
 /A6949971301863/css/aui.css
@@ -182,12 +190,12 @@
 /A6949965890679/aui-20170109-v2.1/image/l1.png
 /A6949971301863/html/frame/shop/postGood.html
 /A6949965890679/image/q (34).png
-/A6949965890679/image/铅笔 (1).png
 /A6949965890679/aui-20170109-v2.1/html/footer_bar_frm.html
+/A6949965890679/image/铅笔 (1).png
 /A6949971301863/image/q (48).png
-/A6949965890679/image/userMsg.png
-/A6949971301863/image/q (15).png
 /A6949971301863/image/q (36).png
+/A6949971301863/image/q (15).png
+/A6949965890679/image/userMsg.png
 /A6949965890679/image/向上 (1).png
 /A6949965890679/aui-20170109-v2.1/index.html
 /A6949965890679/aui-20170109-v2.1/html/range_win.html
@@ -204,6 +212,7 @@
 /A6949965890679/image/加－虚线.png
 /A6949971301863/__config.xml
 /A6949965890679/image/档案.png
+/A6949971301863/html/win/shop/postGood.html
 /A6949965890679/aui-20170109-v2.1/html/info_frm.html
 /A6949965890679/aui-20170109-v2.1/css/aui-flex.css
 /A6949965890679/aui-20170109-v2.1/html/progress_frm.html
@@ -279,6 +288,7 @@
 /A6949965890679/image/男性 (1).png
 /A6949971301863/css/aui-skin.css
 /A6949971301863/image/q (65).png
+/A6949971301863/image/delete_w.png
 /A6949971301863/image/userMsg.png
 /A6949965890679/image/向上 (3).png
 /A6949965890679/image/上传.png
@@ -288,6 +298,7 @@
 /A6949965890679/launch/launch1080x1920.png
 /A6949965890679/aui-20170109-v2.1/script/aui-popup-new.js
 /A6949971301863/html/MyCenter/MyCenter_userInfoFrame.html
+/A6949971301863/html/MyCenter/Mycenter_userMsgFrame.html
 /A6949971301863/image/q (72).png
 /A6949965890679/aui-20170109-v2.1/html/label_win.html
 /A6949965890679/image/q (31).png
@@ -295,6 +306,7 @@
 /A6949965890679/image/文件夹 (2).png
 /A6949971301863/image/q (68).png
 /A6949965890679/aui-20170109-v2.1/image/load-img.png
+/A6949971301863/image/down.png
 /A6949965890679/aui-20170109-v2.1/html/footer_bar_more_win.html
 /A6949965890679/html/MyCenter_userArticle.html
 /A6949965890679/aui-20170109-v2.1/image/demo6.png
@@ -321,6 +333,7 @@
 /A6949965890679/aui-20170109-v2.1/html/card_list_win.html
 /A6949965890679/image/展开.png
 /A6949965890679/aui-20170109-v2.1/html/scroll_frm.html
+/A6949971301863/html/win/personal/myMessage.html
 /A6949971301863/image/test1.png
 /A6949971301863/image/album.png
 /A6949965890679/image/q (18).png
@@ -338,8 +351,11 @@
 /A6949971301863/html/MyCenter/MyCenter_userInfo.html
 /A6949965890679/aui-20170109-v2.1/image/hongbao.png
 /A6949965890679/aui-20170109-v2.1/html/demo_list_scroll_frm.html
+/A6949971301863/html/win/shop/myGoodsList.html
 /A6949965890679/image/q (71).png
+/A6949971301863/html/win/personal/post.html
 /A6949965890679/aui-20170109-v2.1/html/demo_wechat_frm.html
+/A6949971301863/image/allfile.png
 /A6949965890679/aui-20170109-v2.1/html/demo_news_today_win.html
 /A6949965890679/image/q (24).png
 /A6949971301863/html/frame/setting/checkUpdate.html
@@ -371,15 +387,16 @@
 /A6949965890679/aui-20170109-v2.1/html/timeline_frm.html
 /A6949971301863/image/q (58).png
 /A6949965890679/aui-20170109-v2.1/icon/icon150x150.png
-/A6949971301863/image/q (13).psd
 /A6949965890679/image/VIP服务.png
+/A6949971301863/image/q (13).psd
 /A6949971301863/image/userDefault.bmp
 /A6949965890679/image/q (55).png
-/A6949971301863/image/q (38).png
 /A6949965890679/image/会议.png
+/A6949971301863/image/q (38).png
+/A6949971301863/html/MyCenter/MyCenter_userFileFrame.html
 /A6949965890679/aui-20170109-v2.1/html/flex_win.html
-/A6949971301863/image/q (67).png
 /A6949965890679/aui-20170109-v2.1/css/aui-skin-night.css
+/A6949971301863/image/q (67).png
 /A6949965890679/image/q (46).png
 /A6949971301863/image/q (60).png
 /A6949965890679/image/fangzi.png
@@ -423,6 +440,7 @@
 /A6949971301863/image/q (70).png
 /A6949965890679/image/vip (1).png
 /A6949965890679/aui-20170109-v2.1/image/share/wx.png
+/A6949971301863/image/up.png
 /A6949965890679/aui-20170109-v2.1/html/demo_order_frm.html
 /A6949971301863/image/q (1).png
 /A6949971301863/image/q (44).png
@@ -458,7 +476,10 @@
 /A6949971301863/html/MyCenter/MyCenter_userStar.html
 /A6949965890679/aui-20170109-v2.1/html/sharebox_frm.html
 /A6949965890679/aui-20170109-v2.1/html/demo1_frm.html
+/A6949971301863/image/fenlei.png
 /A6949965890679/image/热门帖子.png
+/A6949971301863/html/win/personal/myCollection.html
+/A6949971301863/html/win/shopIndex.html
 /A6949965890679/aui-20170109-v2.1/html/list_win.html
 /A6949971301863/html/MyCenter/MyCenter.html
 /A6949971301863/image/q (10).png
@@ -473,6 +494,7 @@
 /A6949965890679/aui-20170109-v2.1/html/demo_zhihu_frm.html
 /A6949965890679/aui-20170109-v2.1/image/f5.jpg
 /A6949971301863/script/aui-skin.js
+/A6949971301863/image/gomine.png
 /A6949965890679/image/用户.png
 /A6949965890679/image/q (4).png
 /A6949965890679/image/q (30).png
