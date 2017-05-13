@@ -145,7 +145,7 @@
                     <div class="aui-list-item-label-icon">
                         <i class="aui-iconfont aui-icon-my aui-text-warning"></i>
                     </div>
-                    <div class="aui-list-item-inner aui-list-item-middle">
+                    <div class="aui-list-item-inner aui-list-item-middle" tapmode onclick="toShopSetting()">
                         商品列表
                     </div>
                 </li>
@@ -153,7 +153,7 @@
                     <div class="aui-list-item-label-icon">
                         <i class="aui-iconfont aui-icon-mail aui-text-info"></i>
                     </div>
-                    <div class="aui-list-item-inner">
+                    <div class="aui-list-item-inner" tapmode onclick="toPostGood()">
                         发布商品
                     </div>
                 </li>
@@ -164,10 +164,8 @@
     <script type="text/javascript" src="../../script/api.js "></script>
     <script type="text/javascript" src="../../script/jquery.js"></script>
     <script type="text/javascript" src="../../script/aui-popup.js"></script>
-
     <script>
         apiready = function() {
-
                 //处理物理返回键
                 api.addEventListener({
                     name: 'keyback'
@@ -182,24 +180,7 @@
             //标记目前窗口是否有frame打开
         var nowFrame = null;
 
-        function toShopSetting() {
-            api.openFrame({
-                name: 'postGood',
-                url: '../frame/shop/myGoodsList.html',
-                rect: {
-                    x: 0,
-                    y: $api.dom('header').offsetHeight,
-                    w: 'auto',
-                    h: 'auto'
-                },
-                pageParam: {
-                    name: 'test'
-                }
-            });
-            //标记当前窗口有frame打开
-            nowFrame = "postGood";
-            $api.byId('windows_title').innerHTML = "我的商品列表";
-        }
+
         //绑定返回
         function back() {
             //根据全局标记判定是否有frame打开有则关闭frame,无则退出当前窗口
@@ -219,18 +200,58 @@
                 })
             }
         }
-
+        //处理搜索框获得焦点
         function doSearch() {
             $('.aui-searchbar-cancel').show();
         }
-
+        //处理搜索
         function search() {
             console.log($('#search-input'));
         }
-
+        //弹出右上角的子菜单
         function popMenu() {
             var popup = new auiPopup();
             popup.show(document.getElementById("top-right"));
+        }
+
+        /*处理跳转页面*/
+        function toShopSetting() {
+            api.openFrame({
+                name: 'postGood',
+                url: '../frame/shop/myGoodsList.html',
+                rect: {
+                    x: 0,
+                    y: $api.dom('header').offsetHeight,
+                    w: 'auto',
+                    h: 'auto'
+                },
+                pageParam: {
+                    name: 'test'
+                }
+            });
+            //标记当前窗口有frame打开
+            nowFrame = "myGoodsList";
+            $api.byId('windows_title').innerHTML = "商品列表";
+        }
+
+        function toPostGood() {
+            console.log("test");
+            api.openFrame({
+                name: 'postGood',
+                url: '../frame/shop/postGood.html',
+                rect: {
+                    x: 0,
+                    y: $api.dom('header').offsetHeight,
+                    w: 'auto',
+                    h: 'auto'
+                },
+                pageParam: {
+                    name: 'test'
+                }
+            });
+            //标记当前窗口有frame打开
+            nowFrame = "postGood";
+            $api.byId('windows_title').innerHTML = "发布商品";
         }
     </script>
 </body>
