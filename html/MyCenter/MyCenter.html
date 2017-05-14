@@ -8,86 +8,76 @@
     <title>title</title>
     <link rel="stylesheet" type="text/css" href="../../css/api.css" />
     <style>
-        html,
-        body {
-            height: 100%;
-            background-color: #fff
-        }
+    html,body{
+        height:100%;
+        background-color: #fff
+    }
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: "微软雅黑"
+    }
+    /*  head */
+    .headContainer{
+        height: 150px;
+        background-color: #008BE3;
+    }
+    .head {
+       line-height: 44px;
         
-        * {
-            padding: 0;
-            margin: 0;
-            font-family: "微软雅黑"
-        }
-        /*  head */
-        
-        .headContainer {
-            height: 150px;
-            background-color: #008BE3;
-        }
-        
-        .head {
-            line-height: 44px;
-            position: relative;
-            margin-right: 15px;
-            margin-left: 15px;
-        }
-        
-        .head>p {
-            text-align: center;
-            color: #fff;
-        }
-        
-        .head>span {
-            position: absolute;
-            top: 14px;
-            right: 0;
-            background: url('../../image/setting.png') no-repeat;
-            height: 16px;
-            width: 16px;
-            background-size: 100% 100%;
-        }
+       position: relative;
+       margin-right: 15px;
+       margin-left: 15px;
+
+    }
+    
+    .head>p {
+       text-align: center;
+       color:#fff;
+    }
+    
+    .head>span {
+        position: absolute;
+        top:14px;
+        right:0;
+        background: url('../../image/setting.png') no-repeat;
+        height: 16px;
+        width: 16px;
+        background-size: 100% 100%;
+    }
     </style>
 </head>
 
 <body>
     <div class="headContainer">
         <div class="head">
-            <p>个人中心</p><span onclick="goToSetting()"></span>
+            <p>个人中心</p><span></span>
         </div>
     </div>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
 <script type="text/javascript">
-    apiready = function() {
+apiready = function() {
         api.openFrame({
-            name: 'MyCenterFrame.',
-            url: './MyCenterFrame.html',
-            rect: {
-                x: 0,
-                y: 54,
-                /*4410*/
-                w: 'auto',
-                h: 'auto',
-                marginRight: 15,
-                marginLeft: 15
-            },
-            pageParam: {
+        name: 'MyCenterFrame.',
+        url: './MyCenterFrame.html',
+        rect: {
+            x: 0,
+            y: 54,/*4410*/
+            w: 'auto',
+            h: 'auto',
+            marginRight:15,
+            marginLeft:15
+        },
+        pageParam: {
+            
+        },
+        bounces: true,
+        vScrollBarEnabled: false,
+        hScrollBarEnabled: false
+    });
 
-            },
-            bounces: true,
-            vScrollBarEnabled: false,
-            hScrollBarEnabled: false
-        });
-
-    };
-
-    function goToSetting() {
-        api.openWin({
-            name: "setting",
-            url: "../win/setting.html",
-        })
-    }
+};
 </script>
 
 </html>

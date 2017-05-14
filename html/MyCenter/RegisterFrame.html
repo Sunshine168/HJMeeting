@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <style>
+    html,
+    body {
+        height: 100%;
+        background-color: #008BE3;
+    }
+    
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: "微软雅黑"
+    }
+    
+    .container {
+        background-color: #008BE3;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .list {
+        margin: 0 30px 30px 30px;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        -o-flex-direction: column;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .logo {
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        margin: 5px;
+    }
+    
+    .ugo {
+        background: url('../../image/ugo.png');
+        background-size: 100% 100%;
+    }
+    
+    .pgo {
+        background: url('../../image/pgo.png');
+        background-size: 100% 100%;
+    }
+    
+    .eye {
+        background: url('../../image/eye.png');
+        background-size: 100% 100%;
+    }
+    
+    .listItem {
+        margin-bottom: 10px;
+        width: 100%;
+        height: 40px;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -moz-flex-direction: row;
+        -ms-flex-direction: row;
+        -o-flex-direction: row;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: solid 1px rgba(103, 131, 178, 0.32);
+        background-color: #fff;
+        background-color: rgba(0, 0, 0, 0.23);
+        border-radius: 5px;
+    }
+    
+    .listItem>input{
+        flex-grow: 1;
+        padding: 5px 0;
+        border: none;
+        margin: 5px;
+        background-color: transparent;
+    }
+    .auth{
+        width: 60px;
+        align-content: center;
+        text-decoration: none;
+        color: #fff;
+        font-size: 12px;
+        height: 100%;
+        line-height: 40px;
+        padding: 0 5px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        text-align: center;
+
+    }
+    .active{
+        background-color: #CC6600;
+    }
+    .active:active{
+        opacity: 0.5;
+    }
+    .ban{
+        background-color: #999999;
+        color: #f2f2f2
+    }
+    .listItem + .go {
+        margin-top: 30px;
+        background-color: #99CC00;
+        text-decoration: none;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+    }
+    
+    .do {
+        color: #fff;
+        margin-top: 100px;
+        background-color: #008BE3;
+        font-size: 14px;
+    }
+    
+    .do:active {
+        color: #000
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="list">
+            <div class="listItem">
+                <span class="logo ugo"></span>
+                <input type="text" placeholder="请输入用户名">
+            </div>
+            <div class="listItem">
+                <span class="logo pgo"></span>
+                <input type="password" placeholder="请输入密码">
+                <span class="logo eye"></span>
+            </div>
+            <div class="listItem">
+                <input type="password" placeholder="请输入手机号">
+                <span  class="auth active" id="auth">发送验证码</span>
+            </div>
+            <a href="javascript:void(0)" class="listItem go">注册</a>
+            <span href="javascript:void(0)" class="do" onclick="toLogin()"">已有账号?点我登录</span>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">
+
+
+apiready = function() {
+};
+(function(){
+    var auth=$api.byId('auth');
+    auth.addEventListener('click',send);
+    var active=true;
+    var num=120;
+    function setClass(){
+        $api.toggleCls(auth,'active');
+        $api.toggleCls(auth,'ban');
+    }
+    function count(){
+        if(num>=0){
+            $api.html(auth, num);
+            num--;
+            setTimeout(count,1000);
+        }else{
+            active=true;
+            $api.html(auth, "发送验证码");
+            num=120;
+            setClass();
+        }
+    }
+    function time(){
+        if(!active){
+            count();
+        }
+    }
+    function send(){
+        if(active){
+            active=false;
+            setClass();
+            time();
+            /*发送验证码*/   
+        }
+    }
+})();
+
+function toLogin(){
+      api.setFrameGroupIndex({
+          name: 'group1',
+          index: 0,
+          scroll: true
+      });
+} 
+</script>
+
+</html>
