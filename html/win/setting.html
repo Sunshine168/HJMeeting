@@ -187,7 +187,11 @@
                 //重新设置标题
                 $api.byId('windows_title').innerHTML = "设置";
             } else {
-
+                api.historyBack({}, function(ret, err) {
+                    if (!ret.status) {
+                        api.closeWin();
+                    }
+                })
             }
         }
     </script>
