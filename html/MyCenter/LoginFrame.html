@@ -12,7 +12,6 @@
     body {
         height: 100%;
         background-color: #008BE3;
-         
     }
     
     * {
@@ -48,15 +47,18 @@
         width: 20px;
         margin: 5px;
     }
-    .ugo{
+    
+    .ugo {
         background: url('../../image/ugo.png');
         background-size: 100% 100%;
     }
-    .pgo{
+    
+    .pgo {
         background: url('../../image/pgo.png');
         background-size: 100% 100%;
     }
-    .listItem{
+    
+    .listItem {
         margin-bottom: 10px;
         width: 100%;
         height: 40px;
@@ -72,46 +74,77 @@
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        border: solid 1px rgba(103,131,178,0.32);
+        border: solid 1px rgba(103, 131, 178, 0.32);
         background-color: #fff;
-        background-color: rgba(0,0,0,0.23);
+        background-color: rgba(0, 0, 0, 0.23);
         border-radius: 5px;
     }
-     .listItem>input{
+    
+    .listItem+.listAuth {
+        align-items: center;
+        border: none;
+        background-color: transparent;
+        margin-top: 5px;
+    }
+    
+    .listItem+.listAuth>input {
+        border: solid 1px rgba(103, 131, 178, 1);
+    }
+    
+    .listItem>input {
         flex-grow: 1;
         padding: 5px 0;
         border: none;
         margin: 5px;
-        background-color:transparent;
-     }
-     .auth{
+        background-color: transparent;
+    }
+    
+    .auth {
         align-content: center;
-        background-color: #CC6600;
         text-decoration: none;
         color: #fff;
         font-size: 12px;
-        height: 100%;
         line-height: 40px;
-        padding: 0 5px;
+        width: 120px;
+        height: 100%;
     }
-     .listItem + .go{
+    
+    .listItem + .go {
         margin-top: 30px;
         background-color: #99CC00;
         text-decoration: none;
         color: #fff;
         font-size: 16px;
         border: none;
-
-     }
-     .do{
+    }
+    
+    .do {
         color: #fff;
         margin-top: 100px;
         background-color: #008BE3;
         font-size: 14px;
-     }
-     .do:active{
+    }
+    
+    .yes {
+        background: url('../../image/yes.png');
+        background-size: 100% 100%;
+    }
+    
+    .error {
+        background: url('../../image/error.png');
+        background-size: 100% 100%;
+    }
+    
+    .is {
+        width: 13px;
+        height: 13px;
+        margin: 0 10px 0 0;
+    }
+    
+    .do:active {
         color: #000
-     }
+    }
+     
     </style>
 </head>
 
@@ -120,32 +153,240 @@
         <div class="list">
             <div class="listItem">
                 <span class="logo ugo"></span>
-                <input type="text" placeholder="请输入用户名">
+                <input type="text" placeholder="请输入邮箱" id="pwd">
+                <span class="is" id="judge"></span>
             </div>
             <div class="listItem">
                 <span class="logo pgo"></span>
                 <input type="password" placeholder="请输入密码">
             </div>
-            <div class="listItem">
-                <input type="password" placeholder="请输入验证码">
-                <a href="javascript:void(0)" class="auth">发送验证码</a>
+            <div class="listItem listAuth">
+                <input type="text" placeholder="请输入验证码" id="auths">
+                <span class="is" id="judgeAuth"></span>
+                <a href="javascript:void(0)" class="auth" id="auth"></a>
             </div>
-            <a href="javascript:void(0)" class="listItem go">登录</a>
+            <a href="javascript:void(0)" class="listItem go" onclick="login()">登录</a>
             <span href="javascript:void(0)" class="do" onclick="toRegister()">没有账号?点我注册</span>
         </div>
     </div>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
 <script type="text/javascript">
-var toFrame;
-apiready = function() {   
+
+    var okMail=false;
+    var okAuth=false;
+
+
+apiready = function() {
+
 };
-function toRegister(){
-      api.setFrameGroupIndex({
-          name: 'group1',
-          index: 1,
-          scroll: true
-      });
+(function() {
+    var mail;
+    var pwd = $api.byId('pwd');
+   
+    var judge = $api.byId('judge');
+    
+    pwd.addEventListener('input', input);
+    
+    var reg = new RegExp("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?");
+
+    function input() {
+        mail = $api.val(pwd);
+        if (mail === '') {
+            $api.removeCls(judge, 'yes');
+            $api.removeCls(judge, 'error');
+            okMail=false;
+        } else
+        if (reg.test(mail) == true) {
+            $api.removeCls(judge, 'error');
+            $api.addCls(judge, 'yes');
+            okMail=true;
+        } else {
+            $api.addCls(judge, 'error');
+            $api.removeCls(judge, 'yes');
+            okMail=false;
+        }
+    }
+})();
+
+function toRegister() {
+    api.setFrameGroupIndex({
+        name: 'group1',
+        index: 1,
+        scroll: true
+    });
+}
+/*验证码*/
+(function(window, document) {
+    function GVerify(options) { //创建一个图形验证码对象，接收options对象为参数
+        this.options = { //默认options参数值
+            id: "", //容器Id
+            canvasId: "verifyCanvas", //canvas的ID
+            width: "100", //默认canvas宽度
+            height: "30", //默认canvas高度
+            type: "blend", //图形验证码默认类型blend:数字字母混合类型、number:纯数字、letter:纯字母
+            code: ""
+        }
+        
+        if(Object.prototype.toString.call(options) == "[object Object]"){//判断传入参数类型
+            for(var i in options) { //根据传入的参数，修改默认参数值
+                this.options[i] = options[i];
+            }
+        }else{
+            this.options.id = options;
+        }
+        
+        this.options.numArr = "0,1,2,3,4,5,6,7,8,9".split(",");
+        this.options.letterArr = getAllLetter();
+
+        this._init();
+        this.refresh();
+    }
+
+    GVerify.prototype = {
+        /**版本号**/
+        version: '1.0.0',
+        
+        /**初始化方法**/
+        _init: function() {
+            var con = document.getElementById(this.options.id);
+            var canvas = document.createElement("canvas");
+            this.options.width = con.offsetWidth > 0 ? con.offsetWidth : "100";
+            this.options.height = con.offsetHeight > 0 ? con.offsetHeight : "30";
+            canvas.id = this.options.canvasId;
+            canvas.width = this.options.width;
+            canvas.height = this.options.height;
+            canvas.style.cursor = "pointer";
+            canvas.innerHTML = "您的浏览器版本不支持canvas";
+            con.appendChild(canvas);
+            var parent = this;
+            canvas.onclick = function(){
+                parent.refresh();
+            }
+        },
+        
+        /**生成验证码**/
+        refresh: function() {
+            this.options.code = "";
+            var canvas = document.getElementById(this.options.canvasId);
+            if(canvas.getContext) {
+                var ctx = canvas.getContext('2d');
+            }else{
+                return;
+            }
+            
+            ctx.textBaseline = "middle";
+
+            ctx.fillStyle = randomColor(180, 240);
+            ctx.fillRect(0, 0, this.options.width, this.options.height);
+
+            if(this.options.type == "blend") { //判断验证码类型
+                var txtArr = this.options.numArr.concat(this.options.letterArr);
+            } else if(this.options.type == "number") {
+                var txtArr = this.options.numArr;
+            } else {
+                var txtArr = this.options.letterArr;
+            }
+
+            for(var i = 1; i <= 4; i++) {
+                var txt = txtArr[randomNum(0, txtArr.length)];
+                this.options.code += txt;
+                ctx.font = randomNum(this.options.height/2, this.options.height) + 'px SimHei'; //随机生成字体大小
+                ctx.fillStyle = randomColor(50, 160); //随机生成字体颜色        
+                ctx.shadowOffsetX = randomNum(-3, 3);
+                ctx.shadowOffsetY = randomNum(-3, 3);
+                ctx.shadowBlur = randomNum(-3, 3);
+                ctx.shadowColor = "rgba(0, 0, 0, 0.3)";
+                var x = this.options.width / 5 * i;
+                var y = this.options.height / 2;
+                var deg = randomNum(-30, 30);
+                /**设置旋转角度和坐标原点**/
+                ctx.translate(x, y);
+                ctx.rotate(deg * Math.PI / 180);
+                ctx.fillText(txt, 0, 0);
+                /**恢复旋转角度和坐标原点**/
+                ctx.rotate(-deg * Math.PI / 180);
+                ctx.translate(-x, -y);
+            }
+            /**绘制干扰线**/
+            for(var i = 0; i < 4; i++) {
+                ctx.strokeStyle = randomColor(40, 180);
+                ctx.beginPath();
+                ctx.moveTo(randomNum(0, this.options.width), randomNum(0, this.options.height));
+                ctx.lineTo(randomNum(0, this.options.width), randomNum(0, this.options.height));
+                ctx.stroke();
+            }
+            /**绘制干扰点**/
+            for(var i = 0; i < this.options.width/4; i++) {
+                ctx.fillStyle = randomColor(0, 255);
+                ctx.beginPath();
+                ctx.arc(randomNum(0, this.options.width), randomNum(0, this.options.height), 1, 0, 2 * Math.PI);
+                ctx.fill();
+            }
+        },
+        
+        /**验证验证码**/
+        validate: function(code){
+            var code = code.toLowerCase();
+            var v_code = this.options.code.toLowerCase();
+            console.log(v_code);
+            if(code == v_code){
+                return true;
+            }else{
+                this.refresh();
+                return false;
+            }
+        }
+    }
+    /**生成字母数组**/
+    function getAllLetter() {
+        var letterStr = "a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z";
+        return letterStr.split(",");
+    }
+    /**生成一个随机数**/
+    function randomNum(min, max) {
+        return Math.floor(Math.random() * (max - min) + min);
+    }
+    /**生成一个随机色**/
+    function randomColor(min, max) {
+        var r = randomNum(min, max);
+        var g = randomNum(min, max);
+        var b = randomNum(min, max);
+        return "rgb(" + r + "," + g + "," + b + ")";
+    }
+    window.GVerify = GVerify;
+})(window, document);
+
+var v=new GVerify('auth');
+ var auths = $api.byId('auths');
+var judgeAuth = $api.byId('judgeAuth');
+auths.addEventListener('blur', authInput);
+   function authInput() {
+        text = $api.val(auths);
+        var res=v.validate(text);
+        if (text === '') {
+            $api.removeCls(judgeAuth, 'yes');
+            $api.removeCls(judgeAuth, 'error');
+            okAuth=false;
+        } else
+        if (res) {
+            $api.removeCls(judgeAuth, 'error');
+            $api.addCls(judgeAuth, 'yes');
+            okAuth=true;
+        } else {
+            $api.addCls(judgeAuth, 'error');
+            $api.removeCls(judgeAuth, 'yes');
+            okAuth=false;
+        }
+    }
+function login(){
+    if(!okAuth&&!okMail){
+        alert('验证码或邮箱格式不正确');
+        return;
+    }
+    else{
+        
+    }
 }
 </script>
 
