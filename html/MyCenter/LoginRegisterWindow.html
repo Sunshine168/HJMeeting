@@ -48,7 +48,7 @@
         <a class="aui-pull-left aui-btn" onclick="back()">
             <span class="aui-iconfont aui-icon-left"></span>
         </a>
-        <div class="aui-title">用户登录</div>
+        <div class="aui-title" id="title"></div>
     </header>
     <div class="logo" id="logo">
         <img src="" alt="会聚logo">
@@ -81,7 +81,7 @@ ToFrame.prototype.goRegister = function() {
 };
 */
 apiready = function() {
-     api.addEventListener({
+    api.addEventListener({
                 name: 'keyback'
             }, function(ret, err) {
                 back();
@@ -114,6 +114,12 @@ apiready = function() {
             }
         }]
     }, function(ret, err) {
+        var title=$api.byId('title');
+        if(ret.index){
+            $api.html(title, '用户注册');
+        }else{
+            $api.html(title, '用户登录');
+        }
     });
 }; 
 function back(){

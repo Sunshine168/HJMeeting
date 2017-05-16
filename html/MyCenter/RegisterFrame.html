@@ -176,7 +176,7 @@
                 <input type="password" placeholder="请输入手机号">
                 <span class="auth active" id="auth">发送验证码</span>
             </div>
-            <a href="javascript:void(0)" class="listItem go">注册</a>
+            <a href="javascript:void(0)" class="listItem go" id='register'>注册</a>
             <span href="javascript:void(0)" class="do" onclick="toLogin()" ">已有账号?点我登录</span>
         </div>
     </div>
@@ -188,6 +188,10 @@
 apiready = function() {
 };
 (function(){
+    var mailOK=false;
+    var phoneOK=false;
+    var re=$api.byId('register');
+    re.addEventListener('click',register);
     var auth=$api.byId('auth');
     auth.addEventListener('click',send);
     var active=true;
@@ -204,16 +208,19 @@ apiready = function() {
         if(mail===''){
             $api.removeCls(judge, 'yes');
             $api.removeCls(judge, 'error');
+            mailOK=false;
         }else 
             if(reg.test(mail)==true){
                 $api.removeCls(judge, 'error');
                 $api.addCls(judge, 'yes');
-                console.log("$api.val(pwd)");
+                mailOK=true;
+
             }
             else{
                 $api.addCls(judge, 'error');
                 $api.removeCls(judge, 'yes');
-                console.log("$apxxx)");
+                mailOK=false;
+
             }
     }
     
@@ -243,8 +250,25 @@ apiready = function() {
             active=false;
             setClass();
             time();
-            /*发送验证码*/   
+            /*发送验证码代码段*/   
         }
+    }
+    /*验证输入的验证码*/
+    function verify(){
+        /*phoneOK boolean*/
+    }
+    function register(){
+        if(!mailOK){
+            api.alert({
+                title: '提示',
+                msg: '请输入正确的邮箱',
+            }, function(ret, err){
+                
+            });
+            return;
+        }
+
+        /*执行注册代码段*/
     }
 })();
 

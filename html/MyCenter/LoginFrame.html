@@ -380,7 +380,7 @@ auths.addEventListener('blur', authInput);
         }
     }
 function login(){
-    if(!okAuth&&!okMail){
+    if(!okAuth||!okMail){
         alert('验证码或邮箱格式不正确');
         return;
     }

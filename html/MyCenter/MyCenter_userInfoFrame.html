@@ -6,11 +6,13 @@
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>title</title>
-    <link rel="stylesheet" type="text/css" href="../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
     <style>
     html,
     body {
         height: 100%;
+        background-color: #fff;
     }
     
     * {
@@ -21,7 +23,7 @@
     
     .container {
         width: 100%;
-        height: 100%;
+        margin-bottom: 20px;
     }
     
     .userImgContainer {
@@ -90,16 +92,13 @@
         padding: 5px 5px;
     }
     
-    .group:active {
-        background-color: #ededec
-    }
-    
     .title {
         font-size: 12px;
         color: #868686;
     }
     
     .msg {
+        flex-grow: 1;
         font-size: 14px;
         color: #333333;
         display: -webkit-flex;
@@ -112,14 +111,23 @@
         justify-content: space-between;
     }
     
-    .msg::after {
-        align-self: flex-end;
-        content: "";
+    .msg>p {
+        height: 19px;
+    }
+    
+    .after {
+        position: absolute;
+        right: 10px;
         display: inline-block;
         width: 16px;
         height: 16px;
         background: url('../../image/go.png') no-repeat;
         background-size: 100% 100%;
+    }
+    
+    .trans {
+        transform: rotate(90deg);
+        transition: transform 0.2s;
     }
     
     .logo {
@@ -132,11 +140,12 @@
         width: 90%;
         height: 1px;
         background-color: #f2f2f2;
-        margin:0 auto;
+        margin: 0 auto;
         display: block;
     }
-    .album{
-        height:60px;
+    
+    .album {
+        height: 60px;
         display: -webkit-flex;
         display: -moz-flex;
         display: -ms-flex;
@@ -144,8 +153,64 @@
         display: flex;
         flex-direction: row;
     }
-    .album>img{
+    
+    .album>img {
         height: 100%;
+    }
+    
+    .frame {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 10px;
+        display: none;
+    }
+    
+    .foot {
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -moz-flex-direction: row;
+        -ms-flex-direction: row;
+        -o-flex-direction: row;
+        flex-direction: row;
+        margin-top: 5px;
+    }
+    
+    input {
+        font-size: 12px;
+        padding: 4px;
+        border-radius: 5px;
+    }
+    
+    .head {
+        margin: 5px;
+    }
+    
+    .foot>span {
+        display: inline-block;
+        flex-grow: 1;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        font-size: 12px;
+        color: #fff;
+        margin: 0 5px;
+    }
+    
+    .ok {
+        background-color: #00cee5
+    }
+    .ok:active{
+        opacity: 0.5;
+    }
+    .cancel {
+        background-color: gray
+    }
+    .cancel:active{
+        opacity: 0.5
     }
     </style>
 </head>
@@ -158,7 +223,7 @@
             </div>
             <p>更换头像</p>
         </div>
-        <div class="content">
+        <div class="content" id="content">
             <div class="group">
                 <div class="title">账号</div>
                 <div class="msg">1183520543@qq.com</div>
@@ -169,45 +234,160 @@
             <div class="group">
                 <div class="title">相册</div>
                 <div class="album">
-                   <img src="../../image/album.png" alt="">
-                   <img src="../../image/demo.png" alt="">
-                   <img src="../../image/demo.png" alt="">
-                   <img src="../../image/demo.png" alt="">
+                    <img src="../../image/album.png" alt="">
+                    <img src="../../image/demo.png" alt="">
+                    <img src="../../image/demo.png" alt="">
+                    <img src="../../image/demo.png" alt="">
                 </div>
             </div>
             <span class="br"></span>
             <div class="group">
-                <div class="title">地区</div>
-                <div class="msg">贵州遵义</div>
-            </div>
-            <span class="br"></span>
-            <div class="group">
                 <div class="title">昵称</div>
-                <div class="msg">JustDoIt</div>
+                <div class="msg">
+                    <p>未设置</p><span class="after"></span></div>
+                <div class="frame" flag="1">
+                    <div class="head">
+                        <input type="text" placeholder="新的昵称">
+                    </div>
+                    <div class="foot">
+                        <span class="ok">确认</span>
+                        <span class="cancel">取消</span>
+                    </div>
+                </div>
             </div>
             <span class="br"></span>
             <div class="group">
-                <div class="title">个性签名</div>
-                <div class="msg">我不忍心再欺哄但愿你听得懂</div>
+                <div class="title">介绍</div>
+                <div class="msg">
+                    <p>未设置</p><span class="after"></span></div>
+                <div class="frame" flag="2">
+                    <div class="head">
+                        <input type="text" placeholder="介绍自己">
+                    </div>
+                    <div class="foot">
+                        <span class="ok">确认</span>
+                        <span class="cancel">取消</span>
+                    </div>
+                </div>
             </div>
             <span class="br"></span>
             <div class="group">
                 <div class="title">性别</div>
-                <div class="msg">男</div>
+                <div class="msg">
+                    <p>未设置</p><span class="after"></span></div>
+                <div class="frame" flag="3">
+                    <div class="head">
+                        <div class="aui-list-item-input">
+                            <label>
+                                <input class="aui-radio" type="radio" name="demo1" checked>男</label>
+                            <label>
+                                <input class="aui-radio" type="radio" name="demo1">女</label>
+                        </div>
+                    </div>
+                    <div class="foot">
+                        <span class="ok">确认</span>
+                        <span class="cancel">取消</span>
+                    </div>
+                </div>
             </div>
             <span class="br"></span>
             <div class="group">
-                <div class="title">出生日期</div>
-                <div class="msg">2017-12-23</div>
+                <div class="title">生日</div>
+                <div class="msg">
+                    <p>未设置</p><span class="after"></span></div>
+                <div class="frame" flag="4">
+                    <div class="head">
+                    </div>
+                    <div class="foot">
+                        <span class="ok">确认</span>
+                        <span class="cancel">取消</span>
+                    </div>
+                </div>
             </div>
         </div>
-        </div>
+    </div>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery.js"></script>
 <script type="text/javascript">
 apiready = function() {
 
 };
+(function() {
+    var content = $api.byId('content');
+    $api.addEvt(content, 'click', exec, true);
+
+    function exec(e) {
+        e = e || window.event;
+        if (e.target) {
+            var p = e.target;
+            /* console.log(p.className)*/
+            if (p.className === "cancel") {
+                //定位父亲
+                var foot1 = $(p).parent();
+                //定位frame
+                var frame1 = $(foot1).parent();
+                var outCon1 = $(frame1).siblings('div.msg');
+                var out1 = $(outCon1).children('p');
+                var span1 = $(outCon1).children('span');
+                frame1.slideToggle();
+                span1.toggleClass('trans');
+                return;
+            }
+            if (p.className === "ok") {
+                //定位父亲
+                var foot = $(p).parent();
+                //定位frame
+                var frame = $(foot).parent();
+                var flag = $(frame).attr('flag');
+                console.log(flag);
+                flag = parseInt(flag);
+                switch (flag) {
+                    case 1:
+                    case 2: //定位input
+                        var con = $(frame).children('div.head');
+                        var input = $(con).children('input');
+                        //定位p
+                        var outCon = $(frame).siblings('div.msg');
+                        var out = $(outCon).children('p');
+                        var span = $(outCon).children('span');
+                        var text = $(input).val();
+                        $(out).text('未设置');
+                        if ($.trim(text) !== '') {
+                            $(out).text($.trim(text));
+                        }
+                        frame.slideToggle();
+                        span.toggleClass('trans');
+                        break;
+                    default:
+                        break;
+                }
+
+            }
+            if (p.className === "group") {
+                var f = $(p).children('div.frame');
+                var p1 = $(p).children('div.msg');
+                var p2 = $(p1).find('span.after');
+                p2.toggleClass('trans');
+                f.slideToggle();
+                return;
+            } else {
+                do {
+                    p = p.parentNode;
+                    if (p.className === "group") {
+                        var f2 = $(p).children('div.frame');
+                        var p3 = $(p).children('div.msg');
+                        var p4 = $(p3).find('span.after');
+                        p4.toggleClass('trans');
+                        f2.slideToggle();
+                        return;
+                    }
+
+                } while (p.className != "content" && p.className !== "frame");
+            }
+        }
+    }
+})();
 </script>
 
 </html>
