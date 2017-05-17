@@ -186,10 +186,19 @@
 <script type="text/javascript " src="../../script/api.js "></script>
 <script type="text/javascript " src="../../script/jquery.js "></script>
 <script type="text/javascript ">
-
- var sendsms;
+var reg = new RegExp("[\\w!#$%& '*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?");
+var sendsms;
+var user;
+var model;
 apiready = function() {
-    sendsms= api.require('sendSms');
+    /*sendsms= api.require('sendSms');*/
+     user=api.require('user');
+     model = api.require('model');
+            model.config({
+            appId:'A6949971301863',
+            appKey: '438E7ABA-7936-55B2-ADA6-E8B5808CBA18',
+            host: 'https://d.apicloud.com'
+    });
 };
 (function(){
 
@@ -207,11 +216,12 @@ apiready = function() {
     var email;
     var mail=$api.byId('mail');
     var judge=$api.byId('judge');
+   
     mail.addEventListener('input',input);
-    var reg = new RegExp("[\\w!#$%& '*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])? ");
     function input(){
         email=$api.val(mail);
-        if(email===''){
+        console.log(email);
+        if(email==''){
             $api.removeCls(judge, 'yes');
             $api.removeCls(judge, 'error');
             mailOK=false;
@@ -259,7 +269,7 @@ apiready = function() {
             setClass();
             time();
             /**/
-            var id = { appkey: "1df0edd179c9d ", appsecret: "469ce723054e9e9224a1786e5f10f1f3 " };
+           /* var id = { appkey: "1df0edd179c9d ", appsecret: "469ce723054e9e9224a1786e5f10f1f3 " };
             phone=parseInt(phone);
             var p={phone:phone};
             sendsms.regSms(id);
@@ -269,7 +279,7 @@ apiready = function() {
             } else {
                 alert(ret.result);
             }
-            });
+            });*/
             /**/
             }
         }else{
@@ -313,25 +323,44 @@ apiready = function() {
             });
             return;
         }
-        if(!phoneOK){
+       /* if(!phoneOK){
             api.alert({
                 title: '提示',
                 msg: '请输入正确的手机号',
             }, function(ret, err){ 
             });
             return;
-        }
-        var n=$('#verifyNum').val();
+        }*/
+        /*var n=$('#verifyNum').val();
         var pp={code:n};
         sendsms.enterCode(pp, function(ret, err) {
-        if (ret.result == "ok") {
+        if (ret.result == "ok ") {
              
         } else {
-            alert("验证码错误");
+            alert("验证码错误 ");
             return;
         }
-});
+        });*/
         /*执行注册代码段*/
+   /*     user.register({
+        username: $api.val(mail),
+        password: $('#pwd').val(),
+        email: $api.val(mail)}, function( ret, err ) {
+                 if( ret ){
+                    alert( JSON.stringify( ret) );
+                }else{
+                    alert( JSON.stringify( err) );
+            }
+            });*/
+            model.insert({
+            class: "userMessage",
+            value: {
+            userName:'admin',
+            userPassword:'admin'
+            }
+            }, function(ret, err){
+                alert("ret: " + JSON.stringify(ret) + "\nerr: " + JSON.stringify(err));
+            });
     }
 })();
 
