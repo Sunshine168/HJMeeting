@@ -27,7 +27,7 @@
 
 <body>
     <header class="aui-bar aui-bar-nav">
-        <a class="aui-pull-left aui-btn">
+        <a class="aui-pull-left aui-btn" onclick="back()">
             <span class="aui-iconfont aui-icon-left"></span>
         </a>
         <div class="aui-title">我的会议</div>
@@ -54,6 +54,19 @@ apiready = function() {
         hScrollBarEnabled: false
     });
 };
+
+function back(){
+    api.closeFrame({
+        name: 'MyCenter_userInfoFrame.html'
+    });
+    api.historyBack({
+         
+    },function(ret,err){
+        if(!ret.status){
+            api.closeWin();
+        }
+    });
+}
 </script>
 
 </html>

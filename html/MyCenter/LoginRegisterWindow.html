@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
+    <style>
+    html,
+    body {
+        height: 100%;
+        background-color: #008BE3;
+        
+    }
+    
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: "微软雅黑"
+    }
+    
+    .logo {
+        height: 150px;
+        width: 100%;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #008BE3;
+    }
+    
+    .logo>img {
+        display: inline-block;
+        height: 75px;
+        width: 75px;
+    }
+    </style>
+</head>
+
+<body>
+    <header class="aui-bar aui-bar-nav" id="head">
+        <a class="aui-pull-left aui-btn" onclick="back()">
+            <span class="aui-iconfont aui-icon-left"></span>
+        </a>
+        <div class="aui-title" id="title"></div>
+    </header>
+    <div class="logo" id="logo">
+        <img src="" alt="会聚logo">
+    </div>
+</body>
+<script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript">/*
+function ToFrame() {
+    this.login = "LoginFrame.html";
+    this.register = "RegisterFrame.html";
+}
+ToFrame.prototype.getThis = function() {
+    return this;
+};
+ToFrame.prototype.goLogin = function() {
+    api.setFrameGroupIndex({
+        name: this.login,
+        index: 0,
+        scroll: true
+    });
+};
+ToFrame.prototype.goRegister = function() {
+    api.setFrameGroupIndex({
+        name: this.register,
+        index: 0,
+        scroll: true
+    });
+};ToFrame.prototype.test = function() {
+    alert('成功');
+};
+*/
+apiready = function() {
+    api.addEventListener({
+                name: 'keyback'
+            }, function(ret, err) {
+                back();
+            });
+    api.openFrameGroup({
+        name: 'group1',
+        background: '#fff',
+        scrollEnabled: false,
+        rect: {
+            x: 0,
+            y: $api.dom('#head').offsetHeight + $api.dom('#logo').offsetHeight,
+            w: 'auto',
+            h: 'auto'
+        },
+        index: 0,
+        preload: 2,
+        frames: [{
+            name: 'LoginFrame.html',
+            url: 'LoginFrame.html',
+            bgColor: 'red',
+            pageParam:{
+                 
+            }
+        }, {
+            name: 'RegisterFrame.html',
+            url: 'RegisterFrame.html',
+            bgColor: '#fff',
+            pageParam:{
+                
+            }
+        }]
+    }, function(ret, err) {
+        var title=$api.byId('title');
+        if(ret.index){
+            $api.html(title, '用户注册');
+        }else{
+            $api.html(title, '用户登录');
+        }
+    });
+}; 
+function back(){
+    api.closeFrameGroup({
+        name: 'group1'
+    });
+    api.historyBack({
+         
+    },function(ret,err){
+        if(!ret.status){
+            api.closeWin();
+        }
+    });
+}
+</script>
+
+</html>

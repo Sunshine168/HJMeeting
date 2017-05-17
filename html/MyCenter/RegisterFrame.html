@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
+    <title>title</title>
+    <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <style>
+    html,
+    body {
+        height: 100%;
+        background-color: #008BE3;
+    }
+    
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: "微软雅黑"
+    }
+    
+    .container {
+        background-color: #008BE3;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .list {
+        margin: 0 30px 30px 30px;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        -o-flex-direction: column;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .logo {
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        margin: 5px;
+    }
+    
+    .ugo {
+        background: url('../../image/ugo.png');
+        background-size: 100% 100%;
+    }
+    
+    .pgo {
+        background: url('../../image/pgo.png');
+        background-size: 100% 100%;
+    }
+    
+    .eye {
+        background: url('../../image/eye.png');
+        background-size: 100% 100%;
+    }
+    
+    .listItem {
+        margin-bottom: 10px;
+        width: 100%;
+        height: 40px;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        -webkit-flex-direction: row;
+        -moz-flex-direction: row;
+        -ms-flex-direction: row;
+        -o-flex-direction: row;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: solid 1px rgba(103, 131, 178, 0.32);
+        background-color: #fff;
+        background-color: rgba(0, 0, 0, 0.23);
+        border-radius: 5px;
+    }
+    
+    .listItem>input {
+        flex-grow: 1;
+        padding: 5px 0;
+        border: none;
+        margin: 5px;
+        background-color: transparent;
+    }
+    
+    .auth {
+        width: 60px;
+        align-content: center;
+        text-decoration: none;
+        color: #fff;
+        font-size: 12px;
+        height: 100%;
+        line-height: 40px;
+        padding: 0 5px;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+        text-align: center;
+    }
+    
+    .active {
+        background-color: #CC6600;
+    }
+    
+    .active:active {
+        opacity: 0.5;
+    }
+    
+    .ban {
+        background-color: #999999;
+        color: #f2f2f2
+    }
+    
+    .listItem + .go {
+        margin-top: 30px;
+        background-color: #99CC00;
+        text-decoration: none;
+        color: #fff;
+        font-size: 16px;
+        border: none;
+    }
+    
+    .do {
+        color: #fff;
+        margin-top: 100px;
+        background-color: #008BE3;
+        font-size: 14px;
+    }
+    
+    .yes {
+        background: url('../../image/yes.png');
+        background-size: 100% 100%;
+    }
+    
+    .error {
+        background: url('../../image/error.png');
+        background-size: 100% 100%;
+    }
+    
+    .is {
+        width: 13px;
+        height: 13px;
+        margin: 0 10px 0 0;
+    }
+    
+    .do:active {
+        color: #000
+    }
+    </style>
+</head>
+<!-- /[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?/  -->
+
+<body>
+    <div class="container">
+        <div class="list">
+            <div class="listItem">
+                <span class="logo ugo"></span>
+                <input type="text" placeholder="请输入邮箱" id="mail">
+                <span class="is" id="judge"></span>
+            </div>
+            <div class="listItem">
+                <span class="logo pgo"></span>
+                <input type="password" placeholder="请输入密码" id="pwd">
+            </div>
+            <div class="listItem">
+                <input type="text" placeholder="请输入手机号" id="phone">
+                <span class="auth active" id="auth">发送验证码</span>
+            </div>
+            <div class="listItem">
+                <input type="text" placeholder="输入验证码" id="verifyNum">
+            </div>
+            <a href="javascript:void(0)" class="listItem go" id='register'>注册</a>
+            <span href="javascript:void(0)" class="do" onclick="toLogin()" ">已有账号?点我登录</span>
+        </div>
+    </div>
+</body>
+<script type="text/javascript " src="../../script/api.js "></script>
+<script type="text/javascript " src="../../script/jquery.js "></script>
+<script type="text/javascript ">
+
+ var sendsms;
+apiready = function() {
+    sendsms= api.require('sendSms');
+};
+(function(){
+
+    var mailOK=false;
+    var phoneOK=false;
+   
+
+    var re=$api.byId('register');
+    re.addEventListener('click',register);
+    var auth=$api.byId('auth');
+    auth.addEventListener('click',send);
+    var active=true;
+    var num=130;
+
+    var email;
+    var mail=$api.byId('mail');
+    var judge=$api.byId('judge');
+    mail.addEventListener('input',input);
+    var reg = new RegExp("[\\w!#$%& '*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])? ");
+    function input(){
+        email=$api.val(mail);
+        if(email===''){
+            $api.removeCls(judge, 'yes');
+            $api.removeCls(judge, 'error');
+            mailOK=false;
+        }else 
+            if(reg.test(email)==true){
+                $api.removeCls(judge, 'error');
+                $api.addCls(judge, 'yes');
+                mailOK=true;
+
+            }
+            else{
+                $api.addCls(judge, 'error');
+                $api.removeCls(judge, 'yes');
+                mailOK=false;
+
+            }
+    }
+    
+    function setClass(){
+        $api.toggleCls(auth,'active');
+        $api.toggleCls(auth,'ban');
+    }
+    function count(){
+        if(num>=0){
+            $api.html(auth, num);
+            num--;
+            setTimeout(count,1000);
+        }else{
+            active=true;
+            $api.html(auth, "发送验证码 ");
+            num=120;
+            setClass();
+        }
+    }
+    function time(){
+        if(!active){
+            count();
+        }
+    }
+    function send(){
+        var phone=verify();
+        if(phoneOK){
+        if(active){
+            active=false;
+            setClass();
+            time();
+            /**/
+            var id = { appkey: "1df0edd179c9d ", appsecret: "469ce723054e9e9224a1786e5f10f1f3 " };
+            phone=parseInt(phone);
+            var p={phone:phone};
+            sendsms.regSms(id);
+            sendsms.sendMessage(p, function(ret, err) {
+            if (ret.result == "ok ") {
+                
+            } else {
+                alert(ret.result);
+            }
+            });
+            /**/
+            }
+        }else{
+            api.alert({
+                title: '提示',
+                msg: '手机号码格式不正确',
+            }, function(ret, err){
+                
+            });
+        }
+    }
+    /*验证输入的手机号码*/
+    function verify(){
+        /*phoneOK boolean 11位号码*/
+        var exp=new RegExp('[^0-9]');
+        var phone=$('#phone').val();
+        if(phone.length!==11||exp.test(phone)){
+            phoneOK=false;
+            return null;
+        }
+        phoneOK=true;
+        return phone;
+    }
+    function register(){
+        verify();
+        if(!mailOK){
+            api.alert({
+                title: '提示',
+                msg: '请输入正确的邮箱',
+            }, function(ret, err){
+                
+            });
+            return;
+        }
+        var pwd=$('#pwd').val();
+        if($.trim(pwd)==''){
+            api.alert({
+                title: '提示',
+                msg: '请输入密码',
+            }, function(ret, err){
+            });
+            return;
+        }
+        if(!phoneOK){
+            api.alert({
+                title: '提示',
+                msg: '请输入正确的手机号',
+            }, function(ret, err){ 
+            });
+            return;
+        }
+        var n=$('#verifyNum').val();
+        var pp={code:n};
+        sendsms.enterCode(pp, function(ret, err) {
+        if (ret.result == "ok") {
+             
+        } else {
+            alert("验证码错误");
+            return;
+        }
+});
+        /*执行注册代码段*/
+    }
+})();
+
+function toLogin(){
+      api.setFrameGroupIndex({
+          name: 'group1',
+          index: 0,
+          scroll: true
+      });
+} 
+</script>
+
+</html>
