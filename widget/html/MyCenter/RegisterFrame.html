@@ -164,17 +164,19 @@
         <div class="list">
             <div class="listItem">
                 <span class="logo ugo"></span>
-                <input type="text" placeholder="请输入邮箱"  id="pwd">
+                <input type="text" placeholder="请输入邮箱" id="mail">
                 <span class="is" id="judge"></span>
             </div>
             <div class="listItem">
                 <span class="logo pgo"></span>
-                <input type="password" placeholder="请输入密码">
-                <span class="logo eye" onclick="showPwd()"></span>
+                <input type="password" placeholder="请输入密码" id="pwd">
             </div>
             <div class="listItem">
-                <input type="password" placeholder="请输入手机号">
+                <input type="text" placeholder="请输入手机号" id="phone">
                 <span class="auth active" id="auth">发送验证码</span>
+            </div>
+            <div class="listItem">
+                <input type="text" placeholder="输入验证码" id="verifyNum">
             </div>
             <a href="javascript:void(0)" class="listItem go" id='register'>注册</a>
             <span href="javascript:void(0)" class="do" onclick="toLogin()" ">已有账号?点我登录</span>
@@ -182,35 +184,49 @@
     </div>
 </body>
 <script type="text/javascript " src="../../script/api.js "></script>
+<script type="text/javascript " src="../../script/jquery.js "></script>
 <script type="text/javascript ">
-
-
+var reg = new RegExp("[\\w!#$%& '*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?");
+var sendsms;
+var user;
+var model;
 apiready = function() {
+    /*sendsms= api.require('sendSms');*/
+     user=api.require('user');
+     model = api.require('model');
+            model.config({
+            appId:'A6949971301863',
+            appKey: '438E7ABA-7936-55B2-ADA6-E8B5808CBA18',
+            host: 'https://d.apicloud.com'
+    });
 };
 (function(){
+
     var mailOK=false;
     var phoneOK=false;
+   
+
     var re=$api.byId('register');
     re.addEventListener('click',register);
     var auth=$api.byId('auth');
     auth.addEventListener('click',send);
     var active=true;
-    var num=120;
+    var num=130;
 
-    var mail;
-    var pwd=$api.byId('pwd');
+    var email;
+    var mail=$api.byId('mail');
     var judge=$api.byId('judge');
-    pwd.addEventListener('input',input);
-    var reg=new RegExp("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?");
-    
+   
+    mail.addEventListener('input',input);
     function input(){
-        mail=$api.val(pwd);
-        if(mail===''){
+        email=$api.val(mail);
+        console.log(email);
+        if(email==''){
             $api.removeCls(judge, 'yes');
             $api.removeCls(judge, 'error');
             mailOK=false;
         }else 
-            if(reg.test(mail)==true){
+            if(reg.test(email)==true){
                 $api.removeCls(judge, 'error');
                 $api.addCls(judge, 'yes');
                 mailOK=true;
@@ -246,18 +262,49 @@ apiready = function() {
         }
     }
     function send(){
+        var phone=verify();
+        if(phoneOK){
         if(active){
             active=false;
             setClass();
             time();
-            /*发送验证码代码段*/   
+            /**/
+           /* var id = { appkey: "1df0edd179c9d ", appsecret: "469ce723054e9e9224a1786e5f10f1f3 " };
+            phone=parseInt(phone);
+            var p={phone:phone};
+            sendsms.regSms(id);
+            sendsms.sendMessage(p, function(ret, err) {
+            if (ret.result == "ok ") {
+                
+            } else {
+                alert(ret.result);
+            }
+            });*/
+            /**/
+            }
+        }else{
+            api.alert({
+                title: '提示',
+                msg: '手机号码格式不正确',
+            }, function(ret, err){
+                
+            });
         }
     }
-    /*验证输入的验证码*/
+    /*验证输入的手机号码*/
     function verify(){
-        /*phoneOK boolean*/
+        /*phoneOK boolean 11位号码*/
+        var exp=new RegExp('[^0-9]');
+        var phone=$('#phone').val();
+        if(phone.length!==11||exp.test(phone)){
+            phoneOK=false;
+            return null;
+        }
+        phoneOK=true;
+        return phone;
     }
     function register(){
+        verify();
         if(!mailOK){
             api.alert({
                 title: '提示',
@@ -267,8 +314,53 @@ apiready = function() {
             });
             return;
         }
-
+        var pwd=$('#pwd').val();
+        if($.trim(pwd)==''){
+            api.alert({
+                title: '提示',
+                msg: '请输入密码',
+            }, function(ret, err){
+            });
+            return;
+        }
+       /* if(!phoneOK){
+            api.alert({
+                title: '提示',
+                msg: '请输入正确的手机号',
+            }, function(ret, err){ 
+            });
+            return;
+        }*/
+        /*var n=$('#verifyNum').val();
+        var pp={code:n};
+        sendsms.enterCode(pp, function(ret, err) {
+        if (ret.result == "ok ") {
+             
+        } else {
+            alert("验证码错误 ");
+            return;
+        }
+        });*/
         /*执行注册代码段*/
+   /*     user.register({
+        username: $api.val(mail),
+        password: $('#pwd').val(),
+        email: $api.val(mail)}, function( ret, err ) {
+                 if( ret ){
+                    alert( JSON.stringify( ret) );
+                }else{
+                    alert( JSON.stringify( err) );
+            }
+            });*/
+            model.insert({
+            class: "userMessage",
+            value: {
+            userName:'admin',
+            userPassword:'admin'
+            }
+            }, function(ret, err){
+                alert("ret: " + JSON.stringify(ret) + "\nerr: " + JSON.stringify(err));
+            });
     }
 })();
 
@@ -278,9 +370,6 @@ function toLogin(){
           index: 0,
           scroll: true
       });
-}
-function showPwd(){
-    $api.byId('pwd').setAttribute('type','text');
 } 
 </script>
 
