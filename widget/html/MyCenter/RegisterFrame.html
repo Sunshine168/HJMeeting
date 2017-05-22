@@ -192,7 +192,7 @@
     var user;
     var model;
     apiready = function() {
-        /*sendsms= api.require('sendSms');*/
+        sendsms= api.require('sendSms');
         user = api.require('user');
         model = api.require('model');
         // var appKey = SHA1("A6968565094002" + "UZ" + "62FB16B2-0ED6-B460-1F60-EB61954C823B" + "UZ" + now) + "." + now
@@ -213,7 +213,7 @@
         var auth = $api.byId('auth');
         auth.addEventListener('click', send);
         var active = true;
-        var num = 130;
+         
 
         var email;
         var mail = $api.byId('mail');
@@ -223,7 +223,6 @@
 
         function input() {
             email = $api.val(mail);
-            console.log(email);
             if (email == '') {
                 $api.removeCls(judge, 'yes');
                 $api.removeCls(judge, 'error');
@@ -247,22 +246,28 @@
             $api.toggleCls(auth, 'ban');
         }
 
-        function count() {
-            if (num >= 0) {
-                $api.html(auth, num);
-                num--;
-                setTimeout(count, 1000);
-            } else {
-                active = true;
-                $api.html(auth, "发送验证码 ");
-                num = 120;
-                setClass();
-            }
+        function count(s,num) {
+            num=parseInt(num);
+            var cls;
+            if(!s)
+                s='';
+            var start=function(){
+                if (num >= 0) {
+                    $api.html(auth, s+'('+num+')');
+                    num--;
+                } else {
+                    active = true;
+                    $api.html(auth, "发送验证码 ");
+                    setClass();
+                    clearInterval(cls);
+                }
+            };
+            cls=setInterval(start, 1000);
         }
 
-        function time() {
+        function time(s,n) {
             if (!active) {
-                count();
+                count(s,n);
             }
         }
 
@@ -272,19 +277,23 @@
                 if (active) {
                     active = false;
                     setClass();
-                    time();
                     /**/
-                    /* var id = { appkey: "1df0edd179c9d ", appsecret: "469ce723054e9e9224a1786e5f10f1f3 " };
+                     var id = { appkey: "1df0edd179c9d ", appsecret: "469ce723054e9e9224a1786e5f10f1f3 " };
                      phone=parseInt(phone);
                      var p={phone:phone};
                      sendsms.regSms(id);
                      sendsms.sendMessage(p, function(ret, err) {
                      if (ret.result == "ok ") {
-                         
+                          var s="已发送";
+                          var n=130;
+                          time(s,n);
                      } else {
                          alert(ret.result);
+                          var s1="发送失败";
+                          var n2=120;
+                         time(s1,n1);
                      }
-                     });*/
+                     });
                     /**/
                 }
             } else {
@@ -335,36 +344,44 @@
                 }, function(ret, err) {});
                 return;
             }
-            /*var n=$('#verifyNum').val();
+            var n=$('#verifyNum').val();
             var pp={code:n};
             sendsms.enterCode(pp, function(ret, err) {
             if (ret.result == "ok ") {
-                 
+                   
             } else {
-                alert("验证码错误 ");
+                api.alert({
+                    title: '提示',
+                    msg: '验证码错误',
+                }, function(ret, err){
+                });
                 return;
             }
-            });*/
+            });
             /*执行注册代码段*/
             user.register({
                 username: $api.val(mail),
                 password: $('#pwd').val(),
                 email: $api.val(mail)
             }, function(ret, err) {
-                if (ret) {
-                    alert(JSON.stringify(ret));
-                } else {
-                    alert(JSON.stringify(err));
+                if(ret.error){
+                    api.alert({
+                        title: '提示',
+                        msg: '用户邮箱已经注册',
+                    }, function(ret, err){
+
+                    });
+                    return;
                 }
-            });
-            model.insert({
-                class: "userMessage",
-                value: {
-                    userName: 'admin',
-                    userPassword: 'admin'
+                if(ret.createAt){
+                    api.alert({
+                        title: '提示',
+                        msg: '注册成功',
+                    }, function(ret, err){
+
+                    });
+                    return;
                 }
-            }, function(ret, err) {
-                alert("ret: " + JSON.stringify(ret) + "\nerr: " + JSON.stringify(err));
             });
         }
     })();
