@@ -94,7 +94,7 @@
         }
         
         .auth {
-            width: 60px;
+            width: 100px;
             align-content: center;
             text-decoration: none;
             color: #fff;
@@ -281,7 +281,6 @@
                     setClass();
                     /**/
                      var id = { appkey: "1df0edd179c9d", appsecret: "469ce723054e9e9224a1786e5f10f1f3" };
-                     phone=parseInt(phone);
                      var p={phone:phone};                          
                      var s="已发送";
                      var n=130;
@@ -295,6 +294,7 @@
                      } else {
                           console.log("未发送"+err);
                           alert(ret.result);
+                          alert(JSON.stringify(err));
                           time(s1,n1);
                      }
                      });
