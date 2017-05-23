@@ -191,6 +191,8 @@
     var sendsms;
     var user;
     var model;
+    var id = { appkey: "1df0edd179c9d", appsecret: "469ce723054e9e9224a1786e5f10f1f3" };
+    
     apiready = function() {
         sendsms= api.require('sendSms');
         user = api.require('user');
@@ -201,6 +203,7 @@
             appKey: '438E7ABA-7936-55B2-ADA6-E8B5808CBA18',
             host: 'https://d.apicloud.com'
         });
+        sendsms.regSms(id);
     };
     (function() {
 
@@ -280,13 +283,11 @@
                     active = false;
                     setClass();
                     /**/
-                     var id = { appkey: "1df0edd179c9d", appsecret: "469ce723054e9e9224a1786e5f10f1f3" };
                      var p={phone:phone};                          
                      var s="已发送";
                      var n=130;
                      var s1="发送失败";
                      var n1=120;
-                     sendsms.regSms(id);
                      sendsms.sendMessage(p, function(ret, err) {
                      if (ret.result == "ok ") {
                           console.log("已发送"+ret);
