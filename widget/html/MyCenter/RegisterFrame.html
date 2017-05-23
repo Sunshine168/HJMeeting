@@ -249,7 +249,9 @@
         function count(s,num) {
             num=parseInt(num);
             var cls;
-            if(!s)
+            console.log("s==null"+s==null);
+            console.log("进入count 函数");
+            if(s==null)
                 s='';
             var start=function(){
                 if (num >= 0) {
@@ -278,20 +280,22 @@
                     active = false;
                     setClass();
                     /**/
-                     var id = { appkey: "1df0edd179c9d ", appsecret: "469ce723054e9e9224a1786e5f10f1f3 " };
+                     var id = { appkey: "1df0edd179c9d", appsecret: "469ce723054e9e9224a1786e5f10f1f3" };
                      phone=parseInt(phone);
-                     var p={phone:phone};
+                     var p={phone:phone};                          
+                     var s="已发送";
+                     var n=130;
+                     var s1="发送失败";
+                     var n1=120;
                      sendsms.regSms(id);
                      sendsms.sendMessage(p, function(ret, err) {
                      if (ret.result == "ok ") {
-                          var s="已发送";
-                          var n=130;
+                          console.log("已发送"+ret);
                           time(s,n);
                      } else {
-                         alert(ret.result);
-                          var s1="发送失败";
-                          var n2=120;
-                         time(s1,n1);
+                          console.log("未发送"+err);
+                          alert(ret.result);
+                          time(s1,n1);
                      }
                      });
                     /**/
