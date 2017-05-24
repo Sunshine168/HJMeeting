@@ -7,7 +7,6 @@
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>title</title>
     <link rel="stylesheet" type="text/css" href="../../css/api.css" />
-    <link rel="stylesheet" type="text/css" href="../../css/aui.css" />
     <style>
     html,
     body {
@@ -179,6 +178,34 @@
         margin-top: 5px;
     }
     
+    .group+.save {
+        background-color: #00cee5;
+        display: -webkit-flex;
+        display: -moz-flex;
+        display: -ms-flex;
+        display: -o-flex;
+        display: flex;
+        justify-content: center;
+        height: 44px;
+    }
+    
+    .saveYes {
+        opacity: 1;
+    }
+    .saveNo{
+        opacity: 0.3;
+    }
+    .saveYes:active {
+        opacity: 0.5;
+    }
+    
+    .group+.save>p {
+        display: inline-block;
+        color: #fff;
+        align-self: center;
+        font-size: 14px;
+    }
+    
     input {
         font-size: 12px;
         padding: 4px;
@@ -203,13 +230,16 @@
     .ok {
         background-color: #00cee5
     }
-    .ok:active{
+    
+    .ok:active {
         opacity: 0.5;
     }
+    
     .cancel {
         background-color: gray
     }
-    .cancel:active{
+    
+    .cancel:active {
         opacity: 0.5
     }
     </style>
@@ -277,11 +307,11 @@
                     <p>未设置</p><span class="after"></span></div>
                 <div class="frame" flag="3">
                     <div class="head">
-                        <div class="aui-list-item-input">
+                        <div class="">
                             <label>
-                                <input class="aui-radio" type="radio" name="demo1" checked>男</label>
+                                <input class="" type="radio" name="sex" value="男" checked>男</label>
                             <label>
-                                <input class="aui-radio" type="radio" name="demo1">女</label>
+                                <input class="" type="radio" name="sex" value="女">女</label>
                         </div>
                     </div>
                     <div class="foot">
@@ -304,6 +334,9 @@
                     </div>
                 </div>
             </div>
+            <div class="group save saveNo" id="save">
+                <p>保存</p>
+            </div>
         </div>
     </div>
 </body>
@@ -314,9 +347,25 @@ apiready = function() {
 
 };
 (function() {
-    var content = $api.byId('content');
-    $api.addEvt(content, 'click', exec, true);
+    var isChanged = false; //是否修改过资料
 
+    var userMsg = {
+        userName: "未设置",
+        nickName: "未设置",
+        introduce: "未设置",
+        sex: "未设置",
+        birthday: "未设置"
+    };
+    $api.addEvt($api.byId('save'), 'click', save, true);
+    $api.addEvt($api.byId('content'), 'click', exec, true);
+    //保存按钮
+    function save(e) {
+        console.log(userMsg);
+        if (!$('#save').hasClass('saveYes') || !isChanged) {
+            return;
+        }
+    }
+    //修改信息
     function exec(e) {
         e = e || window.event;
         if (e.target) {
@@ -340,22 +389,47 @@ apiready = function() {
                 //定位frame
                 var frame = $(foot).parent();
                 var flag = $(frame).attr('flag');
-                console.log(flag);
+                var outCon = $(frame).siblings('div.msg');
+                var span = $(outCon).children('span');
                 flag = parseInt(flag);
                 switch (flag) {
                     case 1:
                     case 2: //定位input
+                        console.log(flag);
                         var con = $(frame).children('div.head');
                         var input = $(con).children('input');
                         //定位p
-                        var outCon = $(frame).siblings('div.msg');
                         var out = $(outCon).children('p');
-                        var span = $(outCon).children('span');
                         var text = $(input).val();
                         $(out).text('未设置');
                         if ($.trim(text) !== '') {
                             $(out).text($.trim(text));
+                            if (flag === 1) {
+                                userMsg.nickName = $.trim(text);
+                            } else {
+                                userMsg.introduce = $.trim(text);
+                            }
                         }
+                        frame.slideToggle();
+                        span.toggleClass('trans');
+                        break;
+                    case 3:
+                        var group = $("input[name='sex']");
+                        //定位p
+                        var out2 = $(outCon).children('p');
+                        $(out2).text('未设置');
+                        if (group[0].checked == true) {
+                             $(out2).text(group[0].value);
+                            userMsg.sex = group[0].value;
+                        } else {
+                            userMsg.sex = group[1].value;
+                             $(out2).text(group[1].value);
+                        }
+                      
+                        frame.slideToggle();
+                        span.toggleClass('trans');
+                        break;
+                    case 4:
                         frame.slideToggle();
                         span.toggleClass('trans');
                         break;
