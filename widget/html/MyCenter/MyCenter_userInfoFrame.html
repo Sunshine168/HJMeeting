@@ -6,7 +6,13 @@
     <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>title</title>
+    <script type="text/javascript" src="../../script/jquery.js"></script>
+    <script type="text/javascript" src="../../script/jscal2.js"></script>
+    <script type="text/javascript" src="../../script/en.js"></script>
     <link rel="stylesheet" type="text/css" href="../../css/api.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/jscal2.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/border-radius.css" />
+    <link rel="stylesheet" type="text/css" href="../../css/steel.css" />
     <style>
     html,
     body {
@@ -192,9 +198,11 @@
     .saveYes {
         opacity: 1;
     }
-    .saveNo{
+    
+    .saveNo {
         opacity: 0.3;
     }
+    
     .saveYes:active {
         opacity: 0.5;
     }
@@ -327,10 +335,11 @@
                     <p>未设置</p><span class="after"></span></div>
                 <div class="frame" flag="4">
                     <div class="head">
+                    <input id="date" style="height:44px;width: 100%" placeholder="选择生日"></input>
                     </div>
                     <div class="foot">
                         <span class="ok">确认</span>
-                        <span class="cancel">取消</span>
+                        <span class="cancel" >取消</span>
                     </div>
                 </div>
             </div>
@@ -341,12 +350,12 @@
     </div>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
-<script type="text/javascript" src="../../script/jquery.js"></script>
 <script type="text/javascript">
 apiready = function() {
 
 };
 (function() {
+
     var isChanged = false; //是否修改过资料
 
     var userMsg = {
@@ -358,6 +367,12 @@ apiready = function() {
     };
     $api.addEvt($api.byId('save'), 'click', save, true);
     $api.addEvt($api.byId('content'), 'click', exec, true);
+    //日历
+    var cal=Calendar.setup({
+          onSelect: function(cal) { cal.hide() },
+          showTime: true
+      });
+    cal.manageFields("date", "date", "%Y-%m-%d %I:%M %p");
     //保存按钮
     function save(e) {
         console.log(userMsg);
@@ -419,13 +434,13 @@ apiready = function() {
                         var out2 = $(outCon).children('p');
                         $(out2).text('未设置');
                         if (group[0].checked == true) {
-                             $(out2).text(group[0].value);
+                            $(out2).text(group[0].value);
                             userMsg.sex = group[0].value;
                         } else {
                             userMsg.sex = group[1].value;
-                             $(out2).text(group[1].value);
+                            $(out2).text(group[1].value);
                         }
-                      
+
                         frame.slideToggle();
                         span.toggleClass('trans');
                         break;
