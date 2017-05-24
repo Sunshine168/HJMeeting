@@ -590,6 +590,7 @@
 /A6949971301863/image/fenlei.png
 /A6949195186472/html/MyCenter/LoginFrame.html
 /A6949965890679/image/热门帖子.png
+/A6949195186472/script/GVerify.js
 /A6949971301863/html/win/personal/myCollection.html
 /A6949971301863/html/win/shopIndex.html
 /A6949195186472/image/pdf.png
