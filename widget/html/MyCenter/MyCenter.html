@@ -8,38 +8,40 @@
     <title>title</title>
     <link rel="stylesheet" type="text/css" href="../../css/api.css" />
     <style>
-    html,body{
-        height:100%;
+    html,
+    body {
+        height: 100%;
         background-color: #fff
     }
+    
     * {
         padding: 0;
         margin: 0;
         font-family: "微软雅黑"
     }
     /*  head */
-    .headContainer{
+    
+    .headContainer {
         height: 150px;
         background-color: #008BE3;
     }
+    
     .head {
-       line-height: 44px;
-        
-       position: relative;
-       margin-right: 15px;
-       margin-left: 15px;
-
+        line-height: 44px;
+        position: relative;
+        margin-right: 15px;
+        margin-left: 15px;
     }
     
     .head>p {
-       text-align: center;
-       color:#fff;
+        text-align: center;
+        color: #fff;
     }
     
     .head>span {
         position: absolute;
-        top:14px;
-        right:0;
+        top: 14px;
+        right: 0;
         background: url('../../image/setting.png') no-repeat;
         height: 16px;
         width: 16px;
@@ -57,20 +59,29 @@
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
 <script type="text/javascript">
+
+var model;
 apiready = function() {
-        api.openFrame({
+    model = api.require('model');
+    model.config({
+        appId: 'A6949195186472',
+        appKey: '438E7ABA-7936-55B2-ADA6-E8B5808CBA18',
+        host: 'https://d.apicloud.com'
+    });
+    api.openFrame({
         name: 'MyCenterFrame.',
         url: './MyCenterFrame.html',
         rect: {
             x: 0,
-            y: 54,/*4410*/
+            y: 54,
+            /*4410*/
             w: 'auto',
             h: 'auto',
-            marginRight:15,
-            marginLeft:15
+            marginRight: 15,
+            marginLeft: 15
         },
         pageParam: {
-            
+
         },
         bounces: true,
         vScrollBarEnabled: false,

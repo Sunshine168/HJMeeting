@@ -192,7 +192,7 @@
         display: -o-flex;
         display: flex;
         justify-content: center;
-        height: 44px;
+        height: 30px;
     }
     
     .saveYes {
@@ -264,7 +264,7 @@
         <div class="content" id="content">
             <div class="group">
                 <div class="title">账号</div>
-                <div class="msg">1183520543@qq.com</div>
+                <div class="msg" id="tUser">1183520543@qq.com</div>
                 <div>
                     <img src="../../image/vipYes.gif" alt="" class="logo">
                 </div>
@@ -282,7 +282,7 @@
             <div class="group">
                 <div class="title">昵称</div>
                 <div class="msg">
-                    <p>未设置</p><span class="after"></span></div>
+                    <p id='tNickname'>未设置</p><span class="after"></span></div>
                 <div class="frame" flag="1">
                     <div class="head">
                         <input type="text" placeholder="新的昵称">
@@ -297,7 +297,7 @@
             <div class="group">
                 <div class="title">介绍</div>
                 <div class="msg">
-                    <p>未设置</p><span class="after"></span></div>
+                    <p id='tSelf'>未设置</p><span class="after"></span></div>
                 <div class="frame" flag="2">
                     <div class="head">
                         <input type="text" placeholder="介绍自己">
@@ -312,7 +312,7 @@
             <div class="group">
                 <div class="title">性别</div>
                 <div class="msg">
-                    <p>未设置</p><span class="after"></span></div>
+                    <p id='tSex'>未设置</p><span class="after"></span></div>
                 <div class="frame" flag="3">
                     <div class="head">
                         <div class="">
@@ -332,14 +332,14 @@
             <div class="group">
                 <div class="title">生日</div>
                 <div class="msg">
-                    <p>未设置</p><span class="after"></span></div>
+                    <p id="tBirth">未设置</p><span class="after"></span></div>
                 <div class="frame" flag="4">
                     <div class="head">
-                    <input id="date" style="height:44px;width: 100%" placeholder="选择生日"></input>
+                        <input id="date" style="height:20px;width: 100%" placeholder="选择生日"></input>
                     </div>
                     <div class="foot">
                         <span class="ok">确认</span>
-                        <span class="cancel" >取消</span>
+                        <span class="cancel">取消</span>
                     </div>
                 </div>
             </div>
@@ -351,34 +351,77 @@
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
 <script type="text/javascript">
+var model;
+var query;
+ var qID;
 apiready = function() {
-
+    model = api.require('model');
+    query = api.require('query');
+    //query设置
+    (function() {
+        query.createQuery(function(ret, err) {
+            if (ret) {
+                qID=ret.qid;
+            } else {
+                alert("发生错误!");
+                return;
+            }
+        });
+        query.whereEqual({
+            qid: qID,
+            column: 'userName',
+            value: $('#tUser').text()
+        });
+        query.justFields({
+            qid: qID,
+            value: ['id', 'userName']
+        });
+    })();
 };
+
 (function() {
 
+    /*tempSex[0].checked?tempSex[0].value:tempSex[1].value
+     */
+   
     var isChanged = false; //是否修改过资料
-
+    var tempSex = $("input[name='sex']");
     var userMsg = {
-        userName: "未设置",
-        nickName: "未设置",
-        introduce: "未设置",
-        sex: "未设置",
-        birthday: "未设置"
+        userName: $('#tUser').text(),
+        nickName: $('#tNickname').text(),
+        introduce: $('#tSelf').text(),
+        sex: $('#tSex').text(),
+        birthday: $('#tBirth').text()
     };
     $api.addEvt($api.byId('save'), 'click', save, true);
     $api.addEvt($api.byId('content'), 'click', exec, true);
     //日历
-    var cal=Calendar.setup({
-          onSelect: function(cal) { cal.hide() },
-          showTime: true
-      });
-    cal.manageFields("date", "date", "%Y-%m-%d %I:%M %p");
+    var cal = Calendar.setup({
+        onSelect: function(cal) {
+            cal.hide()
+        },
+        showTime: true
+    });
+    cal.manageFields("date", "date", "%Y-%m-%d");
+
     //保存按钮
     function save(e) {
-        console.log(userMsg);
-        if (!$('#save').hasClass('saveYes') || !isChanged) {
+        /*        console.log(userMsg);
+         */
+        if (!$('#save').hasClass('saveYes') && !isChanged) { //&& ||
             return;
         }
+        //测试
+        model.findAll({
+            class: "userMessage",
+            qid: qID
+        }, function(ret, err) {
+            if (ret) {
+                alert(JSON.stringify(ret));
+            } else {
+                alert(JSON.stringify(err));
+            }
+        });
     }
     //修改信息
     function exec(e) {
@@ -410,7 +453,6 @@ apiready = function() {
                 switch (flag) {
                     case 1:
                     case 2: //定位input
-                        console.log(flag);
                         var con = $(frame).children('div.head');
                         var input = $(con).children('input');
                         //定位p
@@ -418,6 +460,9 @@ apiready = function() {
                         var text = $(input).val();
                         $(out).text('未设置');
                         if ($.trim(text) !== '') {
+                            isChanged = true;
+                            $('#save').removeClass('saveNo');
+                            $('#save').addClass('saveYes');
                             $(out).text($.trim(text));
                             if (flag === 1) {
                                 userMsg.nickName = $.trim(text);
@@ -434,17 +479,34 @@ apiready = function() {
                         var out2 = $(outCon).children('p');
                         $(out2).text('未设置');
                         if (group[0].checked == true) {
+
                             $(out2).text(group[0].value);
                             userMsg.sex = group[0].value;
                         } else {
                             userMsg.sex = group[1].value;
                             $(out2).text(group[1].value);
                         }
-
+                        $('#save').removeClass('saveNo');
+                        $('#save').addClass('saveYes');
+                        isChanged = true;
                         frame.slideToggle();
                         span.toggleClass('trans');
                         break;
                     case 4:
+                        var con2 = $(frame).children('div.head');
+                        var input2 = $(con2).children('input');
+                        //定位p
+                        var out3 = $(outCon).children('p');
+                        var text2 = $(input2).val();
+                        $(out3).text('未设置');
+
+                        if ($.trim(text2) !== '') {
+                            isChanged = true;
+                            userMsg.birthday = text2;
+                            $('#save').removeClass('saveNo');
+                            $('#save').addClass('saveYes');
+                            $(out3).text($.trim(text2));
+                        }
                         frame.slideToggle();
                         span.toggleClass('trans');
                         break;
