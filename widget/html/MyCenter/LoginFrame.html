@@ -174,7 +174,13 @@
 <script type="text/javascript" src="../../script/jquery.js"></script>
 <script type="text/javascript">
 var user;
-
+function msg(msgs) {
+    api.toast({
+        msg: msgs,
+        duration: 2000,
+        location: 'bottom'
+    });
+}
 apiready = function() {
     user = api.require('user');
 };
@@ -256,10 +262,7 @@ apiready = function() {
         }
         var pwd = $('#pwds').val();
         if ($.trim(pwd) == '') {
-            api.alert({
-                title: '提示',
-                msg: '请输入密码',
-            }, function(ret, err) {});
+            msg('请输入密码');
             return;
         }
         if (!okAuth) {
@@ -273,12 +276,12 @@ apiready = function() {
             password: pwd
         }, function(ret, err) {
             if (err.statusCode) {
-               alert("用户名或密码错误!");
+               msg("用户名或密码错误!");
             } else if(ret.createdAt) {
                 //登录成功后跳转
-                alert("success");
+                msg("登录成功!");
             }else{
-                alert("登录失败!");
+                msg("登录失败!");
             }
         });
     }

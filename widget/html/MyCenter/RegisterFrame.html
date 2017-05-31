@@ -204,18 +204,33 @@
 <script type="text/javascript " src="../../script/jquery.js "></script>
 <script type="text/javascript" src="../../script/Gverify.js"></script>
 <script type="text/javascript " src="../../script/sha1.js "></script>
+<script type="text/javascript " src="../../script/wait.js "></script>
 <script type="text/javascript ">
 var reg = new RegExp("[\\w!#$%& '*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?");
 var sendsms;
 var user;
 var model;
+var relation;
+
+//等待页面
+var wait;
+wait = new Wait();
+wait.createAnimate('../../image/loading_more.gif');
+
+function msg(msgs) {
+    api.toast({
+        msg: msgs,
+        duration: 2000,
+        location: 'bottom'
+    });
+}
 apiready = function() {
     user = api.require('user');
     model = api.require('model');
+    relation = api.require('relation');
 };
 (function() {
     var userMsg = {
-        userName: 'null',
         nickName: '未设置',
         introduce: '未设置',
         sex: '未设置',
@@ -294,10 +309,7 @@ apiready = function() {
         }
         var pwd = $('#pwd').val();
         if ($.trim(pwd) == '') {
-            api.alert({
-                title: '提示',
-                msg: '请输入密码',
-            }, function(ret, err) {});
+            msg('请输入密码');
             return;
         }
         if (!okAuth) {
@@ -307,42 +319,69 @@ apiready = function() {
         }
 
         /*执行注册代码段*/
+        wait.execAnimate();
         user.register({
             username: $api.val(mail),
             password: $('#pwd').val(),
             email: $api.val(mail)
         }, function(ret, err) {
-            console.log(JSON.stringify(ret));
+            var R=ret;
             if (ret.error) {
-                api.alert({
-                    title: '提示',
-                    msg: '用户邮箱已经注册',
-                }, function(ret, err) {
-
-                });
+                wait.detachAnimate();
+                msg('邮箱已被注册');
                 return;
             }
             if (ret.createdAt) {
                 //添加默认信息
-                model.insert({
-                    class: "userMessage",
+                relation.insert({
+                    class: "user",
+                    id: R.id,
+                    column: 'userMessage',
                     value: {
-                        userName: $('#mail').val(),
                         nickName: '未设置',
                         introduce: '未设置',
                         sex: '未设置',
                         birthday: '未设置'
                     }
                 }, function(ret, err) {
-                   /* alert("ret: " + JSON.stringify(ret) + "\nerr: " + JSON.stringify(err));*/
-                });
-                api.alert({
-                    title: '提示',
-                    msg: '注册成功',
-                }, function(ret, err) {
+                    if (ret) {
+                        //默认的头像
+                        model.uploadFile({
+                            report: true,
+                            data: {
+                                file: {
+                                    name: "用户:" + $api.trim(email) + "的头像",
+                                    url: '../../image/userDefaultBG.gif'
+                                },
+                                values: {
+                                    userID: R.id,
+                                }
+                            }
+                        }, function(ret, err) {
+                            if (ret) {
+                                if(ret.status==1){
+                                    wait.detachAnimate();
+                                    msg('注册成功');
+                                    return;
+                                }
+                                else{
+                                    return;
+                                }
+                                console.log(JSON.stringify(ret.progress));
+                                console.log(ret.status);
+                            } else {
+                                /*console.log(JSON.stringify(err));*/
+                                wait.detachAnimate();
+                            }
+                        });
+                    } else {
 
+                    }
                 });
-                return;
+
+               /* wait.detachAnimate();
+                msg("注册成功!");
+                return;*/
             }
         });
     }
