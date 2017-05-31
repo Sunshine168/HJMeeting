@@ -629,6 +629,7 @@
 /A6949965890679/image/VIP.png
 /A6949965890679/aui-20170109-v2.1/html/demo_zhihu_frm.html
 /A6949965890679/aui-20170109-v2.1/image/f5.jpg
+/A6949195186472/script/wait.js
 /A6949971301863/script/aui-skin.js
 /A6949971301863/image/gomine.png
 /A6949965890679/image/用户.png

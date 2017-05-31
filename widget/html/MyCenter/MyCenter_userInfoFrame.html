@@ -264,7 +264,7 @@
         <div class="content" id="content">
             <div class="group">
                 <div class="title">账号</div>
-                <div class="msg" id="tUser">1183520543@qq.com</div>
+                <div class="msg" id="tUser">admin@qq.com</div>
                 <div>
                     <img src="../../image/vipYes.gif" alt="" class="logo">
                 </div>
@@ -350,40 +350,88 @@
     </div>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/wait.js"></script>
 <script type="text/javascript">
+//等待页面
+var wait;
+wait=new Wait();
+wait.createAnimate('../../image/loading_more.gif');
+wait.execAnimate();
 var model;
 var query;
- var qID;
+var qID;
+var initID;
+var userMsg;
 apiready = function() {
     model = api.require('model');
     query = api.require('query');
-    //query设置
+    //初始化query设置
     (function() {
         query.createQuery(function(ret, err) {
             if (ret) {
-                qID=ret.qid;
+                initID = ret.qid;
+                query.whereEqual({
+                    qid: initID,
+                    column: 'userName',
+                    value: $('#tUser').text() //此处应为上级页面传过来的值查找到的userName
+                });
+                //获取数据
+                model.findAll({
+                    class: "userMessage",
+                    qid: initID
+                }, function(ret, err) {
+                    //此为异步方法
+                    if (ret) {
+                        $('#tUser').text(ret[0].userName);
+                        $('#tNickname').text(ret[0].nickName);
+                        $('#tSelf').text(ret[0].introduce);
+                        $('#tSex').text(ret[0].sex);
+                        $('#tBirth').text(ret[0].birthday);
+                        userMsg = {
+                            userName: ret[0].userName,
+                            nickName: ret[0].nickName,
+                            introduce: ret[0].introduce,
+                            sex: ret[0].sex,
+                            birthday: ret[0].birthday
+                        };
+                        main();
+                        wait.detachAnimate();
+                    } else {
+                        /*                alert(JSON.stringify(err));*/
+                    }
+                });
+            } else {
+                alert("发生错误!");
+            }
+        });
+    })();
+    //保存query设置
+    (function() {
+        query.createQuery(function(ret, err) {
+            if (ret) {
+                qID = ret.qid;
+                query.whereEqual({
+                    qid: qID,
+                    column: 'userName',
+                    value: $('#tUser').text()
+                });
+                query.justFields({
+                    qid: qID,
+                    value: ['id', 'userName']
+                });
             } else {
                 alert("发生错误!");
                 return;
             }
         });
-        query.whereEqual({
-            qid: qID,
-            column: 'userName',
-            value: $('#tUser').text()
-        });
-        query.justFields({
-            qid: qID,
-            value: ['id', 'userName']
-        });
     })();
 };
 
-(function() {
+function main() {
 
     /*tempSex[0].checked?tempSex[0].value:tempSex[1].value
      */
-   
+
     var isChanged = false; //是否修改过资料
     var tempSex = $("input[name='sex']");
     var userMsg = {
@@ -403,7 +451,26 @@ apiready = function() {
         showTime: true
     });
     cal.manageFields("date", "date", "%Y-%m-%d");
-
+    //保存数据
+    function savaData(id) {
+        model.updateById({
+            class: 'userMessage',
+            id: id,
+            value: {
+                userName: userMsg.userName,
+                nickName: userMsg.nickName,
+                introduce: userMsg.introduce,
+                sex: userMsg.sex,
+                birthday: userMsg.birthday
+            }
+        }, function(ret, err) {
+            if (ret) {
+                alert("保存成功!");
+            } else {
+                alert("保存失败!");
+            }
+        });
+    }
     //保存按钮
     function save(e) {
         /*        console.log(userMsg);
@@ -411,17 +478,20 @@ apiready = function() {
         if (!$('#save').hasClass('saveYes') && !isChanged) { //&& ||
             return;
         }
-        //测试
         model.findAll({
             class: "userMessage",
             qid: qID
         }, function(ret, err) {
             if (ret) {
-                alert(JSON.stringify(ret));
+                savaData(ret[0].id);
             } else {
-                alert(JSON.stringify(err));
+                /*                alert(JSON.stringify(err));*/
+                alert("保存失败!");
             }
         });
+        $('#save').removeClass('saveYes');
+        $('#save').addClass('saveNo');
+        isChanged=false;
     }
     //修改信息
     function exec(e) {
@@ -458,7 +528,6 @@ apiready = function() {
                         //定位p
                         var out = $(outCon).children('p');
                         var text = $(input).val();
-                        $(out).text('未设置');
                         if ($.trim(text) !== '') {
                             isChanged = true;
                             $('#save').removeClass('saveNo');
@@ -477,7 +546,6 @@ apiready = function() {
                         var group = $("input[name='sex']");
                         //定位p
                         var out2 = $(outCon).children('p');
-                        $(out2).text('未设置');
                         if (group[0].checked == true) {
 
                             $(out2).text(group[0].value);
@@ -498,7 +566,6 @@ apiready = function() {
                         //定位p
                         var out3 = $(outCon).children('p');
                         var text2 = $(input2).val();
-                        $(out3).text('未设置');
 
                         if ($.trim(text2) !== '') {
                             isChanged = true;
@@ -538,7 +605,7 @@ apiready = function() {
             }
         }
     }
-})();
+}
 </script>
 
 </html>
