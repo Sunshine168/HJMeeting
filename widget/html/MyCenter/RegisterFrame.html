@@ -186,15 +186,7 @@
                 <input type="text" placeholder="请输入验证码" id="auths">
                 <span class="is" id="judgeAuth"></span>
                 <a href="javascript:void(0)" class="auth" id="auth"></a>
-            </div>
-            <!-- 
-            <div class="listItem">
-                <input type="text" placeholder="请输入手机号" id="phone">
-                <span class="auth active" id="auth">发送验证码</span>
-            </div>
-            <div class="listItem">
-                <input type="text" placeholder="输入验证码" id="verifyNum">
-            </div> -->
+            </div> 
             <a href="javascript:void(0)" class="listItem go" id='register'>注册</a>
             <span href="javascript:void(0)" class="do" onclick="toLogin()">已有账号?点我登录</span>
         </div>
@@ -350,8 +342,8 @@ apiready = function() {
                             report: true,
                             data: {
                                 file: {
-                                    name: "用户:" + $api.trim(email) + "的头像",
-                                    url: '../../image/userDefaultBG.gif'
+                                    name: "用户:<" + $api.trim(email) + ">的头像",
+                                    url: 'widget://image/userDefault.bmp'
                                 },
                                 values: {
                                     userID: R.id,
@@ -365,6 +357,7 @@ apiready = function() {
                                     return;
                                 }
                                 else{
+                                    wait.detachAnimate();
                                     return;
                                 }
                                 console.log(JSON.stringify(ret.progress));

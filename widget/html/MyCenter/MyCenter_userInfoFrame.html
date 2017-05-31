@@ -358,12 +358,14 @@ wait = new Wait();
 wait.createAnimate('../../image/loading_more.gif');
 wait.execAnimate();
 //模块
-var model;
-var query;
-var relation;
+var model,
+    query,
+    relation;
+//queryID 
+var qID,
+    initID,
+    imgID;
 
-var qID;
-var initID;
 var userMsg;
 
 function msg(msgs) {
@@ -400,6 +402,7 @@ apiready = function() {
                             column: 'userMessage'
                         }, function(ret, err) {
                             if (ret) {
+                                //设置信息
                                 $('#tNickname').text(ret[0].nickName);
                                 $('#tSelf').text(ret[0].introduce);
                                 $('#tSex').text(ret[0].sex);
@@ -411,8 +414,51 @@ apiready = function() {
                                     sex: ret[0].sex,
                                     birthday: ret[0].birthday
                                 };
-                                main();
-                                wait.detachAnimate();
+                                //设置头像
+                                model.findAll({
+                                    class: 'user',
+                                    qid: qID
+                                }, function(ret, err) {
+                                    //根据用户找到ID
+                                    var usrID;
+                                    console.log(JSON.stringify(ret));
+                                    if (ret[0].id) {
+                                        usrID = ret[0].id;
+                                        query.whereEqual({
+                                            qid: imgID,
+                                            value: usrID,
+                                            column: 'userID'
+                                        });
+                                        //根据user和file对应的ID删除对应的之前的头像
+                                        model.findAll({
+                                            class: 'file',
+                                            qid: imgID
+                                        }, function(ret, err) {
+                                            if (ret[0].url) {
+                                                /*console.log(JSON.stringify(ret));*/
+                                                var fileurl = ret[0].url;
+                                                //下载
+                                                api.imageCache({
+                                                    url: fileurl
+                                                }, function(ret, err) {
+                                                    if (ret) {
+                                                        $('#userAvatar').attr('src', ret.url);
+                                                        wait.detachAnimate();
+                                                        main();
+                                                    } else {
+                                                        wait.detachAnimate();
+                                                        main();
+                                                        msg(JSON.stringify(err));
+                                                    }
+                                                });
+                                            } else {
+                                                wait.detachAnimate();
+                                                main();
+                                            }
+                                        });
+                                    }
+                                });
+
                             } else {
                                 wait.detachAnimate();
                                 msg("获取用户数据失败!");
@@ -439,6 +485,17 @@ apiready = function() {
                     column: 'username',
                     value: $('#tUser').text()
                 });
+            } else {
+                msg("发生错误!");
+                return;
+            }
+        });
+    })();
+    //下载头像query设置
+    (function() {
+        query.createQuery(function(ret, err) {
+            if (ret) {
+                imgID = ret.qid;
             } else {
                 msg("发生错误!");
                 return;
@@ -483,29 +540,81 @@ function main() {
                         saveToPhotoAlbum: false
                     }, function(ret, err) {
                         if (ret) {
+                            wait.execAnimate();
+                            var imgURL = ret.data;
+                            console.log("图片地址" + ret.data);
                             model.findAll({
                                 class: 'user',
                                 qid: qID
                             }, function(ret, err) {
-                                if (ret) {
-                                    relation.findAll({
-                                        class: 'user',
-                                        id: ret[0].id,
-                                        column: 'userAvatar'
+                                //根据用户找到ID
+                                var usrID;
+                                console.log(JSON.stringify(ret));
+                                if (ret[0].id) {
+                                    usrID = ret[0].id;
+                                    query.whereEqual({
+                                        qid: imgID,
+                                        value: usrID,
+                                        column: 'userID'
+                                    });
+                                    //根据user和file对应的ID删除对应的之前的头像
+                                    model.findAll({
+                                        class: 'file',
+                                        qid: imgID
                                     }, function(ret, err) {
-                                        if (ret) {
-                                            //未完成
+                                        if (ret[0].id) {
                                             console.log(JSON.stringify(ret));
-                                            wait.detachAnimate();
+                                            var fileID = ret[0].id;
+                                            //删除
+                                            model.deleteById({
+                                                class: 'file',
+                                                id: fileID
+                                            }, function(ret, err) {
+                                                //上传新的头像
+                                                if (ret) {
+                                                    model.uploadFile({
+                                                        data: {
+                                                            file: {
+                                                                url: imgURL,
+                                                                name: "用户:<" + $('#tUser').text() + ">的头像"
+                                                            },
+                                                            values: {
+                                                                userID: usrID
+                                                            }
+                                                        },
+                                                        report: true
+                                                    }, function(ret, err) {
+                                                        if (ret.status == 1) {
+                                                            //上传成功
+                                                            wait.detachAnimate();
+                                                            msg('上传成功!');
+                                                        } else if (ret.status == 2) {
+                                                            //上传失败
+                                                            wait.detachAnimate();
+                                                            msg('上传失败!');
+                                                            return;
+                                                        }
+                                                    });
+                                                } else {
+                                                    //删除旧头像失败
+                                                    wait.detachAnimate();
+                                                    msg('上传失败!');
+                                                    return;
+                                                }
+                                            });
                                         } else {
+                                            //未找到file
                                             wait.detachAnimate();
-                                            msg("获取用户数据失败!");
+                                            msg('上传失败!');
+                                            return;
                                         }
                                     });
+                                } else {
+                                    //未选择图片
                                 }
                             });
                         } else {
-                            alert(JSON.stringify(err));
+                            /* alert(JSON.stringify(err));*/
                         }
                     });
                 } else {}
