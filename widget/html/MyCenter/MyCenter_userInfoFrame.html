@@ -551,18 +551,12 @@ function main() {
                                 var usrID;
                                 console.log(JSON.stringify(ret));
                                 if (ret) {
-                                    usrID = ret[0].id;/*
-                                    query.whereEqual({
-                                        qid: imgID,
-                                        column: 'userID',
-                                        value: usrID
-                                    });*/
+                                    usrID = ret[0].id;
                                     //根据user和file对应的ID删除对应的之前的头像
                                     model.findAll({
                                         class: 'file',
                                         qid: imgID
                                     }, function(ret, err) {
-                                        console.log(JSON.stringify(ret));
                                         console.log(usrID);
                                         if (ret) {
                                             console.log(JSON.stringify(ret));
