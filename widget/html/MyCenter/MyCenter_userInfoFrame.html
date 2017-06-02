@@ -14,242 +14,242 @@
     <link rel="stylesheet" type="text/css" href="../../css/border-radius.css" />
     <link rel="stylesheet" type="text/css" href="../../css/steel.css" />
     <style>
-    html,
-    body {
-        height: 100%;
-        background-color: #fff;
-    }
-    
-    * {
-        padding: 0;
-        margin: 0;
-        font-family: "微软雅黑"
-    }
-    
-    .container {
-        width: 100%;
-        margin-bottom: 20px;
-    }
-    
-    .userImgContainer {
-        top: 10px;
-        height: 92px;
-        width: 92px;
-        display: block;
-        background-color: #fff;
-        border: solid 1px #787878;
-        position: absolute;
-        border-radius: 45px;
-        left: 50%;
-        margin-left: -46px;
-        z-index: 1
-    }
-    
-    .userImg {
-        position: absolute;
-        top: 1px;
-        left: 1px;
-        height: 90px;
-        width: 90px;
-        border-radius: 45px;
-    }
-    
-    .userImgBG {
-        position: relative;
-        background: url('../../image/userDefaultBG.gif') no-repeat;
-        background-size: 100% 100%;
-        height: 160px;
-        width: 100%;
-    }
-    
-    .userImgBG>p {
-        height: 20px;
-        line-height: 20px;
-        width: 92px;
-        text-align: center;
-        display: inline-block;
-        position: absolute;
-        bottom: 10px;
-        left: 50%;
-        margin-left: -46px;
-        border-top-left-radius: 8px;
-        border-bottom-right-radius: 8px;
-        background-color: #00CCFF;
-        color: #fff;
-        font-size: 12px;
-    }
-    
-    .userImgBG>p:active {
-        background-color: #008BE3;
-    }
-    
-    .content {
-        height: 100%;
-        margin: 0 15px;
-    }
-    
-    .group>div {
-        margin: 8px 0;
-    }
-    
-    .group {
-        width: 100%;
-        padding: 5px 5px;
-    }
-    
-    .title {
-        font-size: 12px;
-        color: #868686;
-    }
-    
-    .msg {
-        flex-grow: 1;
-        font-size: 14px;
-        color: #333333;
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flex;
-        display: -o-flex;
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        justify-content: space-between;
-    }
-    
-    .msg>p {
-        height: 19px;
-    }
-    
-    .after {
-        position: absolute;
-        right: 10px;
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-        background: url('../../image/go.png') no-repeat;
-        background-size: 100% 100%;
-    }
-    
-    .trans {
-        transform: rotate(90deg);
-        transition: transform 0.2s;
-    }
-    
-    .logo {
-        display: inline-block;
-        width: 16px;
-        height: 16px;
-    }
-    
-    .br {
-        width: 90%;
-        height: 1px;
-        background-color: #f2f2f2;
-        margin: 0 auto;
-        display: block;
-    }
-    
-    .album {
-        height: 60px;
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flex;
-        display: -o-flex;
-        display: flex;
-        flex-direction: row;
-    }
-    
-    .album>img {
-        height: 100%;
-    }
-    
-    .frame {
-        border-radius: 5px;
-        background-color: #f2f2f2;
-        padding: 10px;
-        display: none;
-    }
-    
-    .foot {
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flex;
-        display: -o-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        -moz-flex-direction: row;
-        -ms-flex-direction: row;
-        -o-flex-direction: row;
-        flex-direction: row;
-        margin-top: 5px;
-    }
-    
-    .group+.save {
-        background-color: #00cee5;
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flex;
-        display: -o-flex;
-        display: flex;
-        justify-content: center;
-        height: 30px;
-    }
-    
-    .saveYes {
-        opacity: 1;
-    }
-    
-    .saveNo {
-        opacity: 0.3;
-    }
-    
-    .saveYes:active {
-        opacity: 0.5;
-    }
-    
-    .group+.save>p {
-        display: inline-block;
-        color: #fff;
-        align-self: center;
-        font-size: 14px;
-    }
-    
-    input {
-        font-size: 12px;
-        padding: 4px;
-        border-radius: 5px;
-    }
-    
-    .head {
-        margin: 5px;
-    }
-    
-    .foot>span {
-        display: inline-block;
-        flex-grow: 1;
-        height: 30px;
-        text-align: center;
-        line-height: 30px;
-        font-size: 12px;
-        color: #fff;
-        margin: 0 5px;
-    }
-    
-    .ok {
-        background-color: #00cee5
-    }
-    
-    .ok:active {
-        opacity: 0.5;
-    }
-    
-    .cancel {
-        background-color: gray
-    }
-    
-    .cancel:active {
-        opacity: 0.5
-    }
+        html,
+        body {
+            height: 100%;
+            background-color: #fff;
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: "微软雅黑"
+        }
+        
+        .container {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        
+        .userImgContainer {
+            top: 10px;
+            height: 92px;
+            width: 92px;
+            display: block;
+            background-color: #fff;
+            border: solid 1px #787878;
+            position: absolute;
+            border-radius: 45px;
+            left: 50%;
+            margin-left: -46px;
+            z-index: 1
+        }
+        
+        .userImg {
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            height: 90px;
+            width: 90px;
+            border-radius: 45px;
+        }
+        
+        .userImgBG {
+            position: relative;
+            background: url('../../image/userDefaultBG.gif') no-repeat;
+            background-size: 100% 100%;
+            height: 160px;
+            width: 100%;
+        }
+        
+        .userImgBG>p {
+            height: 20px;
+            line-height: 20px;
+            width: 92px;
+            text-align: center;
+            display: inline-block;
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            margin-left: -46px;
+            border-top-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+            background-color: #00CCFF;
+            color: #fff;
+            font-size: 12px;
+        }
+        
+        .userImgBG>p:active {
+            background-color: #008BE3;
+        }
+        
+        .content {
+            height: 100%;
+            margin: 0 15px;
+        }
+        
+        .group>div {
+            margin: 8px 0;
+        }
+        
+        .group {
+            width: 100%;
+            padding: 5px 5px;
+        }
+        
+        .title {
+            font-size: 12px;
+            color: #868686;
+        }
+        
+        .msg {
+            flex-grow: 1;
+            font-size: 14px;
+            color: #333333;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .msg>p {
+            height: 19px;
+        }
+        
+        .after {
+            position: absolute;
+            right: 10px;
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            background: url('../../image/go.png') no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        .trans {
+            transform: rotate(90deg);
+            transition: transform 0.2s;
+        }
+        
+        .logo {
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+        }
+        
+        .br {
+            width: 90%;
+            height: 1px;
+            background-color: #f2f2f2;
+            margin: 0 auto;
+            display: block;
+        }
+        
+        .album {
+            height: 60px;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            flex-direction: row;
+        }
+        
+        .album>img {
+            height: 100%;
+        }
+        
+        .frame {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 10px;
+            display: none;
+        }
+        
+        .foot {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            -moz-flex-direction: row;
+            -ms-flex-direction: row;
+            -o-flex-direction: row;
+            flex-direction: row;
+            margin-top: 5px;
+        }
+        
+        .group+.save {
+            background-color: #00cee5;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            justify-content: center;
+            height: 30px;
+        }
+        
+        .saveYes {
+            opacity: 1;
+        }
+        
+        .saveNo {
+            opacity: 0.3;
+        }
+        
+        .saveYes:active {
+            opacity: 0.5;
+        }
+        
+        .group+.save>p {
+            display: inline-block;
+            color: #fff;
+            align-self: center;
+            font-size: 14px;
+        }
+        
+        input {
+            font-size: 12px;
+            padding: 4px;
+            border-radius: 5px;
+        }
+        
+        .head {
+            margin: 5px;
+        }
+        
+        .foot>span {
+            display: inline-block;
+            flex-grow: 1;
+            height: 30px;
+            text-align: center;
+            line-height: 30px;
+            font-size: 12px;
+            color: #fff;
+            margin: 0 5px;
+        }
+        
+        .ok {
+            background-color: #00cee5
+        }
+        
+        .ok:active {
+            opacity: 0.5;
+        }
+        
+        .cancel {
+            background-color: gray
+        }
+        
+        .cancel:active {
+            opacity: 0.5
+        }
     </style>
 </head>
 
@@ -352,69 +352,197 @@
 <script type="text/javascript" src="../../script/api.js"></script>
 <script type="text/javascript" src="../../script/wait.js"></script>
 <script type="text/javascript">
-//等待页面
-var wait;
-wait = new Wait();
-wait.createAnimate('../../image/loading_more.gif');
-wait.execAnimate();
-//模块
-var model,
-    query,
-    relation;
-//queryID 
-var qID,
-    initID,
-    imgID;
+    //等待页面
+    var wait;
+    wait = new Wait();
+    wait.createAnimate('../../image/loading_more.gif');
+    wait.execAnimate();
+    //模块
+    var model,
+        query,
+        relation;
+    //queryID 
+    var qID,
+        initID,
+        imgID;
 
-var userMsg;
+    var userMsg;
 
-function msg(msgs) {
-    api.toast({
-        msg: msgs,
-        duration: 2000,
-        location: 'bottom'
-    });
-}
-apiready = function() {
-    model = api.require('model');
-    query = api.require('query');
-    relation = api.require('relation');
-    //初始化query设置
-    (function() {
-        query.createQuery(function(ret, err) {
-            if (ret) {
-                initID = ret.qid;
-                query.whereEqual({
-                    qid: initID,
-                    column: 'username',
-                    value: $('#tUser').text() //此处应为上级页面传过来的值查找到的userName
-                });
-                //获取数据
-                model.findAll({
-                    class: "user",
-                    qid: initID
-                }, function(ret, err) {
-                    //此为异步方法
-                    if (ret) {
-                        relation.findAll({
-                            class: 'user',
-                            id: ret[0].id,
-                            column: 'userMessage'
+    function msg(msgs) {
+        api.toast({
+            msg: msgs,
+            duration: 2000,
+            location: 'bottom'
+        });
+    }
+    apiready = function() {
+        model = api.require('model');
+        query = api.require('query');
+        relation = api.require('relation');
+        //初始化query设置
+        (function() {
+            query.createQuery(function(ret, err) {
+                if (ret) {
+                    initID = ret.qid;
+                    query.whereEqual({
+                        qid: initID,
+                        column: 'username',
+                        value: $('#tUser').text() //此处应为上级页面传过来的值查找到的userName
+                    });
+                    //获取数据
+                    model.findAll({
+                        class: "user",
+                        qid: initID
+                    }, function(ret, err) {
+                        //此为异步方法
+                        if (ret) {
+                            relation.findAll({
+                                class: 'user',
+                                id: ret[0].id,
+                                column: 'userMessage'
+                            }, function(ret, err) {
+                                if (ret) {
+                                    //设置信息
+                                    $('#tNickname').text(ret[0].nickName);
+                                    $('#tSelf').text(ret[0].introduce);
+                                    $('#tSex').text(ret[0].sex);
+                                    $('#tBirth').text(ret[0].birthday);
+                                    userMsg = {
+                                        userName: ret[0].userName,
+                                        nickName: ret[0].nickName,
+                                        introduce: ret[0].introduce,
+                                        sex: ret[0].sex,
+                                        birthday: ret[0].birthday
+                                    };
+                                    //设置头像
+                                    model.findAll({
+                                        class: 'user',
+                                        qid: qID
+                                    }, function(ret, err) {
+                                        //根据用户找到ID
+                                        var usrID;
+                                        console.log(JSON.stringify(ret));
+                                        if (ret[0].id) {
+                                            usrID = ret[0].id;
+                                            query.whereEqual({
+                                                qid: imgID,
+                                                value: usrID,
+                                                column: 'userID'
+                                            });
+                                            //根据user和file对应的ID删除对应的之前的头像
+                                            model.findAll({
+                                                class: 'file',
+                                                qid: imgID
+                                            }, function(ret, err) {
+                                                if (ret[0].url) {
+                                                    /*console.log(JSON.stringify(ret));*/
+                                                    var fileurl = ret[0].url;
+                                                    //下载
+                                                    api.imageCache({
+                                                        url: fileurl
+                                                    }, function(ret, err) {
+                                                        if (ret) {
+                                                            $('#userAvatar').attr('src', ret.url);
+                                                            wait.detachAnimate();
+                                                            main();
+                                                        } else {
+                                                            wait.detachAnimate();
+                                                            main();
+                                                            msg(JSON.stringify(err));
+                                                        }
+                                                    });
+                                                } else {
+                                                    wait.detachAnimate();
+                                                    main();
+                                                }
+                                            });
+                                        }
+                                    });
+
+                                } else {
+                                    wait.detachAnimate();
+                                    msg("获取用户数据失败!");
+                                }
+                            });
+                        } else {
+                            wait.detachAnimate();
+                            msg("获取用户数据失败!");
+                        }
+                    });
+                } else {
+                    wait.detachAnimate();
+                    msg("获取用户数据失败!");
+                }
+            });
+        })();
+        //保存query设置
+        (function() {
+            query.createQuery(function(ret, err) {
+                if (ret) {
+                    qID = ret.qid;
+                    query.whereEqual({
+                        qid: qID,
+                        column: 'username',
+                        value: $('#tUser').text()
+                    });
+                } else {
+                    msg("发生错误!");
+                    return;
+                }
+            });
+        })();
+        //下载头像query设置
+        (function() {
+            query.createQuery(function(ret, err) {
+                if (ret) {
+                    imgID = ret.qid;
+                } else {
+                    msg("发生错误!");
+                    return;
+                }
+            });
+        })();
+    };
+
+    function main() {
+
+        /*tempSex[0].checked?tempSex[0].value:tempSex[1].value
+         */
+
+        var isChanged = false; //是否修改过资料
+        var tempSex = $("input[name='sex']");
+        var userMsg = {
+            userName: $('#tUser').text(),
+            nickName: $('#tNickname').text(),
+            introduce: $('#tSelf').text(),
+            sex: $('#tSex').text(),
+            birthday: $('#tBirth').text()
+        };
+        $api.addEvt($api.byId('changeUserAvatar'), 'click', changeAvatar, true);
+        $api.addEvt($api.byId('save'), 'click', save, true);
+        $api.addEvt($api.byId('content'), 'click', exec, true);
+        //修改用户头像
+        function changeAvatar(e) {
+            api.actionSheet({
+                title: '选择',
+                cancelTitle: '取消',
+                buttons: ['相册']
+            }, function(ret, err) {
+                if (ret) {
+                    var type = ['carema', 'album'];
+                    if (ret.buttonIndex == 1) {
+                        api.getPicture({
+                            sourceType: type[ret.buttonIndex - 1],
+                            allowEdit: true,
+                            quality: 50,
+                            targetWidth: 92,
+                            targetHeight: 92,
+                            saveToPhotoAlbum: false
                         }, function(ret, err) {
                             if (ret) {
-                                //设置信息
-                                $('#tNickname').text(ret[0].nickName);
-                                $('#tSelf').text(ret[0].introduce);
-                                $('#tSex').text(ret[0].sex);
-                                $('#tBirth').text(ret[0].birthday);
-                                userMsg = {
-                                    userName: ret[0].userName,
-                                    nickName: ret[0].nickName,
-                                    introduce: ret[0].introduce,
-                                    sex: ret[0].sex,
-                                    birthday: ret[0].birthday
-                                };
-                                //设置头像
+                                wait.execAnimate();
+                                var imgURL = ret.data;
+                                console.log("图片地址" + ret.data);
                                 model.findAll({
                                     class: 'user',
                                     qid: qID
@@ -422,384 +550,256 @@ apiready = function() {
                                     //根据用户找到ID
                                     var usrID;
                                     console.log(JSON.stringify(ret));
-                                    if (ret[0].id) {
+                                    if (ret) {
                                         usrID = ret[0].id;
                                         query.whereEqual({
                                             qid: imgID,
-                                            value: usrID,
-                                            column: 'userID'
+                                            column: 'userID',
+                                            value: usrID
                                         });
                                         //根据user和file对应的ID删除对应的之前的头像
                                         model.findAll({
                                             class: 'file',
                                             qid: imgID
                                         }, function(ret, err) {
-                                            if (ret[0].url) {
-                                                /*console.log(JSON.stringify(ret));*/
-                                                var fileurl = ret[0].url;
-                                                //下载
-                                                api.imageCache({
-                                                    url: fileurl
+                                            console.log(JSON.stringify(ret));
+                                            console.log(usrID);
+                                            if (ret) {
+                                                console.log(JSON.stringify(ret));
+                                                var fileID = ret[0].id;
+                                                //删除
+                                                model.deleteById({
+                                                    class: 'file',
+                                                    id: fileID
                                                 }, function(ret, err) {
+                                                    //上传新的头像
                                                     if (ret) {
-                                                        $('#userAvatar').attr('src', ret.url);
-                                                        wait.detachAnimate();
-                                                        main();
+                                                        model.uploadFile({
+                                                            data: {
+                                                                file: {
+                                                                    url: imgURL,
+                                                                    name: "用户:<" + $('#tUser').text() + ">的头像"
+                                                                },
+                                                                values: {
+                                                                    userID: usrID
+                                                                }
+                                                            },
+                                                            report: true
+                                                        }, function(ret, err) {
+                                                            if (ret.status == 1) {
+                                                                //上传成功
+                                                                $('#userAvatar').attr('src', imgURL);
+                                                                wait.detachAnimate();
+                                                                msg('上传成功!');
+                                                            } else if (ret.status == 2) {
+                                                                //上传失败
+                                                                wait.detachAnimate();
+                                                                msg('上传失败!');
+                                                                return;
+                                                            }
+                                                        });
                                                     } else {
+                                                        //删除旧头像失败
                                                         wait.detachAnimate();
-                                                        main();
-                                                        msg(JSON.stringify(err));
+                                                        msg('上传失败!');
+                                                        return;
                                                     }
                                                 });
                                             } else {
+                                                //未找到file
                                                 wait.detachAnimate();
-                                                main();
+                                                msg('上传失败!');
+                                                return;
                                             }
                                         });
+                                    } else {
+                                        //未选择图片
                                     }
                                 });
-
                             } else {
-                                wait.detachAnimate();
-                                msg("获取用户数据失败!");
+                                /* alert(JSON.stringify(err));*/
                             }
                         });
-                    } else {
-                        wait.detachAnimate();
-                        msg("获取用户数据失败!");
-                    }
-                });
-            } else {
-                wait.detachAnimate();
-                msg("获取用户数据失败!");
-            }
+                    } else {}
+                }
+            });
+        }
+        //日历
+        var cal = Calendar.setup({
+            onSelect: function(cal) {
+                cal.hide();
+            },
+            showTime: true
         });
-    })();
-    //保存query设置
-    (function() {
-        query.createQuery(function(ret, err) {
-            if (ret) {
-                qID = ret.qid;
-                query.whereEqual({
-                    qid: qID,
-                    column: 'username',
-                    value: $('#tUser').text()
-                });
-            } else {
-                msg("发生错误!");
-                return;
-            }
-        });
-    })();
-    //下载头像query设置
-    (function() {
-        query.createQuery(function(ret, err) {
-            if (ret) {
-                imgID = ret.qid;
-            } else {
-                msg("发生错误!");
-                return;
-            }
-        });
-    })();
-};
-
-function main() {
-
-    /*tempSex[0].checked?tempSex[0].value:tempSex[1].value
-     */
-
-    var isChanged = false; //是否修改过资料
-    var tempSex = $("input[name='sex']");
-    var userMsg = {
-        userName: $('#tUser').text(),
-        nickName: $('#tNickname').text(),
-        introduce: $('#tSelf').text(),
-        sex: $('#tSex').text(),
-        birthday: $('#tBirth').text()
-    };
-    $api.addEvt($api.byId('changeUserAvatar'), 'click', changeAvatar, true);
-    $api.addEvt($api.byId('save'), 'click', save, true);
-    $api.addEvt($api.byId('content'), 'click', exec, true);
-    //修改用户头像
-    function changeAvatar(e) {
-        api.actionSheet({
-            title: '选择',
-            cancelTitle: '取消',
-            buttons: ['相册']
-        }, function(ret, err) {
-            if (ret) {
-                var type = ['carema', 'album'];
-                if (ret.buttonIndex == 1) {
-                    api.getPicture({
-                        sourceType: type[ret.buttonIndex - 1],
-                        allowEdit: true,
-                        quality: 50,
-                        targetWidth: 92,
-                        targetHeight: 92,
-                        saveToPhotoAlbum: false
+        cal.manageFields("date", "date", "%Y-%m-%d");
+        //保存数据
+        function saveData(id) {
+            relation.deleteAll({
+                class: 'user',
+                id: id,
+                column: 'userMessage'
+            }, function(ret, err) {
+                if (ret) {
+                    relation.insert({
+                        class: 'user',
+                        id: id,
+                        column: 'userMessage',
+                        value: {
+                            nickName: userMsg.nickName,
+                            introduce: userMsg.introduce,
+                            sex: userMsg.sex,
+                            birthday: userMsg.birthday
+                        }
                     }, function(ret, err) {
                         if (ret) {
-                            wait.execAnimate();
-                            var imgURL = ret.data;
-                            console.log("图片地址" + ret.data);
-                            model.findAll({
-                                class: 'user',
-                                qid: qID
-                            }, function(ret, err) {
-                                //根据用户找到ID
-                                var usrID;
-                                console.log(JSON.stringify(ret));
-                                if (ret) {
-                                    usrID = ret[0].id;/*
-                                    query.whereEqual({
-                                        qid: imgID,
-                                        column: 'userID',
-                                        value: usrID
-                                    });*/
-                                    //根据user和file对应的ID删除对应的之前的头像
-                                    model.findAll({
-                                        class: 'file',
-                                        qid: imgID
-                                    }, function(ret, err) {
-                                        console.log(JSON.stringify(ret));
-                                        console.log(usrID);
-                                        if (ret) {
-                                            console.log(JSON.stringify(ret));
-                                            var fileID = ret[0].id;
-                                            //删除
-                                            model.deleteById({
-                                                class: 'file',
-                                                id: fileID
-                                            }, function(ret, err) {
-                                                //上传新的头像
-                                                if (ret) {
-                                                    model.uploadFile({
-                                                        data: {
-                                                            file: {
-                                                                url: imgURL,
-                                                                name: "用户:<" + $('#tUser').text() + ">的头像"
-                                                            },
-                                                            values: {
-                                                                userID: usrID
-                                                            }
-                                                        },
-                                                        report: true
-                                                    }, function(ret, err) {
-                                                        if (ret.status == 1) {
-                                                            //上传成功
-                                                            $('#userAvatar').attr('src', imgURL);
-                                                            wait.detachAnimate();
-                                                            msg('上传成功!');
-                                                        } else if (ret.status == 2) {
-                                                            //上传失败
-                                                            wait.detachAnimate();
-                                                            msg('上传失败!');
-                                                            return;
-                                                        }
-                                                    });
-                                                } else {
-                                                    //删除旧头像失败
-                                                    wait.detachAnimate();
-                                                    msg('上传失败!');
-                                                    return;
-                                                }
-                                            });
-                                        } else {
-                                            //未找到file
-                                            wait.detachAnimate();
-                                            msg('上传失败!');
-                                            return;
-                                        }
-                                    });
-                                } else {
-                                    //未选择图片
-                                }
-                            });
+                            wait.detachAnimate();
+                            msg('保存成功');
                         } else {
-                            /* alert(JSON.stringify(err));*/
+                            wait.detachAnimate();
+                            msg('保存失败');
                         }
                     });
-                } else {}
-            }
-        });
-    }
-    //日历
-    var cal = Calendar.setup({
-        onSelect: function(cal) {
-            cal.hide();
-        },
-        showTime: true
-    });
-    cal.manageFields("date", "date", "%Y-%m-%d");
-    //保存数据
-    function saveData(id) {
-        relation.deleteAll({
-            class: 'user',
-            id: id,
-            column: 'userMessage'
-        }, function(ret, err) {
-            if (ret) {
-                relation.insert({
-                    class: 'user',
-                    id: id,
-                    column: 'userMessage',
-                    value: {
-                        nickName: userMsg.nickName,
-                        introduce: userMsg.introduce,
-                        sex: userMsg.sex,
-                        birthday: userMsg.birthday
-                    }
-                }, function(ret, err) {
-                    if (ret) {
-                        wait.detachAnimate();
-                        msg('保存成功');
-                    } else {
-                        wait.detachAnimate();
-                        msg('保存失败');
-                    }
-                });
-            } else {
-                wait.detachAnimate();
-                msg('保存失败');
-            }
-        });
-    }
-    //保存按钮
-    function save(e) {
-        if (!$('#save').hasClass('saveYes') && !isChanged) { //&& ||
-            return;
-        }
-        wait.execAnimate();
-        model.findAll({
-            class: "user",
-            qid: qID
-        }, function(ret, err) {
-            if (ret) {
-                saveData(ret[0].id);
-            } else {
-                wait.detachAnimate();
-                msg("保存失败!");
-                return;
-            }
-        });
-        $('#save').removeClass('saveYes');
-        $('#save').addClass('saveNo');
-        isChanged = false;
-    }
-    //修改信息
-    function exec(e) {
-        e = e || window.event;
-        if (e.target) {
-            var p = e.target;
-            /* console.log(p.className)*/
-            if (p.className === "cancel") {
-                //定位父亲
-                var foot1 = $(p).parent();
-                //定位frame
-                var frame1 = $(foot1).parent();
-                var outCon1 = $(frame1).siblings('div.msg');
-                var out1 = $(outCon1).children('p');
-                var span1 = $(outCon1).children('span');
-                frame1.slideToggle();
-                span1.toggleClass('trans');
-                return;
-            }
-            if (p.className === "ok") {
-                //定位父亲
-                var foot = $(p).parent();
-                //定位frame
-                var frame = $(foot).parent();
-                var flag = $(frame).attr('flag');
-                var outCon = $(frame).siblings('div.msg');
-                var span = $(outCon).children('span');
-                flag = parseInt(flag);
-                switch (flag) {
-                    case 1:
-                    case 2: //定位input
-                        var con = $(frame).children('div.head');
-                        var input = $(con).children('input');
-                        //定位p
-                        var out = $(outCon).children('p');
-                        var text = $(input).val();
-                        if ($.trim(text) !== '') {
-                            isChanged = true;
-                            $('#save').removeClass('saveNo');
-                            $('#save').addClass('saveYes');
-                            $(out).text($.trim(text));
-                            if (flag === 1) {
-                                userMsg.nickName = $.trim(text);
-                            } else {
-                                userMsg.introduce = $.trim(text);
-                            }
-                        }
-                        frame.slideToggle();
-                        span.toggleClass('trans');
-                        break;
-                    case 3:
-                        var group = $("input[name='sex']");
-                        //定位p
-                        var out2 = $(outCon).children('p');
-                        if (group[0].checked == true) {
-
-                            $(out2).text(group[0].value);
-                            userMsg.sex = group[0].value;
-                        } else {
-                            userMsg.sex = group[1].value;
-                            $(out2).text(group[1].value);
-                        }
-                        $('#save').removeClass('saveNo');
-                        $('#save').addClass('saveYes');
-                        isChanged = true;
-                        frame.slideToggle();
-                        span.toggleClass('trans');
-                        break;
-                    case 4:
-                        var con2 = $(frame).children('div.head');
-                        var input2 = $(con2).children('input');
-                        //定位p
-                        var out3 = $(outCon).children('p');
-                        var text2 = $(input2).val();
-
-                        if ($.trim(text2) !== '') {
-                            isChanged = true;
-                            userMsg.birthday = text2;
-                            $('#save').removeClass('saveNo');
-                            $('#save').addClass('saveYes');
-                            $(out3).text($.trim(text2));
-                        }
-                        frame.slideToggle();
-                        span.toggleClass('trans');
-                        break;
-                    default:
-                        break;
+                } else {
+                    wait.detachAnimate();
+                    msg('保存失败');
                 }
-
-            }
-            if (p.className === "group") {
-                var f = $(p).children('div.frame');
-                var p1 = $(p).children('div.msg');
-                var p2 = $(p1).find('span.after');
-                p2.toggleClass('trans');
-                f.slideToggle();
+            });
+        }
+        //保存按钮
+        function save(e) {
+            if (!$('#save').hasClass('saveYes') && !isChanged) { //&& ||
                 return;
-            } else {
-                do {
-                    p = p.parentNode;
-                    if (p.className === "group") {
-                        var f2 = $(p).children('div.frame');
-                        var p3 = $(p).children('div.msg');
-                        var p4 = $(p3).find('span.after');
-                        p4.toggleClass('trans');
-                        f2.slideToggle();
-                        return;
+            }
+            wait.execAnimate();
+            model.findAll({
+                class: "user",
+                qid: qID
+            }, function(ret, err) {
+                if (ret) {
+                    saveData(ret[0].id);
+                } else {
+                    wait.detachAnimate();
+                    msg("保存失败!");
+                    return;
+                }
+            });
+            $('#save').removeClass('saveYes');
+            $('#save').addClass('saveNo');
+            isChanged = false;
+        }
+        //修改信息
+        function exec(e) {
+            e = e || window.event;
+            if (e.target) {
+                var p = e.target;
+                /* console.log(p.className)*/
+                if (p.className === "cancel") {
+                    //定位父亲
+                    var foot1 = $(p).parent();
+                    //定位frame
+                    var frame1 = $(foot1).parent();
+                    var outCon1 = $(frame1).siblings('div.msg');
+                    var out1 = $(outCon1).children('p');
+                    var span1 = $(outCon1).children('span');
+                    frame1.slideToggle();
+                    span1.toggleClass('trans');
+                    return;
+                }
+                if (p.className === "ok") {
+                    //定位父亲
+                    var foot = $(p).parent();
+                    //定位frame
+                    var frame = $(foot).parent();
+                    var flag = $(frame).attr('flag');
+                    var outCon = $(frame).siblings('div.msg');
+                    var span = $(outCon).children('span');
+                    flag = parseInt(flag);
+                    switch (flag) {
+                        case 1:
+                        case 2: //定位input
+                            var con = $(frame).children('div.head');
+                            var input = $(con).children('input');
+                            //定位p
+                            var out = $(outCon).children('p');
+                            var text = $(input).val();
+                            if ($.trim(text) !== '') {
+                                isChanged = true;
+                                $('#save').removeClass('saveNo');
+                                $('#save').addClass('saveYes');
+                                $(out).text($.trim(text));
+                                if (flag === 1) {
+                                    userMsg.nickName = $.trim(text);
+                                } else {
+                                    userMsg.introduce = $.trim(text);
+                                }
+                            }
+                            frame.slideToggle();
+                            span.toggleClass('trans');
+                            break;
+                        case 3:
+                            var group = $("input[name='sex']");
+                            //定位p
+                            var out2 = $(outCon).children('p');
+                            if (group[0].checked == true) {
+
+                                $(out2).text(group[0].value);
+                                userMsg.sex = group[0].value;
+                            } else {
+                                userMsg.sex = group[1].value;
+                                $(out2).text(group[1].value);
+                            }
+                            $('#save').removeClass('saveNo');
+                            $('#save').addClass('saveYes');
+                            isChanged = true;
+                            frame.slideToggle();
+                            span.toggleClass('trans');
+                            break;
+                        case 4:
+                            var con2 = $(frame).children('div.head');
+                            var input2 = $(con2).children('input');
+                            //定位p
+                            var out3 = $(outCon).children('p');
+                            var text2 = $(input2).val();
+
+                            if ($.trim(text2) !== '') {
+                                isChanged = true;
+                                userMsg.birthday = text2;
+                                $('#save').removeClass('saveNo');
+                                $('#save').addClass('saveYes');
+                                $(out3).text($.trim(text2));
+                            }
+                            frame.slideToggle();
+                            span.toggleClass('trans');
+                            break;
+                        default:
+                            break;
                     }
 
-                } while (p.className != "content" && p.className !== "frame");
+                }
+                if (p.className === "group") {
+                    var f = $(p).children('div.frame');
+                    var p1 = $(p).children('div.msg');
+                    var p2 = $(p1).find('span.after');
+                    p2.toggleClass('trans');
+                    f.slideToggle();
+                    return;
+                } else {
+                    do {
+                        p = p.parentNode;
+                        if (p.className === "group") {
+                            var f2 = $(p).children('div.frame');
+                            var p3 = $(p).children('div.msg');
+                            var p4 = $(p3).find('span.after');
+                            p4.toggleClass('trans');
+                            f2.slideToggle();
+                            return;
+                        }
+
+                    } while (p.className != "content" && p.className !== "frame");
+                }
             }
         }
     }
-}
 </script>
 
 </html>
