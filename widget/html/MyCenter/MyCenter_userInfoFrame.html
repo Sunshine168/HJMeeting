@@ -652,8 +652,76 @@
                         }
                     }, function(ret, err) {
                         if (ret) {
-                            wait.detachAnimate();
-                            msg('保存成功');
+                            wait.execAnimate();
+                            var imgURL = ret.data;
+                            console.log("图片地址" + ret.data);
+                            model.findAll({
+                                class: 'user',
+                                qid: qID
+                            }, function(ret, err) {
+                                //根据用户找到ID
+                                var usrID;
+                                console.log(JSON.stringify(ret));
+                                if (ret) {
+                                    usrID = ret[0].id;
+                                    //根据user和file对应的ID删除对应的之前的头像
+                                    model.findAll({
+                                        class: 'file',
+                                        qid: imgID
+                                    }, function(ret, err) {
+                                        console.log(usrID);
+                                        if (ret) {
+                                            console.log(JSON.stringify(ret));
+                                            var fileID = ret[0].id;
+                                            //删除
+                                            model.deleteById({
+                                                class: 'file',
+                                                id: fileID
+                                            }, function(ret, err) {
+                                                //上传新的头像
+                                                if (ret) {
+                                                    model.uploadFile({
+                                                        data: {
+                                                            file: {
+                                                                url: imgURL,
+                                                                name: "用户:<" + $('#tUser').text() + ">的头像"
+                                                            },
+                                                            values: {
+                                                                userID: usrID
+                                                            }
+                                                        },
+                                                        report: true
+                                                    }, function(ret, err) {
+                                                        if (ret.status == 1) {
+                                                            //上传成功
+                                                            $('#userAvatar').attr('src', imgURL);
+                                                            wait.detachAnimate();
+                                                            msg('上传成功!');
+                                                        } else if (ret.status == 2) {
+                                                            //上传失败
+                                                            wait.detachAnimate();
+                                                            msg('上传失败!');
+                                                            return;
+                                                        }
+                                                    });
+                                                } else {
+                                                    //删除旧头像失败
+                                                    wait.detachAnimate();
+                                                    msg('上传失败!');
+                                                    return;
+                                                }
+                                            });
+                                        } else {
+                                            //未找到file
+                                            wait.detachAnimate();
+                                            msg('上传失败!');
+                                            return;
+                                        }
+                                    });
+                                } else {
+                                    //未选择图片
+                                }
+                            });
                         } else {
                             wait.detachAnimate();
                             msg('保存失败');
