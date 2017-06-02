@@ -526,11 +526,11 @@ function main() {
         api.actionSheet({
             title: '选择',
             cancelTitle: '取消',
-            buttons: ['拍照', '相册']
+            buttons: ['相册']
         }, function(ret, err) {
             if (ret) {
                 var type = ['carema', 'album'];
-                if (ret.buttonIndex !== 3) {
+                if (ret.buttonIndex == 1) {
                     api.getPicture({
                         sourceType: type[ret.buttonIndex - 1],
                         allowEdit: true,
@@ -550,19 +550,21 @@ function main() {
                                 //根据用户找到ID
                                 var usrID;
                                 console.log(JSON.stringify(ret));
-                                if (ret[0].id) {
-                                    usrID = ret[0].id;
+                                if (ret) {
+                                    usrID = ret[0].id;/*
                                     query.whereEqual({
                                         qid: imgID,
-                                        value: usrID,
-                                        column: 'userID'
-                                    });
+                                        column: 'userID',
+                                        value: usrID
+                                    });*/
                                     //根据user和file对应的ID删除对应的之前的头像
                                     model.findAll({
                                         class: 'file',
                                         qid: imgID
                                     }, function(ret, err) {
-                                        if (ret[0].id) {
+                                        console.log(JSON.stringify(ret));
+                                        console.log(usrID);
+                                        if (ret) {
                                             console.log(JSON.stringify(ret));
                                             var fileID = ret[0].id;
                                             //删除
@@ -586,6 +588,7 @@ function main() {
                                                     }, function(ret, err) {
                                                         if (ret.status == 1) {
                                                             //上传成功
+                                                            $('#userAvatar').attr('src', imgURL);
                                                             wait.detachAnimate();
                                                             msg('上传成功!');
                                                         } else if (ret.status == 2) {
