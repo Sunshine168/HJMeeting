@@ -13,7 +13,6 @@
     body {
         height: 100%;
         background-color: #008BE3;
-        
     }
     
     * {
@@ -55,37 +54,14 @@
     </div>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
-<script type="text/javascript">/*
-function ToFrame() {
-    this.login = "LoginFrame.html";
-    this.register = "RegisterFrame.html";
-}
-ToFrame.prototype.getThis = function() {
-    return this;
-};
-ToFrame.prototype.goLogin = function() {
-    api.setFrameGroupIndex({
-        name: this.login,
-        index: 0,
-        scroll: true
-    });
-};
-ToFrame.prototype.goRegister = function() {
-    api.setFrameGroupIndex({
-        name: this.register,
-        index: 0,
-        scroll: true
-    });
-};ToFrame.prototype.test = function() {
-    alert('成功');
-};
-*/
+<script type="text/javascript">
+console.log('进入了LoginRegisterWindow');
 apiready = function() {
     api.addEventListener({
-                name: 'keyback'
-            }, function(ret, err) {
-                back();
-            });
+        name: 'keyback'
+    }, function(ret, err) {
+        back();
+    });
     api.openFrameGroup({
         name: 'group1',
         background: '#fff',
@@ -102,37 +78,47 @@ apiready = function() {
             name: 'LoginFrame.html',
             url: 'LoginFrame.html',
             bgColor: 'red',
-            pageParam:{
-                 
+            pageParam: {
+
             }
         }, {
             name: 'RegisterFrame.html',
             url: 'RegisterFrame.html',
             bgColor: '#fff',
-            pageParam:{
-                
+            pageParam: {
+
             }
         }]
     }, function(ret, err) {
-        var title=$api.byId('title');
-        if(ret.index){
+        var title = $api.byId('title');
+        if (ret.index) {
             $api.html(title, '用户注册');
-        }else{
+        } else {
             $api.html(title, '用户登录');
         }
+        console.log(JSON.stringify(err));
+        console.log(JSON.stringify(ret));
     });
-}; 
-function back(){
-    api.closeFrameGroup({
-        name: 'group1'
-    });
-    api.historyBack({
-         
-    },function(ret,err){
-        if(!ret.status){
-            api.closeWin();
-        }
-    });
+};
+
+function back() {
+    //按照用户是否登录跳转
+    if ($api.getStorage('userMessage')) {
+        api.closeFrameGroup({
+            name: 'group1'
+        });
+         api.openWin({
+            name: 'Mycenter',
+            url: './MyCenter.html',
+
+            pageParam: {}
+        });
+        api.closeWin();
+        console.log('执行到此位置');
+    } else {
+
+    }
+
 }
 </script>
 

@@ -357,6 +357,15 @@ var wait;
 wait = new Wait();
 wait.createAnimate('../../image/loading_more.gif');
 wait.execAnimate();
+//storage
+var userStorage = $api.getStorage('userMessage');
+if (!userStorage) {
+    setTimeout(function() {
+        $api.closeFrame();
+    }, 1);
+    api.closeWin();
+    return;
+}
 //模块
 var model,
     query,
@@ -379,6 +388,7 @@ apiready = function() {
     model = api.require('model');
     query = api.require('query');
     relation = api.require('relation');
+    $('#tUser').text(userStorage[0].userName);
     //初始化query设置
     (function() {
         query.createQuery(function(ret, err) {
@@ -387,7 +397,7 @@ apiready = function() {
                 query.whereEqual({
                     qid: initID,
                     column: 'username',
-                    value: $('#tUser').text() //此处应为上级页面传过来的值查找到的userName
+                    value: $('#tUser').text()  
                 });
                 //获取数据
                 model.findAll({
@@ -539,7 +549,7 @@ function main() {
                         targetHeight: 92,
                         saveToPhotoAlbum: false
                     }, function(ret, err) {
-                        if (ret) {
+                        if (ret.data) {
                             wait.execAnimate();
                             var imgURL = ret.data;
                             console.log("图片地址" + ret.data);

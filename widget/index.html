@@ -8,16 +8,26 @@
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
-    apiready = function() {
+apiready = function() {
+    if (!$api.getStorage('userMessage')) {
         api.openWin({
-            name: 'index',
-            url: './html/MyCenter/MyCenter.html',
-            /* MyCenter.html调试*/
+            name: 'LoginRegisterWindow.html',
+            url: './html/MyCenter/LoginRegisterWindow.html',
             pageParam: {
-                name: 'test'
+
             }
         });
-    };
+        return;
+    }
+    api.openWin({
+        name: 'MyCenter.html',
+        url: './html/MyCenter/MyCenter.html',
+       
+        pageParam: {
+            name: 'test'
+        }
+    });
+};
 </script>
 
 </html>

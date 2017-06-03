@@ -80,17 +80,17 @@
     }
     
     .userSay>p,
-    span {
+    {
         display: inline-block;
         vertical-align: middle;
     }
-    
-    .userSay>span {
-        background: url('../../image/saySth.png') no-repeat;
-        background-size: 100% 100%;
-        width: 23px;
-        height: 23px;
-    }
+    /*    .userSay>span {
+     background: url('../../image/saySth.png') no-repeat;
+     background-size: 100% 100%;
+     width: 23px;
+     height: 23px;
+ }
+  */
     
     .userSay {
         color: #D7D7D7;
@@ -137,13 +137,15 @@
         align-items: center;
         border-radius: 5px;
     }
-    .loginOut>p{
+    
+    .loginOut>p {
         display: inline-block;
         text-align: center;
         font-size: 14px;
         color: #fff;
     }
-    .loginOut{
+    
+    .loginOut {
         text-decoration: none;
         background-color: #ff6600;
         display: -webkit-flex;
@@ -155,8 +157,8 @@
         align-items: center;
         width: 100%;
         border-radius: 5px;
-
     }
+    
     .listItem:active {
         background-color: #00cee5;
     }
@@ -233,16 +235,16 @@
     <div class="container">
         <div class="user">
             <div class="userImgContainer">
-                <img class="userImg" src="../../image/userDefault.bmp" alt="用户头像">
+                <img class="userImg" id="userAvatar" src="../../image/userDefault.bmp" alt="用户头像">
             </div>
             <div class="fix">
                 <div class="userMsg">
                     <div class="userName">
-                        <p>JustDoIt</p>
+                        <p id="userName">未设置</p>
                         <img src="../../image/vipYes.gif" alt="vip状态">
                     </div>
                     <div class="userSay">
-                        <p>我不忍心再欺哄但愿你听得懂</p>
+                        <p id="userIntroduce">未设置</p>
                         <span></span>
                     </div>
                 </div>
@@ -296,39 +298,119 @@
                 <p>我的商店</p>
                 <span class="tip"></span>
             </div>
-            
         </div>
         <a class="loginOut" href="javascript:void(0)" onclick="loginOut()">
-                <p>退出登录</p>
+            <p>退出登录</p>
         </a>
     </div>
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
+<script type="text/javascript" src="../../script/jquery.js"></script>
+<script type="text/javascript" src="../../script/wait.js"></script>
 <script type="text/javascript">
+//等待页面
+var wait;
+wait = new Wait();
+wait.createAnimate('../../image/loading_more.gif');
+wait.execAnimate();
+var model;
+var relation;
+var query;
+var user;
+
+function msg(msgs) {
+    api.toast({
+        msg: msgs,
+        duration: 2000,
+        location: 'bottom'
+    });
+}
 var menu = document.getElementById('menu');
 apiready = function() {
-    (function() {
+    var imgID;
+    var isLogined = api.pageParam;
+    console.log('api.pageParam' + JSON.stringify(api.pageParam));
+    model = api.require('model');
+    relation = api.require('relation');
+    query = api.require('query');
+    user = api.require('user');
+    (function(isLogin) {
         menu.addEventListener("click", foo);
 
         function foo(e) {
-            e = e || window.event;
-            var t;
-            if (e.target/*&&e.target.nodeName!=="A"*/) {
-                if (e.target.className == 'listItem') {
-                    goToWindow(e.target.getAttribute('value'));
-                } else {
-                    t = e.target.parentNode;
-                    do {
-                        if (t.className == 'listItem') {
-                            goToWindow(t.getAttribute('value'));
-                            break;
-                        }
-                        t = t.parentNode;
-                    } while (1);
+            //没登录就不让点击
+            if (isLogined.isLogin && $api.getStorage('userMessage')) {
+                e = e || window.event;
+                var t;
+                if (e.target /*&&e.target.nodeName!=="A"*/ ) {
+                    if (e.target.className == 'listItem') {
+                        goToWindow(e.target.getAttribute('value'));
+                    } else {
+                        t = e.target.parentNode;
+                        do {
+                            if (t.className == 'listItem') {
+                                goToWindow(t.getAttribute('value'));
+                                break;
+                            }
+                            t = t.parentNode;
+                        } while (1);
+                    }
                 }
             }
         }
-    })();
+    })(isLogined);
+    //设置用户信息
+
+    console.log(isLogined.isLogin);
+    console.log(JSON.stringify($api.getStorage('userMessage')));
+    if (isLogined.isLogin && $api.getStorage('userMessage')) {
+        var usr = $api.getStorage('userMessage');
+        relation.findAll({
+            class: 'user',
+            id: usr[0].userID,
+            column: 'userMessage'
+        }, function(ret, err) {
+            //个性签名
+            console.log(JSON.stringify(ret));
+            if (ret) {
+                $('#userIntroduce').text(ret[0].introduce);
+            } else {
+                wait.detachAnimate();
+                msg('网络异常');
+            }
+        });
+        //用户名
+        $('#userName').text(usr[0].userName);
+        query.createQuery(function(ret, err) {
+            imgID = ret.qid;
+            query.whereEqual({
+                qid: imgID,
+                value: usr[0].userID,
+                column: 'userID'
+            });
+            model.findAll({
+                class: 'file',
+                qid: imgID
+            }, function(ret, err) {
+                if (ret[0].url) {
+                    var fileurl = ret[0].url;
+                    api.imageCache({
+                        url: fileurl
+                    }, function(ret, err) {
+                        if (ret) {
+                            $('#userAvatar').attr('src', ret.url);
+                            wait.detachAnimate();
+                        } else {
+                            wait.detachAnimate();
+                            msg(JSON.stringify(err));
+                        }
+                    });
+                } else {
+                    wait.detachAnimate();
+                }
+            });
+        });
+    }
 
     function goToWindow(where) {
         api.openWin({
@@ -342,17 +424,37 @@ apiready = function() {
     }
 };
 
-    function loginOut(){
-        /*处理退出登录的事情*/ 
-        api.openWin({
-            name: 'LoginRegisterWindow.html',
-            url: './LoginRegisterWindow.html',
-            pageParam: {
-                 
-            }
-        });
+function close() {
+    api.openWin({
+        name: 'LoginRegisterWindow.html',
+        url: './LoginRegisterWindow.html',
+        pageParam: {
 
-    }
+        }
+    });
+    api.closeFrame({
+        name: 'MyCenterFrame.html'
+    });
+
+    api.closeWin({
+        name: 'MyCenter.html'
+    });
+
+    console.log('执行到此位置');
+}
+
+function loginOut() {
+    /*处理退出登录的事情*/
+    $api.rmStorage('userMessage');
+    user.logout(function(ret, err) {
+        if (ret) {
+            console.log(JSON.stringify(ret));
+        } else {
+            console.log(JSON.stringify(err));
+        }
+    });
+    close();
+}
 </script>
 
 </html>

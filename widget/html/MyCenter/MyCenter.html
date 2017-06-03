@@ -59,7 +59,6 @@
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
 <script type="text/javascript">
-
 var model;
 apiready = function() {
     model = api.require('model');
@@ -68,8 +67,9 @@ apiready = function() {
         appKey: '438E7ABA-7936-55B2-ADA6-E8B5808CBA18',
         host: 'https://d.apicloud.com'
     });
+    var s=$api.getStorage('userMessage') ? true : false;
     api.openFrame({
-        name: 'MyCenterFrame.',
+        name: 'MyCenterFrame.html',
         url: './MyCenterFrame.html',
         rect: {
             x: 0,
@@ -81,7 +81,7 @@ apiready = function() {
             marginLeft: 15
         },
         pageParam: {
-
+            isLogin: s
         },
         bounces: true,
         vScrollBarEnabled: false,
