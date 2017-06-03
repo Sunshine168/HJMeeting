@@ -8,142 +8,142 @@
     <title>title</title>
     <link rel="stylesheet" type="text/css" href="../../css/api.css" />
     <style>
-    html,
-    body {
-        height: 100%;
-        background-color: #008BE3;
-    }
-    
-    * {
-        padding: 0;
-        margin: 0;
-        font-family: "微软雅黑"
-    }
-    
-    .container {
-        background-color: #008BE3;
-        width: 100%;
-        height: 100%;
-    }
-    
-    .list {
-        margin: 0 30px 30px 30px;
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flex;
-        display: -o-flex;
-        display: flex;
-        -webkit-flex-direction: column;
-        -moz-flex-direction: column;
-        -ms-flex-direction: column;
-        -o-flex-direction: column;
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .logo {
-        display: inline-block;
-        height: 20px;
-        width: 20px;
-        margin: 5px;
-    }
-    
-    .ugo {
-        background: url('../../image/ugo.png');
-        background-size: 100% 100%;
-    }
-    
-    .pgo {
-        background: url('../../image/pgo.png');
-        background-size: 100% 100%;
-    }
-    
-    .listItem {
-        margin-bottom: 10px;
-        width: 100%;
-        height: 40px;
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flex;
-        display: -o-flex;
-        display: flex;
-        -webkit-flex-direction: row;
-        -moz-flex-direction: row;
-        -ms-flex-direction: row;
-        -o-flex-direction: row;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
-        border: solid 1px rgba(103, 131, 178, 0.32);
-        background-color: #fff;
-        background-color: rgba(0, 0, 0, 0.23);
-        border-radius: 5px;
-    }
-    
-    .listItem+.listAuth {
-        align-items: center;
-        border: none;
-        background-color: transparent;
-        margin-top: 5px;
-    }
-    
-    .listItem+.listAuth>input {
-        border: solid 1px rgba(103, 131, 178, 1);
-    }
-    
-    .listItem>input {
-        flex-grow: 1;
-        padding: 5px 0;
-        border: none;
-        margin: 5px;
-        background-color: transparent;
-    }
-    
-    .auth {
-        align-content: center;
-        text-decoration: none;
-        color: #fff;
-        font-size: 12px;
-        line-height: 40px;
-        width: 120px;
-        height: 100%;
-    }
-    
-    .listItem + .go {
-        margin-top: 30px;
-        background-color: #99CC00;
-        text-decoration: none;
-        color: #fff;
-        font-size: 16px;
-        border: none;
-    }
-    
-    .do {
-        color: #fff;
-        margin-top: 100px;
-        background-color: #008BE3;
-        font-size: 14px;
-    }
-    
-    .yes {
-        background: url('../../image/yes.png');
-        background-size: 100% 100%;
-    }
-    
-    .error {
-        background: url('../../image/error.png');
-        background-size: 100% 100%;
-    }
-    
-    .is {
-        width: 13px;
-        height: 13px;
-        margin: 0 10px 0 0;
-    }
-    
-    .do:active {
-        color: #000
-    }
+        html,
+        body {
+            height: 100%;
+            background-color: #008BE3;
+        }
+        
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: "微软雅黑"
+        }
+        
+        .container {
+            background-color: #008BE3;
+            width: 100%;
+            height: 100%;
+        }
+        
+        .list {
+            margin: 0 30px 30px 30px;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            -moz-flex-direction: column;
+            -ms-flex-direction: column;
+            -o-flex-direction: column;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .logo {
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+            margin: 5px;
+        }
+        
+        .ugo {
+            background: url('../../image/ugo.png');
+            background-size: 100% 100%;
+        }
+        
+        .pgo {
+            background: url('../../image/pgo.png');
+            background-size: 100% 100%;
+        }
+        
+        .listItem {
+            margin-bottom: 10px;
+            width: 100%;
+            height: 40px;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            -webkit-flex-direction: row;
+            -moz-flex-direction: row;
+            -ms-flex-direction: row;
+            -o-flex-direction: row;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+            border: solid 1px rgba(103, 131, 178, 0.32);
+            background-color: #fff;
+            background-color: rgba(0, 0, 0, 0.23);
+            border-radius: 5px;
+        }
+        
+        .listItem+.listAuth {
+            align-items: center;
+            border: none;
+            background-color: transparent;
+            margin-top: 5px;
+        }
+        
+        .listItem+.listAuth>input {
+            border: solid 1px rgba(103, 131, 178, 1);
+        }
+        
+        .listItem>input {
+            flex-grow: 1;
+            padding: 5px 0;
+            border: none;
+            margin: 5px;
+            background-color: transparent;
+        }
+        
+        .auth {
+            align-content: center;
+            text-decoration: none;
+            color: #fff;
+            font-size: 12px;
+            line-height: 40px;
+            width: 120px;
+            height: 100%;
+        }
+        
+        .listItem+.go {
+            margin-top: 30px;
+            background-color: #99CC00;
+            text-decoration: none;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+        }
+        
+        .do {
+            color: #fff;
+            margin-top: 100px;
+            background-color: #008BE3;
+            font-size: 14px;
+        }
+        
+        .yes {
+            background: url('../../image/yes.png');
+            background-size: 100% 100%;
+        }
+        
+        .error {
+            background: url('../../image/error.png');
+            background-size: 100% 100%;
+        }
+        
+        .is {
+            width: 13px;
+            height: 13px;
+            margin: 0 10px 0 0;
+        }
+        
+        .do:active {
+            color: #000
+        }
     </style>
 </head>
 
@@ -173,178 +173,173 @@
 <script type="text/javascript" src="../../script/Gverify.js"></script>
 <script type="text/javascript" src="../../script/jquery.js"></script>
 <script type="text/javascript">
-var user;
-var model;
-var query;
-var qID;
+    var user;
+    var model;
+    var query;
+    var qID;
 
-function msg(msgs) {
-    api.toast({
-        msg: msgs,
-        duration: 2000,
-        location: 'bottom'
-    });
-}
-apiready = function() {
-    user = api.require('user');
-    model = api.require('model');
-    query = api.require('query');
-    query.createQuery(function(ret, err) {
-        if (ret) {
-            qID = ret.qid;
-        } else {}
-    });
-};
-(function() {
-    var p,
-        u;
-    var okMail = false;
-    var okAuth = false;
-    var mail;
-    var pwd = $api.byId('pwd');
-    var judge = $api.byId('judge');
-    var login = $api.byId('login');
-    var toRegister = $api.byId('toRegister');
-
-    var v = new GVerify('auth');
-    var auths = $api.byId('auths');
-    var judgeAuth = $api.byId('judgeAuth');
-    auths.addEventListener('blur', authInput);
-
-    login.addEventListener('click', Flogin);
-    toRegister.addEventListener('click', FtoRegister);
-    pwd.addEventListener('input', input);
-
-    var reg = new RegExp("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?");
-    //让此frame的window来执行
-    function close() {
-        console.log('执行到此位置');
-        api.openWin({
-            name: 'Mycenter.html',
-            url: './MyCenter.html',
-            pageParam: {}
-        });
-        api.closeFrameGroup({
-            name: 'group1'
-        });
-        api.closeWin({
-            name: 'LoginRegisterWindow.html'
-        });
-
-        console.log('执行到此位置');
-    }
-
-    function input(e) {
-        mail = $api.val(pwd);
-        if (mail === '') {
-            $api.removeCls(judge, 'yes');
-            $api.removeCls(judge, 'error');
-            okMail = false;
-            e.preventDefault();
-        } else
-        if (reg.test(mail) == true) {
-            $api.removeCls(judge, 'error');
-            $api.addCls(judge, 'yes');
-            okMail = true;
-        } else {
-            $api.addCls(judge, 'error');
-            $api.removeCls(judge, 'yes');
-            okMail = false;
-        }
-    }
-
-    function FtoRegister() {
-        api.setFrameGroupIndex({
-            name: 'group1',
-            index: 1,
-            scroll: true
+    function msg(msgs) {
+        api.toast({
+            msg: msgs,
+            duration: 2000,
+            location: 'bottom'
         });
     }
+    apiready = function() {
+        user = api.require('user');
+        model = api.require('model');
+        query = api.require('query');
+        query.createQuery(function(ret, err) {
+            if (ret) {
+                qID = ret.qid;
+            } else {}
+        });
+    };
+    (function() {
+        var p,
+            u;
+        var okMail = false;
+        var okAuth = false;
+        var mail;
+        var pwd = $api.byId('pwd');
+        var judge = $api.byId('judge');
+        var login = $api.byId('login');
+        var toRegister = $api.byId('toRegister');
 
-    function authInput() {
-        text = $api.val(auths);
-        var res = v.validate(text);
-        if (text === '') {
-            $api.addCls(judgeAuth, 'error');
-            $api.removeCls(judgeAuth, 'yes');
-            okAuth = false;
-        } else
-        if (res) {
-            $api.removeCls(judgeAuth, 'error');
-            $api.addCls(judgeAuth, 'yes');
-            okAuth = true;
-        } else {
-            $api.addCls(judgeAuth, 'error');
-            $api.removeCls(judgeAuth, 'yes');
-            okAuth = false;
+        var v = new GVerify('auth');
+        var auths = $api.byId('auths');
+        var judgeAuth = $api.byId('judgeAuth');
+        auths.addEventListener('blur', authInput);
+
+        login.addEventListener('click', Flogin);
+        toRegister.addEventListener('click', FtoRegister);
+        pwd.addEventListener('input', input);
+
+        var reg = new RegExp("[\\w!#$%&'*+/=?^_`{|}~-]+(?:\\.[\\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\\w](?:[\\w-]*[\\w])?\\.)+[\\w](?:[\\w-]*[\\w])?");
+        //让此frame的window来执行
+        function close() {
+            api.openWin({
+                name: 'Mycenter.html',
+                url: './MyCenter.html',
+                pageParam: {
+                    local: "login"
+                }
+            });
+
+            console.log('执行到此位置');
         }
-    }
 
-    function Flogin() {
-        authInput();
-
-        v = new GVerify('auth');
-        if (!okMail) {
-            $api.addCls(judge, 'error');
-            $api.removeCls(judge, 'yes');
-            okAuth = false;
-            return;
-        }
-        var p = $('#pwds').val();
-        if ($.trim(pwd) == '') {
-            msg('请输入密码');
-            return;
-        }
-        if (!okAuth) {
-            $api.addCls(judgeAuth, 'error');
-            $api.removeCls(judgeAuth, 'yes');
-            return;
-        }
-        var u = $('#pwd').val();
-        user.login({
-            username: u,
-            password: p
-        }, function(ret, err) {
-            console.log(JSON.stringify(ret));
-            if (err.statusCode) {
-                msg("用户名或密码错误!");
-            } else if (ret.id) {
-                console.log('u:' + u);
-                console.log('p:' + p);
-                query.whereEqual({
-                    qid: qID,
-                    column: 'username',
-                    value: u
-                });
-                console.log(JSON.stringify(qID));
-                model.findAll({
-                    class: 'user',
-                    qid: qID
-                }, function(ret, err) {
-                    console.log(JSON.stringify(ret));
-                    if (ret[0].id) {
-                        var usr = [{
-                            userID: ret[0].id,
-                            userName: u,
-                            userPassword: p,
-                        }];
-                        console.log(JSON.stringify(usr));
-                        $api.setStorage('userMessage', usr);
-                        msg("登录成功!");
-                        close();
-
-                    } else {
-                        msg("登录失败!");
-                        return;
-                    }
-                });
-
+        function input(e) {
+            mail = $api.val(pwd);
+            if (mail === '') {
+                $api.removeCls(judge, 'yes');
+                $api.removeCls(judge, 'error');
+                okMail = false;
+                e.preventDefault();
+            } else
+            if (reg.test(mail) == true) {
+                $api.removeCls(judge, 'error');
+                $api.addCls(judge, 'yes');
+                okMail = true;
             } else {
-                msg("登录失败!");
+                $api.addCls(judge, 'error');
+                $api.removeCls(judge, 'yes');
+                okMail = false;
             }
-        });
-    }
-})();
+        }
+
+        function FtoRegister() {
+            api.setFrameGroupIndex({
+                name: 'group1',
+                index: 1,
+                scroll: true
+            });
+        }
+
+        function authInput() {
+            text = $api.val(auths);
+            var res = v.validate(text);
+            if (text === '') {
+                $api.addCls(judgeAuth, 'error');
+                $api.removeCls(judgeAuth, 'yes');
+                okAuth = false;
+            } else
+            if (res) {
+                $api.removeCls(judgeAuth, 'error');
+                $api.addCls(judgeAuth, 'yes');
+                okAuth = true;
+            } else {
+                $api.addCls(judgeAuth, 'error');
+                $api.removeCls(judgeAuth, 'yes');
+                okAuth = false;
+            }
+        }
+
+        function Flogin() {
+            authInput();
+
+            v = new GVerify('auth');
+            if (!okMail) {
+                $api.addCls(judge, 'error');
+                $api.removeCls(judge, 'yes');
+                okAuth = false;
+                return;
+            }
+            var p = $('#pwds').val();
+            if ($.trim(pwd) == '') {
+                msg('请输入密码');
+                return;
+            }
+            if (!okAuth) {
+                $api.addCls(judgeAuth, 'error');
+                $api.removeCls(judgeAuth, 'yes');
+                return;
+            }
+            var u = $('#pwd').val();
+            user.login({
+                username: u,
+                password: p
+            }, function(ret, err) {
+                console.log(JSON.stringify(ret));
+                if (err.statusCode) {
+                    msg("用户名或密码错误!");
+                } else if (ret.id) {
+                    console.log('u:' + u);
+                    console.log('p:' + p);
+                    query.whereEqual({
+                        qid: qID,
+                        column: 'username',
+                        value: u
+                    });
+                    console.log(JSON.stringify(qID));
+                    model.findAll({
+                        class: 'user',
+                        qid: qID
+                    }, function(ret, err) {
+                        console.log(JSON.stringify(ret));
+                        if (ret[0].id) {
+                            var usr = [{
+                                userID: ret[0].id,
+                                userName: u,
+                                userPassword: p,
+                            }];
+                            console.log(JSON.stringify(usr));
+                            $api.setStorage('userMessage', usr);
+                            msg("登录成功!");
+                            close();
+
+                        } else {
+                            msg("登录失败!");
+                            return;
+                        }
+                    });
+
+                } else {
+                    msg("登录失败!");
+                }
+            });
+        }
+    })();
 </script>
 
 </html>

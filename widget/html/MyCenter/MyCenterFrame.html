@@ -8,226 +8,226 @@
     <title>title</title>
     <link rel="stylesheet" type="text/css" href="../../css/api.css" />
     <style>
-    html,
-    body {
-        height: 100%;
-        background-color: transparent;
-        font-family: "微软雅黑"
-    }
-    
-    .container {
-        border-top-left-radius: 5px;
-        border-top-right-radius: 5px;
-        background-color: transparent;
-        width: 100%;
-        margin-bottom: 10px;
-    }
-    
-    .user {
-        border-radius: 5px;
-        height: 180px;
-        width: 100%;
-        /* background-color: #3366FF; */
-        position: relative;
-    }
-    
-    .userImgContainer {
-        height: 92px;
-        width: 92px;
-        display: block;
-        background-color: #fff;
-        border: solid 1px #787878;
-        position: absolute;
-        border-radius: 45px;
-        left: 50%;
-        margin-left: -46px;
-        z-index: 1
-    }
-    
-    .fix {
-        width: 100%;
-        height: 160px;
-        background-color: #3366FF;
-        position: absolute;
-        left: 0;
-        top: 20px;
-        border-radius: 5px;
-        box-shadow: 0 5px 5px #aaa
-    }
-    
-    .userMsg {
-        width: 100%;
-        position: absolute;
-        bottom: 0;
-        border-bottom-left-radius: 5px;
-        border-bottom-right-radius: 5px;
-        text-align: center;
-    }
-    
-    .userName {}
-    
-    .userName>p,
-    img {
-        display: inline-block;
-        vertical-align: middle;
-        font-size: 14px;
-        color: #fff;
-    }
-    
-    .userName>img {
-        height: 18px;
-        width: 18px;
-    }
-    
-    .userSay>p,
-    {
-        display: inline-block;
-        vertical-align: middle;
-    }
-    /*    .userSay>span {
+        html,
+        body {
+            height: 100%;
+            background-color: transparent;
+            font-family: "微软雅黑"
+        }
+        
+        .container {
+            border-top-left-radius: 5px;
+            border-top-right-radius: 5px;
+            background-color: transparent;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+        
+        .user {
+            border-radius: 5px;
+            height: 180px;
+            width: 100%;
+            /* background-color: #3366FF; */
+            position: relative;
+        }
+        
+        .userImgContainer {
+            height: 92px;
+            width: 92px;
+            display: block;
+            background-color: #fff;
+            border: solid 1px #787878;
+            position: absolute;
+            border-radius: 45px;
+            left: 50%;
+            margin-left: -46px;
+            z-index: 1
+        }
+        
+        .fix {
+            width: 100%;
+            height: 160px;
+            background-color: #3366FF;
+            position: absolute;
+            left: 0;
+            top: 20px;
+            border-radius: 5px;
+            box-shadow: 0 5px 5px #aaa
+        }
+        
+        .userMsg {
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
+            text-align: center;
+        }
+        
+        .userName {}
+        
+        .userName>p,
+        img {
+            display: inline-block;
+            vertical-align: middle;
+            font-size: 14px;
+            color: #fff;
+        }
+        
+        .userName>img {
+            height: 18px;
+            width: 18px;
+        }
+        
+        .userSay>p,
+        {
+            display: inline-block;
+            vertical-align: middle;
+        }
+        /*    .userSay>span {
      background: url('../../image/saySth.png') no-repeat;
      background-size: 100% 100%;
      width: 23px;
      height: 23px;
  }
   */
-    
-    .userSay {
-        color: #D7D7D7;
-        font-size: 12px;
-        margin-bottom: 10px;
-    }
-    
-    .userImg {
-        position: absolute;
-        top: 1px;
-        left: 1px;
-        height: 90px;
-        width: 90px;
-        border-radius: 45px;
-    }
-    
-    .list {
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flex;
-        display: -o-flex;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        width: 100%;
-        height: 100%;
-        margin-top: 5px;
-        background-color: #fff
-    }
-    
-    .listItem {
-        height: 44px;
-        width: 100%;
-        display: -webkit-inline-flex;
-        display: -moz-inline-flex;
-        display: -ms-inline-flex;
-        display: -o-inline-flex;
-        display: inline-flex;
-        -webkit-flex-direction: row;
-        -moz-flex-direction: row;
-        -ms-flex-direction: row;
-        -o-flex-direction: row;
-        flex-direction: row;
-        align-items: center;
-        border-radius: 5px;
-    }
-    
-    .loginOut>p {
-        display: inline-block;
-        text-align: center;
-        font-size: 14px;
-        color: #fff;
-    }
-    
-    .loginOut {
-        text-decoration: none;
-        background-color: #ff6600;
-        display: -webkit-flex;
-        display: -moz-flex;
-        display: -ms-flex;
-        display: -o-flex;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 100%;
-        border-radius: 5px;
-    }
-    
-    .listItem:active {
-        background-color: #00cee5;
-    }
-    
-    .lLogo,
-    .tip {
-        height: 22px;
-        width: 22px;
-        margin-right: 10px;
-        margin-left: 15px;
-    }
-    
-    .listItem>p {
-        flex-grow: 1;
-        margin-left: 5px;
-        color: #333333;
-        font-size: 14px;
-    }
-    
-    .lLogo1 {
-        background: url('../../image/userSelf.png') no-repeat;
-        background-size: 100% 100%
-    }
-    
-    .lLogo2 {
-        background: url('../../image/userVIP.png') no-repeat;
-        background-size: 100% 100%
-    }
-    
-    .lLogo3 {
-        background: url('../../image/userCommit.png') no-repeat;
-        background-size: 100% 100%
-    }
-    
-    .lLogo4 {
-        background: url('../../image/userFile.png') no-repeat;
-        background-size: 100% 100%
-    }
-    
-    .lLogo5 {
-        background: url('../../image/userMsg.png') no-repeat;
-        background-size: 100% 100%
-    }
-    
-    .lLogo6 {
-        background: url('../../image/userStar.png') no-repeat;
-        background-size: 100% 100%
-    }
-    
-    .lLogo7 {
-        background: url('../../image/userArticle.png') no-repeat;
-        background-size: 100% 100%
-    }
-    
-    .lLogo8 {
-        background: url('../../image/shopLogo.png') no-repeat;
-        background-size: 100% 100%
-    }
-    
-    .tip {
-        background: url('../../image/go.png') no-repeat;
-        background-size: 100% 100%;
-    }
-    
-    .br {
-        width: 90%;
-        height: 1px;
-        background-color: #f2f2f2;
-    }
+        
+        .userSay {
+            color: #D7D7D7;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .userImg {
+            position: absolute;
+            top: 1px;
+            left: 1px;
+            height: 90px;
+            width: 90px;
+            border-radius: 45px;
+        }
+        
+        .list {
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            margin-top: 5px;
+            background-color: #fff
+        }
+        
+        .listItem {
+            height: 44px;
+            width: 100%;
+            display: -webkit-inline-flex;
+            display: -moz-inline-flex;
+            display: -ms-inline-flex;
+            display: -o-inline-flex;
+            display: inline-flex;
+            -webkit-flex-direction: row;
+            -moz-flex-direction: row;
+            -ms-flex-direction: row;
+            -o-flex-direction: row;
+            flex-direction: row;
+            align-items: center;
+            border-radius: 5px;
+        }
+        
+        .loginOut>p {
+            display: inline-block;
+            text-align: center;
+            font-size: 14px;
+            color: #fff;
+        }
+        
+        .loginOut {
+            text-decoration: none;
+            background-color: #ff6600;
+            display: -webkit-flex;
+            display: -moz-flex;
+            display: -ms-flex;
+            display: -o-flex;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            border-radius: 5px;
+        }
+        
+        .listItem:active {
+            background-color: #00cee5;
+        }
+        
+        .lLogo,
+        .tip {
+            height: 22px;
+            width: 22px;
+            margin-right: 10px;
+            margin-left: 15px;
+        }
+        
+        .listItem>p {
+            flex-grow: 1;
+            margin-left: 5px;
+            color: #333333;
+            font-size: 14px;
+        }
+        
+        .lLogo1 {
+            background: url('../../image/userSelf.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .lLogo2 {
+            background: url('../../image/userVIP.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .lLogo3 {
+            background: url('../../image/userCommit.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .lLogo4 {
+            background: url('../../image/userFile.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .lLogo5 {
+            background: url('../../image/userMsg.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .lLogo6 {
+            background: url('../../image/userStar.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .lLogo7 {
+            background: url('../../image/userArticle.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .lLogo8 {
+            background: url('../../image/shopLogo.png') no-repeat;
+            background-size: 100% 100%
+        }
+        
+        .tip {
+            background: url('../../image/go.png') no-repeat;
+            background-size: 100% 100%;
+        }
+        
+        .br {
+            width: 90%;
+            height: 1px;
+            background-color: #f2f2f2;
+        }
     </style>
 </head>
 
@@ -308,153 +308,151 @@
 <script type="text/javascript" src="../../script/jquery.js"></script>
 <script type="text/javascript" src="../../script/wait.js"></script>
 <script type="text/javascript">
-//等待页面
-var wait;
-wait = new Wait();
-wait.createAnimate('../../image/loading_more.gif');
-wait.execAnimate();
-var model;
-var relation;
-var query;
-var user;
+    //等待页面
+    var wait;
+    wait = new Wait();
+    wait.createAnimate('../../image/loading_more.gif');
+    wait.execAnimate();
+    var model;
+    var relation;
+    var query;
+    var user;
 
-function msg(msgs) {
-    api.toast({
-        msg: msgs,
-        duration: 2000,
-        location: 'bottom'
-    });
-}
-var menu = document.getElementById('menu');
-apiready = function() {
-    var imgID;
-    var isLogined = api.pageParam;
-    console.log('api.pageParam' + JSON.stringify(api.pageParam));
-    model = api.require('model');
-    relation = api.require('relation');
-    query = api.require('query');
-    user = api.require('user');
-    (function(isLogin) {
-        menu.addEventListener("click", foo);
+    function msg(msgs) {
+        api.toast({
+            msg: msgs,
+            duration: 2000,
+            location: 'bottom'
+        });
+    }
+    var menu = document.getElementById('menu');
+    apiready = function() {
+        var imgID;
+        var isLogined = api.pageParam;
+        console.log('api.pageParam' + JSON.stringify(api.pageParam));
+        model = api.require('model');
+        relation = api.require('relation');
+        query = api.require('query');
+        user = api.require('user');
+        (function(isLogin) {
+            menu.addEventListener("click", foo);
 
-        function foo(e) {
-            //没登录就不让点击
-            if (isLogined.isLogin && $api.getStorage('userMessage')) {
-                e = e || window.event;
-                var t;
-                if (e.target /*&&e.target.nodeName!=="A"*/ ) {
-                    if (e.target.className == 'listItem') {
-                        goToWindow(e.target.getAttribute('value'));
-                    } else {
-                        t = e.target.parentNode;
-                        do {
-                            if (t.className == 'listItem') {
-                                goToWindow(t.getAttribute('value'));
-                                break;
-                            }
-                            t = t.parentNode;
-                        } while (1);
+            function foo(e) {
+                //没登录就不让点击
+                if (isLogined.isLogin && $api.getStorage('userMessage')) {
+                    e = e || window.event;
+                    var t;
+                    if (e.target /*&&e.target.nodeName!=="A"*/ ) {
+                        if (e.target.className == 'listItem') {
+                            goToWindow(e.target.getAttribute('value'));
+                        } else {
+                            t = e.target.parentNode;
+                            do {
+                                if (t.className == 'listItem') {
+                                    goToWindow(t.getAttribute('value'));
+                                    break;
+                                }
+                                t = t.parentNode;
+                            } while (1);
+                        }
                     }
                 }
             }
-        }
-    })(isLogined);
-    //设置用户信息
+        })(isLogined);
+        //设置用户信息
 
-    console.log(isLogined.isLogin);
-    console.log(JSON.stringify($api.getStorage('userMessage')));
-    if (isLogined.isLogin && $api.getStorage('userMessage')) {
-        var usr = $api.getStorage('userMessage');
-        relation.findAll({
-            class: 'user',
-            id: usr[0].userID,
-            column: 'userMessage'
-        }, function(ret, err) {
-            //个性签名
-            console.log(JSON.stringify(ret));
-            if (ret) {
-                $('#userIntroduce').text(ret[0].introduce);
-            } else {
-                wait.detachAnimate();
-                msg('网络异常');
-            }
-        });
-        //用户名
-        $('#userName').text(usr[0].userName);
-        query.createQuery(function(ret, err) {
-            imgID = ret.qid;
-            query.whereEqual({
-                qid: imgID,
-                value: usr[0].userID,
-                column: 'userID'
-            });
-            model.findAll({
-                class: 'file',
-                qid: imgID
+        console.log(isLogined.isLogin);
+        console.log(JSON.stringify($api.getStorage('userMessage')));
+        if (isLogined.isLogin && $api.getStorage('userMessage')) {
+            var usr = $api.getStorage('userMessage');
+            relation.findAll({
+                class: 'user',
+                id: usr[0].userID,
+                column: 'userMessage'
             }, function(ret, err) {
-                if (ret[0].url) {
-                    var fileurl = ret[0].url;
-                    api.imageCache({
-                        url: fileurl
-                    }, function(ret, err) {
-                        if (ret) {
-                            $('#userAvatar').attr('src', ret.url);
-                            wait.detachAnimate();
-                        } else {
-                            wait.detachAnimate();
-                            msg(JSON.stringify(err));
-                        }
-                    });
+                //个性签名
+                console.log(JSON.stringify(ret));
+                if (ret) {
+                    $('#userIntroduce').text(ret[0].introduce);
                 } else {
                     wait.detachAnimate();
+                    msg('网络异常');
                 }
             });
-        });
-    }
+            //用户名
+            $('#userName').text(usr[0].userName);
+            query.createQuery(function(ret, err) {
+                imgID = ret.qid;
+                query.whereEqual({
+                    qid: imgID,
+                    value: usr[0].userID,
+                    column: 'userID'
+                });
+                model.findAll({
+                    class: 'file',
+                    qid: imgID
+                }, function(ret, err) {
+                    if (ret[0].url) {
+                        var fileurl = ret[0].url;
+                        api.imageCache({
+                            url: fileurl
+                        }, function(ret, err) {
+                            if (ret) {
+                                $('#userAvatar').attr('src', ret.url);
+                                wait.detachAnimate();
+                            } else {
+                                wait.detachAnimate();
+                                msg(JSON.stringify(err));
+                            }
+                        });
+                    } else {
+                        wait.detachAnimate();
+                    }
+                });
+            });
+        }
 
-    function goToWindow(where) {
+        function goToWindow(where) {
+            api.openWin({
+                name: where,
+                url: where,
+                pageParam: {
+
+                }
+            });
+
+        }
+    };
+
+    function close() {
+        api.closeFrame({
+            name: 'MyCenterFrame.html'
+        });
+        api.closeWin({
+            name: 'MyCenter.html'
+        });
         api.openWin({
-            name: where,
-            url: where,
+            name: 'LoginRegisterWindow.html',
+            url: './LoginRegisterWindow.html',
             pageParam: {
 
             }
         });
-
+        console.log('执行到此位置');
     }
-};
 
-function close() {
-    api.openWin({
-        name: 'LoginRegisterWindow.html',
-        url: './LoginRegisterWindow.html',
-        pageParam: {
-
-        }
-    });
-    api.closeFrame({
-        name: 'MyCenterFrame.html'
-    });
-
-    api.closeWin({
-        name: 'MyCenter.html'
-    });
-
-    console.log('执行到此位置');
-}
-
-function loginOut() {
-    /*处理退出登录的事情*/
-    $api.rmStorage('userMessage');
-    user.logout(function(ret, err) {
-        if (ret) {
-            console.log(JSON.stringify(ret));
-        } else {
-            console.log(JSON.stringify(err));
-        }
-    });
-    close();
-}
+    function loginOut() {
+        /*处理退出登录的事情*/
+        $api.rmStorage('userMessage');
+        user.logout(function(ret, err) {
+            if (ret) {
+                console.log(JSON.stringify(ret));
+            } else {
+                console.log(JSON.stringify(err));
+            }
+        });
+        close();
+    }
 </script>
 
 </html>
