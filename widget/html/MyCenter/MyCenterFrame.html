@@ -425,17 +425,17 @@
     };
 
     function close() {
-        api.closeFrame({
+      /*  api.closeFrame({
             name: 'MyCenterFrame.html'
         });
         api.closeWin({
             name: 'MyCenter.html'
-        });
+        });*/
         api.openWin({
             name: 'LoginRegisterWindow.html',
             url: './LoginRegisterWindow.html',
             pageParam: {
-
+                local: "shutdown"
             }
         });
         console.log('执行到此位置');

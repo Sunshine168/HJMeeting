@@ -99,6 +99,27 @@ apiready = function() {
         console.log(JSON.stringify(err));
         console.log(JSON.stringify(ret));
     });
+    ///
+    api.addEventListener({
+        name: 'viewappear'
+    }, function(ret, err) {
+        var localParam = api.pageParam,
+            local = null;
+        if (localParam.hasOwnProperty('local')) {
+            local = localParam.local;
+        }
+        if (local === "shutdown") {
+            console.log('执行到此位置');
+            api.closeFrame({
+                name: 'MyCenterFrame.html'
+            });
+            api.closeWin({
+                name: 'MyCenter.html'
+            });
+        } else {
+            console.log("普通跳转");
+        }
+    });
 };
 
 function back() {
@@ -107,7 +128,7 @@ function back() {
         api.closeFrameGroup({
             name: 'group1'
         });
-         api.openWin({
+        api.openWin({
             name: 'Mycenter',
             url: './MyCenter.html',
 

@@ -8,45 +8,45 @@
     <title>title</title>
     <link rel="stylesheet" type="text/css" href="../../css/api.css" />
     <style>
-        html,
-        body {
-            height: 100%;
-            background-color: #fff
-        }
-        
-        * {
-            padding: 0;
-            margin: 0;
-            font-family: "微软雅黑"
-        }
-        /*  head */
-        
-        .headContainer {
-            height: 150px;
-            background-color: #008BE3;
-        }
-        
-        .head {
-            line-height: 44px;
-            position: relative;
-            margin-right: 15px;
-            margin-left: 15px;
-        }
-        
-        .head>p {
-            text-align: center;
-            color: #fff;
-        }
-        
-        .head>span {
-            position: absolute;
-            top: 14px;
-            right: 0;
-            background: url('../../image/setting.png') no-repeat;
-            height: 16px;
-            width: 16px;
-            background-size: 100% 100%;
-        }
+    html,
+    body {
+        height: 100%;
+        background-color: #fff
+    }
+    
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: "微软雅黑"
+    }
+    /*  head */
+    
+    .headContainer {
+        height: 150px;
+        background-color: #008BE3;
+    }
+    
+    .head {
+        line-height: 44px;
+        position: relative;
+        margin-right: 15px;
+        margin-left: 15px;
+    }
+    
+    .head>p {
+        text-align: center;
+        color: #fff;
+    }
+    
+    .head>span {
+        position: absolute;
+        top: 14px;
+        right: 0;
+        background: url('../../image/setting.png') no-repeat;
+        height: 16px;
+        width: 16px;
+        background-size: 100% 100%;
+    }
     </style>
 </head>
 
@@ -59,34 +59,37 @@
 </body>
 <script type="text/javascript" src="../../script/api.js"></script>
 <script type="text/javascript">
-    var model;
-    apiready = function() {
-        model = api.require('model');
-        model.config({
-            appId: 'A6949195186472',
-            appKey: '438E7ABA-7936-55B2-ADA6-E8B5808CBA18',
-            host: 'https://d.apicloud.com'
-        });
-        var s = $api.getStorage('userMessage') ? true : false;
-        api.openFrame({
-            name: 'MyCenterFrame.html',
-            url: './MyCenterFrame.html',
-            rect: {
-                x: 0,
-                y: 54,
-                /*4410*/
-                w: 'auto',
-                h: 'auto',
-                marginRight: 15,
-                marginLeft: 15
-            },
-            pageParam: {
-                isLogin: s
-            },
-            bounces: true,
-            vScrollBarEnabled: false,
-            hScrollBarEnabled: false
-        });
+var model;
+apiready = function() {
+    model = api.require('model');
+    model.config({
+        appId: 'A6949195186472',
+        appKey: '438E7ABA-7936-55B2-ADA6-E8B5808CBA18',
+        host: 'https://d.apicloud.com'
+    });
+    var s = $api.getStorage('userMessage') ? true : false;
+    api.openFrame({
+        name: 'MyCenterFrame.html',
+        url: './MyCenterFrame.html',
+        rect: {
+            x: 0,
+            y: 54,
+            /*4410*/
+            w: 'auto',
+            h: 'auto',
+            marginRight: 15,
+            marginLeft: 15
+        },
+        pageParam: {
+            isLogin: s
+        },
+        bounces: true,
+        vScrollBarEnabled: false,
+        hScrollBarEnabled: false
+    });
+    api.addEventListener({
+        name: 'viewappear'
+    }, function(ret, err) {
         var localParam = api.pageParam,
             local = null;
         if (localParam.hasOwnProperty('local')) {
@@ -101,9 +104,11 @@
                 name: 'LoginRegisterWindow.html'
             });
         } else {
-            console.log("普通跳转")
+            console.log("普通跳转");
         }
-    };
+    });
+
+};
 </script>
 
 </html>
