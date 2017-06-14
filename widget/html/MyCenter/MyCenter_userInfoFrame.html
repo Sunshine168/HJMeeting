@@ -364,7 +364,7 @@
             $api.closeFrame();
         }, 1);
         api.closeWin();
-        return;
+         
     }
     //模块
     var model,
@@ -385,6 +385,10 @@
         });
     }
     apiready = function() {
+    	api.closeFrame({
+    		name:'MyCenterFrame'
+        });
+        
         model = api.require('model');
         query = api.require('query');
         relation = api.require('relation');
@@ -545,8 +549,8 @@
                             sourceType: type[ret.buttonIndex - 1],
                             allowEdit: true,
                             quality: 50,
-                            targetWidth: 92,
-                            targetHeight: 92,
+                            targetWidth: 500,
+                            targetHeight: 500,
                             saveToPhotoAlbum: false
                         }, function(ret, err) {
                             if (ret.data) {
